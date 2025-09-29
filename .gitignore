@@ -1,3 +1,5 @@
 monographs_html/
 .venv/
 parsed_output/
+.env
+rag_storage/pharmacy_copilot/
