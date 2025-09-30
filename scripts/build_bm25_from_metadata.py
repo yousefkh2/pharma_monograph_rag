@@ -30,13 +30,23 @@ def main() -> None:
     parser.add_argument("index", type=Path, help="Path to output BM25 pickle")
     parser.add_argument("--k1", type=float, default=1.5)
     parser.add_argument("--b", type=float, default=0.75)
+    parser.add_argument("--enable-fuzzy", action="store_true", default=True, help="Enable fuzzy matching (default: True)")
+    parser.add_argument("--similarity-threshold", type=float, default=0.8, help="Fuzzy similarity threshold (default: 0.8)")
+    parser.add_argument("--max-fuzzy-expansions", type=int, default=3, help="Max fuzzy expansions per term (default: 3)")
     args = parser.parse_args()
 
     documents: List[str] = list(iter_texts(args.metadata))
     if not documents:
         raise SystemExit("No documents found in metadata file")
 
-    index = BM25Index(k1=args.k1, b=args.b, tokenize=default_tokenize)
+    index = BM25Index(
+        k1=args.k1, 
+        b=args.b, 
+        tokenize=default_tokenize,
+        enable_fuzzy=args.enable_fuzzy,
+        similarity_threshold=args.similarity_threshold,
+        max_fuzzy_expansions=args.max_fuzzy_expansions,
+    )
     index.build(documents)
     index.save(args.index)
     print(f"Indexed {len(documents)} chunks. Avg doc length: {index.avgdl:.2f} tokens")
