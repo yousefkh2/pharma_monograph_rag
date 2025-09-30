@@ -1,0 +1,132 @@
+{
+  "name": "pharmacy_copilot_eval_v1",
+  "description": "Initial evaluation dataset for pharmacy copilot system",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "q001",
+      "question": "What is the maximum daily dose of acetaminophen for adults?",
+      "question_type": "dosage",
+      "difficulty": "easy",
+      "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day.",
+      "answer_key_points": [
+        "4000 mg maximum daily dose",
+        "4 grams maximum daily dose",
+        "For adults"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "chunk_acetaminophen_dosage_001",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Primary dosage information"
+        },
+        {
+          "chunk_id": "chunk_acetaminophen_safety_001",
+          "relevance_score": 0.8,
+          "is_essential": false,
+          "note": "Safety warnings about max dose"
+        }
+      ],
+      "drug_names": [
+        "acetaminophen",
+        "paracetamol"
+      ],
+      "tags": [
+        "common",
+        "otc",
+        "dosage"
+      ],
+      "source_note": "Standard pharmacy reference",
+      "reasoning": null
+    },
+    {
+      "id": "q002",
+      "question": "What are the contraindications for ibuprofen?",
+      "question_type": "contraindications",
+      "difficulty": "medium",
+      "expected_answer": "Ibuprofen is contraindicated in patients with active GI bleeding, severe heart failure, severe kidney disease, and in the third trimester of pregnancy.",
+      "answer_key_points": [
+        "Active GI bleeding",
+        "Severe heart failure",
+        "Severe kidney disease",
+        "Third trimester pregnancy"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "chunk_ibuprofen_contraind_001",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Main contraindications"
+        },
+        {
+          "chunk_id": "chunk_ibuprofen_pregnancy_001",
+          "relevance_score": 0.9,
+          "is_essential": true,
+          "note": "Pregnancy warnings"
+        },
+        {
+          "chunk_id": "chunk_nsaid_warnings_001",
+          "relevance_score": 0.7,
+          "is_essential": false,
+          "note": "General NSAID warnings"
+        }
+      ],
+      "drug_names": [
+        "ibuprofen"
+      ],
+      "tags": [
+        "nsaid",
+        "contraindications",
+        "safety"
+      ],
+      "source_note": "FDA prescribing information",
+      "reasoning": null
+    },
+    {
+      "id": "q003",
+      "question": "How does warfarin interact with aspirin?",
+      "question_type": "interactions",
+      "difficulty": "hard",
+      "expected_answer": "Warfarin and aspirin both increase bleeding risk. When used together, they significantly increase the risk of serious bleeding complications and require careful monitoring of INR levels.",
+      "answer_key_points": [
+        "Both increase bleeding risk",
+        "Significant bleeding risk when combined",
+        "Requires INR monitoring",
+        "Serious bleeding complications"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "chunk_warfarin_interactions_001",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Warfarin drug interactions"
+        },
+        {
+          "chunk_id": "chunk_aspirin_bleeding_001",
+          "relevance_score": 0.9,
+          "is_essential": true,
+          "note": "Aspirin bleeding risks"
+        },
+        {
+          "chunk_id": "chunk_anticoag_monitoring_001",
+          "relevance_score": 0.8,
+          "is_essential": false,
+          "note": "Anticoagulation monitoring"
+        }
+      ],
+      "drug_names": [
+        "warfarin",
+        "aspirin"
+      ],
+      "tags": [
+        "interactions",
+        "bleeding",
+        "monitoring",
+        "anticoagulation"
+      ],
+      "source_note": "Clinical pharmacology reference",
+      "reasoning": null
+    }
+  ]
+}

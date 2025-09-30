@@ -1,0 +1,128 @@
+{
+  "name": "pharmacy_copilot_realistic_eval_v1",
+  "description": "Realistic evaluation dataset with actual chunk IDs from the corpus",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "q001_real",
+      "question": "What is the maximum daily dose of acetaminophen for adults?",
+      "question_type": "dosage",
+      "difficulty": "easy",
+      "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day.",
+      "answer_key_points": [
+        "4000 mg",
+        "maximum daily dose",
+        "adults"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23613223::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Primary dosage information"
+        },
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23613224::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Primary dosage information"
+        },
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23613227::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Primary dosage information"
+        }
+      ],
+      "drug_names": [
+        "acetaminophen",
+        "paracetamol"
+      ],
+      "tags": [
+        "dosage",
+        "otc"
+      ],
+      "source_note": "Based on real chunk data",
+      "reasoning": null
+    },
+    {
+      "id": "q002_real",
+      "question": "What are the contraindications for ibuprofen?",
+      "question_type": "contraindications",
+      "difficulty": "medium",
+      "expected_answer": "Ibuprofen is contraindicated in patients with active GI bleeding, severe heart failure, severe kidney disease, and in the third trimester of pregnancy.",
+      "answer_key_points": [
+        "active GI bleeding",
+        "severe heart failure",
+        "severe kidney disease",
+        "third trimester pregnancy"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23613211::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Contraindication information"
+        },
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23613212::1",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Contraindication information"
+        }
+      ],
+      "drug_names": [
+        "ibuprofen"
+      ],
+      "tags": [
+        "contraindications",
+        "nsaid"
+      ],
+      "source_note": "Based on real chunk data",
+      "reasoning": null
+    },
+    {
+      "id": "q003_real",
+      "question": "What drugs interact with warfarin to increase bleeding risk?",
+      "question_type": "interactions",
+      "difficulty": "hard",
+      "expected_answer": "Drugs that interact with warfarin to increase bleeding risk include aspirin, NSAIDs, heparin, and other anticoagulants.",
+      "answer_key_points": [
+        "aspirin",
+        "NSAIDs",
+        "bleeding risk",
+        "anticoagulants"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "14-c-urea-breath-test-drug-information::F23802903::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Warfarin interactions"
+        },
+        {
+          "chunk_id": "abacavir-and-lamivudine-drug-information::F128788::4",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Warfarin interactions"
+        },
+        {
+          "chunk_id": "abacavir-and-lamivudine-drug-information::F3317866::0",
+          "relevance_score": 1.0,
+          "is_essential": true,
+          "note": "Warfarin interactions"
+        }
+      ],
+      "drug_names": [
+        "warfarin"
+      ],
+      "tags": [
+        "interactions",
+        "bleeding",
+        "anticoagulation"
+      ],
+      "source_note": "Based on real chunk data",
+      "reasoning": null
+    }
+  ]
+}
