@@ -13,12 +13,14 @@ class QuestionType(str, Enum):
     DOSAGE = "dosage"                    # "What's the standard dose of acetaminophen?"
     CONTRAINDICATIONS = "contraindications"  # "When should I avoid ibuprofen?"
     INTERACTIONS = "interactions"        # "Does warfarin interact with aspirin?"
+    INTERACTION = "interaction"          # "Does warfarin interact with aspirin?" (singular)
     SIDE_EFFECTS = "side_effects"       # "What are common side effects of metformin?"
     MECHANISM = "mechanism"             # "How does lisinopril work?"
     ADMINISTRATION = "administration"    # "How should I take this medication?"
     MONITORING = "monitoring"           # "What labs should be monitored on statins?"
     PREGNANCY = "pregnancy"             # "Is this safe during pregnancy?"
     GENERAL_INFO = "general_info"       # "What is acetaminophen used for?"
+    GUIDELINE = "guideline"             # "What are the guidelines for this medication?"
 
 
 class DifficultyLevel(str, Enum):
@@ -51,14 +53,15 @@ class EvalQuestion:
     
     # Retrieval ground truth
     relevant_chunks: List[GroundTruthChunk]
-    
+
     # Metadata
     drug_names: List[str]  # Primary drugs mentioned
     tags: List[str]        # Additional categorization
     source_note: Optional[str] = None  # Where this question came from
-    
+
     # Reasoning/explanation
     reasoning: Optional[str] = None  # Why this is the correct answer
+    gold: Optional[Dict[str, object]] = None  # Rich evaluable structure for LLM judge
 
 
 @dataclass
@@ -92,14 +95,15 @@ class EvalDataset:
                         }
                         for chunk in q.relevant_chunks
                     ],
-                    "drug_names": q.drug_names,
-                    "tags": q.tags,
-                    "source_note": q.source_note,
-                    "reasoning": q.reasoning,
-                }
-                for q in self.questions
-            ]
-        }
+                "drug_names": q.drug_names,
+                "tags": q.tags,
+                "source_note": q.source_note,
+                "reasoning": q.reasoning,
+                "gold": q.gold,
+            }
+            for q in self.questions
+        ]
+    }
         
         path.parent.mkdir(parents=True, exist_ok=True)
         with path.open("w") as f:
@@ -135,6 +139,7 @@ class EvalDataset:
                 tags=q_data["tags"],
                 source_note=q_data.get("source_note"),
                 reasoning=q_data.get("reasoning"),
+                gold=q_data.get("gold"),
             )
             questions.append(question)
         

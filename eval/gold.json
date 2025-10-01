@@ -1,0 +1,267 @@
+[
+  {
+    "id": "q001",
+    "user_question": "5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?",
+    "intent": "dosage",
+    "drug": "amoxicillin",
+    "indication": "acute otitis media",
+    "population": {"age_years": 5, "weight_kg": 18},
+    "route": "PO",
+    "formulation": "400 mg/5 mL suspension",
+    "gold": {
+      "dose_per_dose_mg": 810,
+      "doses_per_day": 2,
+      "total_daily_mg": 1620,
+      "calc_rule": "90 mg/kg/day divided q12h",
+      "max_daily_mg": 4000,
+      "volume_per_dose_mL": 10.1,
+      "rounding": {"to": "10 mL per dose", "basis": "80 mg/mL (400 mg/5 mL)"},
+      "renal_adjustment": "not required with normal function",
+      "hepatic_adjustment": "none specified",
+      "contraindications": [],
+      "interactions": [],
+      "recency_risk": false,
+      "citations": ["lexi-amoxicillin-2018#dosage", "lexi-amoxicillin-2018#peds"]
+    }
+  },
+  {
+    "id": "q002",
+    "user_question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
+    "intent": "dosage",
+    "drug": "acetaminophen",
+    "indication": "fever",
+    "population": {"age_years": 2, "weight_kg": 12},
+    "route": "PO",
+    "formulation": "160 mg/5 mL liquid",
+    "gold": {
+      "dose_per_dose_mg": 180,
+      "doses_per_day": 4,
+      "total_daily_mg": 720,
+      "calc_rule": "15 mg/kg/dose q6h (10–15 mg/kg q4–6h acceptable)",
+      "max_daily_mg": 900,
+      "volume_per_dose_mL": 5.6,
+      "rounding": {"to": "5.5–5.6 mL", "basis": "32 mg/mL (160 mg/5 mL)"},
+      "renal_adjustment": "none for single-agent antipyresis",
+      "hepatic_adjustment": "use caution in hepatic impairment; avoid chronic high dosing",
+      "contraindications": [],
+      "interactions": [],
+      "recency_risk": false,
+      "citations": ["lexi-acetaminophen-2018#peds-dosing", "lexi-acetaminophen-2018#max"]
+    }
+  },
+  {
+    "id": "q003",
+    "user_question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
+    "intent": "dosage",
+    "drug": "ibuprofen",
+    "indication": "fever",
+    "population": {"age_years": 2, "weight_kg": 12},
+    "route": "PO",
+    "formulation": "100 mg/5 mL liquid",
+    "gold": {
+      "dose_per_dose_mg": 120,
+      "doses_per_day": 4,
+      "total_daily_mg": 480,
+      "calc_rule": "10 mg/kg/dose q6–8h; max 40 mg/kg/day",
+      "max_daily_mg": 480,
+      "volume_per_dose_mL": 6.0,
+      "rounding": {"to": "6 mL", "basis": "20 mg/mL (100 mg/5 mL)"},
+      "renal_adjustment": "avoid in significant renal impairment/dehydration",
+      "hepatic_adjustment": "use caution",
+      "contraindications": ["<6 months age", "active GI bleed"],
+      "interactions": [],
+      "recency_risk": false,
+      "citations": ["lexi-ibuprofen-2018#peds-dosing", "lexi-ibuprofen-2018#max"]
+    }
+  },
+  {
+    "id": "q004",
+    "user_question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
+    "intent": "dosage",
+    "drug": "apixaban",
+    "indication": "NVAF stroke prevention",
+    "population": {"age_years": 82, "weight_kg": 58, "scr_mg_dL": 1.6},
+    "route": "PO",
+    "formulation": "tablet",
+    "gold": {
+      "dose_per_dose_mg": 2.5,
+      "doses_per_day": 2,
+      "total_daily_mg": 5,
+      "calc_rule": "If ≥2 of {age ≥80, weight ≤60 kg, SCr ≥1.5} → 2.5 mg BID",
+      "max_daily_mg": 10,
+      "renal_adjustment": "criteria-based reduction as above; otherwise standard 5 mg BID",
+      "hepatic_adjustment": "avoid in severe hepatic impairment",
+      "contraindications": ["active bleeding"],
+      "interactions": [{"drug":"strong CYP3A4/P-gp inhibitors","severity":"major","action":"avoid or reduce/monitor"}],
+      "recency_risk": false,
+      "citations": ["lexi-apixaban-2018#dosing-nvaf", "lexi-apixaban-2018#ddi"]
+    }
+  },
+  {
+    "id": "q005",
+    "user_question": "85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?",
+    "intent": "dosage",
+    "drug": "enoxaparin",
+    "indication": "VTE treatment",
+    "population": {"age_years": 45, "weight_kg": 85, "crcl_mL_min": 90},
+    "route": "SC",
+    "formulation": "prefilled syringes",
+    "gold": {
+      "dose_per_dose_mg": 85,
+      "doses_per_day": 2,
+      "total_daily_mg": 170,
+      "calc_rule": "1 mg/kg q12h (or 1.5 mg/kg q24h alternative)",
+      "max_daily_mg": null,
+      "renal_adjustment": "CrCl <30 mL/min: 1 mg/kg once daily",
+      "hepatic_adjustment": "use caution",
+      "contraindications": ["active major bleeding", "history of HIT (use alternative)"],
+      "interactions": [],
+      "recency_risk": false,
+      "citations": ["lexi-enoxaparin-2018#dosing", "lexi-enoxaparin-2018#renal"]
+    }
+  },
+  {
+    "id": "q006",
+    "user_question": "Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?",
+    "intent": "dosage",
+    "drug": "metformin",
+    "indication": "type 2 diabetes",
+    "population": {"age_years": 60, "egfr_mL_min_1_73m2": 28},
+    "route": "PO",
+    "formulation": "tablet",
+    "gold": {
+      "decision": "contraindicated",
+      "calc_rule": "eGFR <30 → do not initiate; discontinue if falls <30",
+      "renal_adjustment": "eGFR 30–45: generally avoid initiation; if continuing, reduce dose and monitor",
+      "hepatic_adjustment": "avoid in hepatic impairment due to lactic acidosis risk",
+      "contraindications": ["eGFR <30", "acute/chronic metabolic acidosis"],
+      "interactions": [{"drug":"iodinated contrast","severity":"major","action":"hold around procedure based on eGFR"}],
+      "recency_risk": false,
+      "citations": ["lexi-metformin-2018#renal", "lexi-metformin-2018#contra"]
+    }
+  },
+  {
+    "id": "q007",
+    "user_question": "Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?",
+    "intent": "dosage",
+    "drug": "nitrofurantoin",
+    "indication": "acute uncomplicated cystitis",
+    "population": {"age_years": 68, "egfr_mL_min_1_73m2": 25},
+    "route": "PO",
+    "formulation": "macrocrystals/monohydrate 100 mg",
+    "gold": {
+      "decision": "avoid",
+      "calc_rule": "Avoid if eGFR/CrCl <30 mL/min due to low urinary concentrations and toxicity risk",
+      "renal_adjustment": "not recommended below threshold",
+      "hepatic_adjustment": "use caution; avoid in significant hepatic disease",
+      "contraindications": ["CrCl <30", "late-term pregnancy (at term)"],
+      "interactions": [],
+      "recency_risk": false,
+      "citations": ["lexi-nitrofurantoin-2018#renal", "lexi-nitrofurantoin-2018#contra"]
+    }
+  },
+  {
+    "id": "q008",
+    "user_question": "Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?",
+    "intent": "interaction",
+    "drug": "warfarin",
+    "indication": "DDI check with TMP-SMX",
+    "population": {"age_years": 70},
+    "route": null,
+    "formulation": null,
+    "gold": {
+      "interactions": [
+        {"drug": "trimethoprim/sulfamethoxazole", "mechanism": "CYP2C9 inhibition + gut flora change", "severity": "major", "action": "avoid if possible; otherwise increase INR monitoring and reduce warfarin dose"}
+      ],
+      "contraindications": [],
+      "recency_risk": false,
+      "citations": ["lexi-warfarin-2018#ddi-tmp-smx"]
+    }
+  },
+  {
+    "id": "q009",
+    "user_question": "Patient on atorvastatin needs clarithromycin. What’s the risk and action?",
+    "intent": "interaction",
+    "drug": "atorvastatin",
+    "indication": "DDI check with clarithromycin",
+    "population": {"age_years": 62},
+    "route": null,
+    "formulation": null,
+    "gold": {
+      "interactions": [
+        {"drug":"clarithromycin","mechanism":"strong CYP3A4 inhibition","severity":"major","action":"avoid coadministration; if unavoidable, hold atorvastatin or limit to the lowest dose (e.g., ≤20 mg/day) and monitor for myopathy"}
+      ],
+      "contraindications": [],
+      "recency_risk": false,
+      "citations": ["lexi-atorvastatin-2018#ddi-macrolides"]
+    }
+  },
+  {
+    "id": "q010",
+    "user_question": "Starting linezolid in a patient on sertraline. Is this safe?",
+    "intent": "interaction",
+    "drug": "linezolid",
+    "indication": "DDI check with SSRI",
+    "population": {"age_years": 50},
+    "route": "PO/IV",
+    "formulation": null,
+    "gold": {
+      "interactions": [
+        {"drug":"sertraline (SSRI)","mechanism":"MAOI activity of linezolid → ↑serotonin","severity":"major","action":"avoid combination; if benefits outweigh risks, withhold SSRI or monitor closely for serotonin syndrome"}
+      ],
+      "contraindications": [],
+      "recency_risk": false,
+      "citations": ["lexi-linezolid-2018#ddi-ssri"]
+    }
+  },
+  {
+    "id": "q011",
+    "user_question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
+    "intent": "interaction",
+    "drug": "digoxin",
+    "indication": "DDI check with amiodarone",
+    "population": {"age_years": 72},
+    "route": "PO",
+    "formulation": null,
+    "gold": {
+      "interactions": [
+        {"drug":"amiodarone","mechanism":"P-gp inhibition → ↑digoxin levels","severity":"major","action":"reduce digoxin dose by ~30–50% and monitor serum digoxin and ECG"}
+      ],
+      "contraindications": [],
+      "recency_risk": false,
+      "citations": ["lexi-digoxin-2018#ddi-amio"]
+    }
+  },
+  {
+    "id": "q012",
+    "user_question": "COVID-19 patient asks for Paxlovid dosing and interaction checks.",
+    "intent": "dosage",
+    "drug": "nirmatrelvir/ritonavir (Paxlovid)",
+    "indication": "COVID-19",
+    "population": {"age_years": 55},
+    "route": "PO",
+    "formulation": "tablet",
+    "gold": {
+      "abstain_expected": true,
+      "reason": "Not present in ≤2018 corpus; recency-sensitive",
+      "recency_risk": true,
+      "citations": []
+    }
+  },
+  {
+    "id": "q013",
+    "user_question": "What is the current first-line pharmacologic therapy per latest hypertension guidelines?",
+    "intent": "guideline",
+    "drug": null,
+    "indication": "hypertension guideline (current)",
+    "population": {"age_years": 45},
+    "route": null,
+    "formulation": null,
+    "gold": {
+      "abstain_expected": true,
+      "reason": "Question seeks guidance newer than 2018; corpus includes JNC8 (2014) which is outdated for ‘current’ practice",
+      "recency_risk": true,
+      "citations": ["lexi-hypertension-2014#jnc8"]
+    }
+  }
+]

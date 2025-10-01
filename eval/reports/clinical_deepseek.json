@@ -1,0 +1,1029 @@
+{
+  "dataset": {
+    "name": "Working Clinical Test Dataset",
+    "description": "Clinical evaluation dataset with regulatory compliance focus",
+    "version": "1.0.0"
+  },
+  "metadata": {
+    "question_count": 2,
+    "evaluation_time": 17.384050130844116
+  },
+  "aggregated_metrics": {
+    "retrieval": {
+      "recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0,
+        "20": 0.0
+      },
+      "precision_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0,
+        "20": 0.0
+      },
+      "mean_reciprocal_rank": 0.0,
+      "average_precision": 0.0,
+      "ndcg_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0,
+        "20": 0.0
+      },
+      "essential_recall_at_k": {
+        "1": 0.0,
+        "3": 0.0,
+        "5": 0.0,
+        "10": 0.0,
+        "20": 0.0
+      },
+      "first_relevant_rank": 0.0,
+      "total_relevant": 1,
+      "total_essential": 1
+    },
+    "qa": {
+      "bleu_score": 0.10487813303357026,
+      "rouge_1_f1": 0.31420765027322406,
+      "rouge_2_f1": 0.15098870056497177,
+      "rouge_l_f1": 0.22295081967213112,
+      "semantic_similarity": 0.6854788064956665,
+      "key_points_covered": 0.5,
+      "key_points_found": [],
+      "key_points_missing": [],
+      "answer_length": 66,
+      "has_answer": true,
+      "factual_accuracy": null,
+      "helpfulness": null
+    }
+  },
+  "failure_cases": [
+    {
+      "question_id": "clinical_001",
+      "question": "What is the maximum daily dose of acetaminophen for adults?",
+      "failure_types": [
+        "retrieval_miss",
+        "retrieval_irrelevant",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "score": 0.9941839011783965,
+          "rank": 1
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "score": 0.9857043605471735,
+          "rank": 2
+        },
+        {
+          "chunk_id": "acetaminophen-guaifenesin-and-phenylephrine-drug-information::F46679330::0",
+          "score": 0.9773199725255738,
+          "rank": 3
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "score": 0.9631904539845182,
+          "rank": 4
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+          "score": 0.9407359831579185,
+          "rank": 5
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+          "score": 0.9204923379059662,
+          "rank": 6
+        },
+        {
+          "chunk_id": "pentazocine-and-acetaminophen-paracetamol-drug-information::F208113::0",
+          "score": 0.8989576654742749,
+          "rank": 7
+        },
+        {
+          "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204991::0",
+          "score": 0.8864320106409006,
+          "rank": 8
+        },
+        {
+          "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204983::0",
+          "score": 0.8747056659153634,
+          "rank": 9
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-caffeine-and-dihydrocodeine-drug-information::F129443::0",
+          "score": 0.8569340676237122,
+          "rank": 10
+        }
+      ],
+      "relevant_chunks_found": [],
+      "essential_chunks_missed": [
+        "acetaminophen-paracetamol-drug-information_section_7"
+      ],
+      "generated_answer": "The maximum daily dose of acetaminophen for adults is 4,000 mg (4 grams) [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. This limit is critical to prevent hepatotoxicity, and clinicians must consider all sources of acetaminophen (prescription, OTC, and combination products) when calculating total daily intake [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. Note that some manufacturers have adopted lower maximums (e.g., 2,600–3,250 mg/day) for specific OTC products, but the prescribing guideline remains 4,000 mg/day for appropriate patients under clinical supervision [chunk_acetaminophen-paracetamol-drug-information::F129323::0].",
+      "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day according to prescribing guidelines. This should not be exceeded to avoid hepatotoxicity.",
+      "key_points_missing": [
+        "4000 mg maximum",
+        "prescribing guidelines"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.12070358597692803,
+        "rouge_1_f1": 0.29508196721311475,
+        "rouge_2_f1": 0.18333333333333338,
+        "rouge_l_f1": 0.24590163934426226,
+        "semantic_similarity": 0.886379063129425,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "4 grams",
+          "hepatotoxicity"
+        ],
+        "key_points_missing": [
+          "4000 mg maximum",
+          "prescribing guidelines"
+        ],
+        "answer_length": 69,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "clinical_002",
+      "question": "What are the latest 2024 FDA guidelines for acetaminophen?",
+      "failure_types": [
+        "retrieval_miss",
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0",
+          "score": 0.8806880189304703,
+          "rank": 1
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "score": 0.8682830150396648,
+          "rank": 2
+        },
+        {
+          "chunk_id": "acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0",
+          "score": 0.8641609641703212,
+          "rank": 3
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "score": 0.8496957821475595,
+          "rank": 4
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "score": 0.8458481573555525,
+          "rank": 5
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information::F129568::3",
+          "score": 0.8458393368196785,
+          "rank": 6
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+          "score": 0.8435021975281436,
+          "rank": 7
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-codeine-drug-information::F129467::1",
+          "score": 0.8370328958596339,
+          "rank": 8
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-diphenhydramine-drug-information::F129533::0",
+          "score": 0.8352064671059318,
+          "rank": 9
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+          "score": 0.8298806726947179,
+          "rank": 10
+        }
+      ],
+      "relevant_chunks_found": [],
+      "essential_chunks_missed": [],
+      "generated_answer": "I cannot provide 2024 FDA guidelines for acetaminophen because my knowledge is limited to the Lexicomp database with a cutoff of December 2018. The retrieved context contains older safety information—such as hepatotoxicity warnings, skin reaction risks, and maximum daily dose considerations—but does not include any updates beyond 2018 [chunk_acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0] [chunk_acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0]. For current 2024 FDA recommendations, please consult official FDA resources or recent clinical guidelines.",
+      "expected_answer": "I cannot provide information about recent developments or guidelines published after 2018, as my knowledge is limited to pre-2019 medical sources. Please consult current medical literature or your healthcare provider for the most up-to-date information.",
+      "key_points_missing": [
+        "post-2018",
+        "limited to pre-2019"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 0,
+        "total_essential": 0
+      },
+      "qa_metrics": {
+        "bleu_score": 0.08905268009021249,
+        "rouge_1_f1": 0.3333333333333333,
+        "rouge_2_f1": 0.11864406779661016,
+        "rouge_l_f1": 0.19999999999999998,
+        "semantic_similarity": 0.48457854986190796,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "cannot provide",
+          "consult current"
+        ],
+        "key_points_missing": [
+          "post-2018",
+          "limited to pre-2019"
+        ],
+        "answer_length": 64,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "clinical_001",
+      "question": {
+        "id": "clinical_001",
+        "question": "What is the maximum daily dose of acetaminophen for adults?",
+        "question_type": "dosage",
+        "difficulty": "easy",
+        "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day according to prescribing guidelines. This should not be exceeded to avoid hepatotoxicity.",
+        "answer_key_points": [
+          "4000 mg maximum",
+          "4 grams",
+          "hepatotoxicity",
+          "prescribing guidelines"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "acetaminophen-paracetamol-drug-information_section_7",
+            "relevance_score": 0.9,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "acetaminophen"
+        ],
+        "tags": [
+          "dosing",
+          "hepatotoxicity"
+        ],
+        "source_note": null,
+        "reasoning": null
+      },
+      "generated_answer": "The maximum daily dose of acetaminophen for adults is 4,000 mg (4 grams) [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. This limit is critical to prevent hepatotoxicity, and clinicians must consider all sources of acetaminophen (prescription, OTC, and combination products) when calculating total daily intake [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. Note that some manufacturers have adopted lower maximums (e.g., 2,600–3,250 mg/day) for specific OTC products, but the prescribing guideline remains 4,000 mg/day for appropriate patients under clinical supervision [chunk_acetaminophen-paracetamol-drug-information::F129323::0].",
+      "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day according to prescribing guidelines. This should not be exceeded to avoid hepatotoxicity.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.12070358597692803,
+        "rouge_1_f1": 0.29508196721311475,
+        "rouge_2_f1": 0.18333333333333338,
+        "rouge_l_f1": 0.24590163934426226,
+        "semantic_similarity": 0.886379063129425,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "4 grams",
+          "hepatotoxicity"
+        ],
+        "key_points_missing": [
+          "4000 mg maximum",
+          "prescribing guidelines"
+        ],
+        "answer_length": 69,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "score": 0.9941839011783965,
+          "rank": 1
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "score": 0.9857043605471735,
+          "rank": 2
+        },
+        {
+          "chunk_id": "acetaminophen-guaifenesin-and-phenylephrine-drug-information::F46679330::0",
+          "score": 0.9773199725255738,
+          "rank": 3
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "score": 0.9631904539845182,
+          "rank": 4
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+          "score": 0.9407359831579185,
+          "rank": 5
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+          "score": 0.9204923379059662,
+          "rank": 6
+        },
+        {
+          "chunk_id": "pentazocine-and-acetaminophen-paracetamol-drug-information::F208113::0",
+          "score": 0.8989576654742749,
+          "rank": 7
+        },
+        {
+          "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204991::0",
+          "score": 0.8864320106409006,
+          "rank": 8
+        },
+        {
+          "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204983::0",
+          "score": 0.8747056659153634,
+          "rank": 9
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-caffeine-and-dihydrocodeine-drug-information::F129443::0",
+          "score": 0.8569340676237122,
+          "rank": 10
+        }
+      ],
+      "context_chunks": [
+        {
+          "rank": 1,
+          "score": 0.9941839011783965,
+          "dense_score": 1.0,
+          "bm25_score": 0.9854597529459912,
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "doc_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol) and phenylephrine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-and-phenylephrine-drug-information",
+          "snippet": "Dosing: Adult  Allergies/common cold/hay fever: Oral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all ro…",
+          "text": "Dosing: Adult\n\nAllergies/common cold/hay fever: Oral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose. No dose adjustment required when converting between different acetaminophen formulations.\n\nAcetaminophen 325 mg/phenylephrine 5 mg: Acetaminophen 650 mg/phenylephrine 10 mg every 4 to 6 hours as needed. Refer to product-specific labeling for maximum daily dosage (maximum dosage range: acetaminophen 2,600 to 3,250 mg/phenylephrine 40 to 50 mg per 24 hours).\n\nAcetaminophen 500 mg/phenylephrine 5 mg: Acetaminophen 1,000 mg/phenylephrine 10 mg every 4 to 6 hours as needed; maximum: acetaminophen 4,000 mg/phenylephrine 40 mg per 24 hours"
+        },
+        {
+          "rank": 2,
+          "score": 0.9857043605471735,
+          "dense_score": 0.9761739342452892,
+          "bm25_score": 1.0,
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "doc_id": "acetaminophen-paracetamol-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol): Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-drug-information",
+          "snippet": "Dosing: Adult  Note: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of their acetaminophen OTC products used in older pediatric patients (usually children ≥ 12 years a…",
+          "text": "Dosing: Adult\n\nNote: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of their acetaminophen OTC products used in older pediatric patients (usually children ≥ 12 years and adolescents) and adults in an attempt to protect consumers from inadvertent overdoses. For example, the maximum daily dose of Tylenol Extra Strength and Tylenol Regular Strength was decreased and the dosing interval for Tylenol Extra Strength was increased. Health care professionals may still prescribe or recommend the 4 g daily maximum to patients (but are advised to use their own discretion and clinical judgment) (McNeil Consumer Healthcare, 2014).\n\nPain or fever:\n\nOral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose. No dose adjustment required when converting between different acetaminophen formulations.\n\nImmediate-release:"
+        },
+        {
+          "rank": 3,
+          "score": 0.9773199725255738,
+          "dense_score": 0.9862843605056857,
+          "bm25_score": 0.9638733905554059,
+          "chunk_id": "acetaminophen-guaifenesin-and-phenylephrine-drug-information::F46679330::0",
+          "doc_id": "acetaminophen-guaifenesin-and-phenylephrine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen, guaifenesin, and phenylephrine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-guaifenesin-and-phenylephrine-drug-information",
+          "snippet": "Dosing: Adult  Note: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.  Allergies/common cold/hay fever:…",
+          "text": "Dosing: Adult\n\nNote: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.\n\nAllergies/common cold/hay fever: Oral: Acetaminophen 325 mg/guaifenesin 200 mg/phenylephrine 5 mg: Two tablets every 4 hours (maximum: 10 tablets [acetaminophen 3,250 mg/guaifenesin 2,000 mg/phenylephrine 50 mg]/24 hours)."
+        },
+        {
+          "rank": 4,
+          "score": 0.9631904539845182,
+          "dense_score": 0.9720632076767817,
+          "bm25_score": 0.9498813234461231,
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "doc_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol), dextromethorphan, and phenylephrine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information",
+          "snippet": "Dosing: Adult  Note: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.  Cold and flu symptoms: Oral:  Ac…",
+          "text": "Dosing: Adult\n\nNote: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.\n\nCold and flu symptoms: Oral:\n\nAcetaminophen 325 mg/dextromethorphan 10 mg/phenylephrine 5 mg per capsule/tablet: Two capsules/tablets every 4 hours. Refer to product-specific labeling for maximum daily dosage; varies by product (maximum dosage range: 8 to 12 capsules/tablets [acetaminophen 2,600 to 3,900 mg/dextromethorphan 80 to 120 mg/phenylephrine 40 to 60 mg] per 24 hours)\n\nAcetaminophen 325 mg/dextromethorphan 10 mg/phenylephrine 5 mg per 15 mL (liquid/syrup): 30 mL every 4 hours. Refer to product-specific labeling for maximum daily dosage; varies by product (maximum: 120 to 180 mL [acetaminophen 2,600 to 3,900 mg/dextromethorphan 80 to 120 mg/phenylephrine 40 to 60 mg] per 24 hours)\n\nAcetaminophen 500 mg/dextromethorphan 20 mg/phenylephrine 10 mg per packet (as powder for solution): One packet every 4 hours (maximum: 6 packets [acetaminophen 3,000 mg/dextromethorphan 120 mg/phenylephrine 60 mg] per 24 hours)."
+        },
+        {
+          "rank": 5,
+          "score": 0.9407359831579185,
+          "dense_score": 0.9442124228306289,
+          "bm25_score": 0.9355213236488528,
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+          "doc_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol), dextromethorphan, and doxylamine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information",
+          "snippet": "Dosing: Adult  Note: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.  Cold and flu symptoms: Oral:  Ca…",
+          "text": "Dosing: Adult\n\nNote: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.\n\nCold and flu symptoms: Oral:\n\nCapsule: Acetaminophen 325 mg/dextromethorphan 10 mg/doxylamine 6.25 mg per capsule: Two capsules (acetaminophen 650 mg/dextromethorphan 20 mg/doxylamine 12.5 mg) every 4 hours (maximum: 8 capsules [acetaminophen 2,600 mg/dextromethorphan 80 mg/doxylamine 50 mg] per 24 hours).\n\nLiquid: Acetaminophen 650 mg/dextromethorphan 30 mg/doxylamine 12.5 mg per 30 mL: 30 mL every 6 hours (maximum: 120 mL [acetaminophen 2,600 mg/dextromethorphan 120 mg/doxylamine 50 mg] per 24 hours"
+        },
+        {
+          "rank": 6,
+          "score": 0.9204923379059662,
+          "dense_score": 0.9489279144048482,
+          "bm25_score": 0.8778389731576428,
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+          "doc_id": "acetaminophen-paracetamol-drug-information",
+          "section_title": "Dosing: Pediatric",
+          "section_code": "dop",
+          "drug_title": "Acetaminophen (paracetamol): Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-drug-information",
+          "snippet": "Dosing: Pediatric  (For additional information see \"Acetaminophen (paracetamol): Pediatric drug information\")  Note: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of…",
+          "text": "Dosing: Pediatric\n\n(For additional information see \"Acetaminophen (paracetamol): Pediatric drug information\")\n\nNote: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of their acetaminophen OTC products used in older pediatric patients (usually children ≥12 years and adolescents) in an attempt to protect consumers from inadvertent overdoses. For example, the maximum daily dose of Tylenol Extra Strength OTC and Tylenol Regular Strength OTC was decreased and the dosing interval for Tylenol Extra Strength OTC was increased. Health care professionals may still prescribe or recommend the 4 g daily maximum to patients (but are advised to use their own discretion and clinical judgment) (McNeil Consumer Healthcare, 2014).\n\nPain or fever:\n\nOral: Note: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose (see dosing information for further detail)."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "clinical_001",
+        "question": "What is the maximum daily dose of acetaminophen for adults?",
+        "failure_types": [
+          "retrieval_miss",
+          "retrieval_irrelevant",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+            "score": 0.9941839011783965,
+            "rank": 1
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+            "score": 0.9857043605471735,
+            "rank": 2
+          },
+          {
+            "chunk_id": "acetaminophen-guaifenesin-and-phenylephrine-drug-information::F46679330::0",
+            "score": 0.9773199725255738,
+            "rank": 3
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+            "score": 0.9631904539845182,
+            "rank": 4
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+            "score": 0.9407359831579185,
+            "rank": 5
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+            "score": 0.9204923379059662,
+            "rank": 6
+          },
+          {
+            "chunk_id": "pentazocine-and-acetaminophen-paracetamol-drug-information::F208113::0",
+            "score": 0.8989576654742749,
+            "rank": 7
+          },
+          {
+            "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204991::0",
+            "score": 0.8864320106409006,
+            "rank": 8
+          },
+          {
+            "chunk_id": "oxycodone-and-acetaminophen-paracetamol-drug-information::F204983::0",
+            "score": 0.8747056659153634,
+            "rank": 9
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-caffeine-and-dihydrocodeine-drug-information::F129443::0",
+            "score": 0.8569340676237122,
+            "rank": 10
+          }
+        ],
+        "relevant_chunks_found": [],
+        "essential_chunks_missed": [
+          "acetaminophen-paracetamol-drug-information_section_7"
+        ],
+        "generated_answer": "The maximum daily dose of acetaminophen for adults is 4,000 mg (4 grams) [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. This limit is critical to prevent hepatotoxicity, and clinicians must consider all sources of acetaminophen (prescription, OTC, and combination products) when calculating total daily intake [chunk_acetaminophen-paracetamol-drug-information::F129323::0]. Note that some manufacturers have adopted lower maximums (e.g., 2,600–3,250 mg/day) for specific OTC products, but the prescribing guideline remains 4,000 mg/day for appropriate patients under clinical supervision [chunk_acetaminophen-paracetamol-drug-information::F129323::0].",
+        "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day according to prescribing guidelines. This should not be exceeded to avoid hepatotoxicity.",
+        "key_points_missing": [
+          "4000 mg maximum",
+          "prescribing guidelines"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "precision_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "mean_reciprocal_rank": 0.0,
+          "average_precision": 0.0,
+          "ndcg_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "essential_recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "first_relevant_rank": 0.0,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.12070358597692803,
+          "rouge_1_f1": 0.29508196721311475,
+          "rouge_2_f1": 0.18333333333333338,
+          "rouge_l_f1": 0.24590163934426226,
+          "semantic_similarity": 0.886379063129425,
+          "key_points_covered": 0.5,
+          "key_points_found": [
+            "4 grams",
+            "hepatotoxicity"
+          ],
+          "key_points_missing": [
+            "4000 mg maximum",
+            "prescribing guidelines"
+          ],
+          "answer_length": 69,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "clinical_002",
+      "question": {
+        "id": "clinical_002",
+        "question": "What are the latest 2024 FDA guidelines for acetaminophen?",
+        "question_type": "contraindications",
+        "difficulty": "medium",
+        "expected_answer": "I cannot provide information about recent developments or guidelines published after 2018, as my knowledge is limited to pre-2019 medical sources. Please consult current medical literature or your healthcare provider for the most up-to-date information.",
+        "answer_key_points": [
+          "cannot provide",
+          "post-2018",
+          "limited to pre-2019",
+          "consult current"
+        ],
+        "relevant_chunks": [],
+        "drug_names": [
+          "acetaminophen"
+        ],
+        "tags": [
+          "post-cutoff",
+          "refusal"
+        ],
+        "source_note": null,
+        "reasoning": null
+      },
+      "generated_answer": "I cannot provide 2024 FDA guidelines for acetaminophen because my knowledge is limited to the Lexicomp database with a cutoff of December 2018. The retrieved context contains older safety information—such as hepatotoxicity warnings, skin reaction risks, and maximum daily dose considerations—but does not include any updates beyond 2018 [chunk_acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0] [chunk_acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0]. For current 2024 FDA recommendations, please consult official FDA resources or recent clinical guidelines.",
+      "expected_answer": "I cannot provide information about recent developments or guidelines published after 2018, as my knowledge is limited to pre-2019 medical sources. Please consult current medical literature or your healthcare provider for the most up-to-date information.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 0,
+        "total_essential": 0
+      },
+      "qa_metrics": {
+        "bleu_score": 0.08905268009021249,
+        "rouge_1_f1": 0.3333333333333333,
+        "rouge_2_f1": 0.11864406779661016,
+        "rouge_l_f1": 0.19999999999999998,
+        "semantic_similarity": 0.48457854986190796,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "cannot provide",
+          "consult current"
+        ],
+        "key_points_missing": [
+          "post-2018",
+          "limited to pre-2019"
+        ],
+        "answer_length": 64,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0",
+          "score": 0.8806880189304703,
+          "rank": 1
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "score": 0.8682830150396648,
+          "rank": 2
+        },
+        {
+          "chunk_id": "acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0",
+          "score": 0.8641609641703212,
+          "rank": 3
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "score": 0.8496957821475595,
+          "rank": 4
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "score": 0.8458481573555525,
+          "rank": 5
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information::F129568::3",
+          "score": 0.8458393368196785,
+          "rank": 6
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+          "score": 0.8435021975281436,
+          "rank": 7
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-codeine-drug-information::F129467::1",
+          "score": 0.8370328958596339,
+          "rank": 8
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-and-diphenhydramine-drug-information::F129533::0",
+          "score": 0.8352064671059318,
+          "rank": 9
+        },
+        {
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+          "score": 0.8298806726947179,
+          "rank": 10
+        }
+      ],
+      "context_chunks": [
+        {
+          "rank": 1,
+          "score": 0.8806880189304703,
+          "dense_score": 0.9580853417280586,
+          "bm25_score": 0.7645920347340879,
+          "chunk_id": "acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0",
+          "doc_id": "acetaminophen-paracetamol-and-caffeine-drug-information",
+          "section_title": "Warnings/Precautions",
+          "section_code": "war",
+          "drug_title": "Acetaminophen (paracetamol) and caffeine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-and-caffeine-drug-information",
+          "snippet": "Warnings/Precautions  Concerns related to adverse effects:  • Hepatotoxicity: Acetaminophen has been associated with severe liver damage. Hepatotoxicity is usually associated with excessive intake and often involves more than one product th…",
+          "text": "Warnings/Precautions\n\nConcerns related to adverse effects:\n\n• Hepatotoxicity: Acetaminophen has been associated with severe liver damage. Hepatotoxicity is usually associated with excessive intake and often involves more than one product that contains acetaminophen. Do not exceed more than 6 tablets in 24 hours and do not combine with other products that contain acetaminophen.\n\n• Skin reactions: Serious and potentially fatal skin reactions, including acute generalized exanthematous pustulosis (AGEP), Stevens-Johnson syndrome (SJS), and toxic epidermal necrolysis (TEN) have occurred rarely with acetaminophen use. Discontinue therapy at the first appearance of skin rash (FDA 2013).\n\nDisease-related concerns:\n\n• Ethanol use: Use with caution with concomitant alcohol use; consuming ≥3 alcoholic drinks/day may increase the risk of liver damage.\n\n• Hepatic impairment: Use with caution in patients with hepatic impairment.\n\nConcurrent drug therapy issues:"
+        },
+        {
+          "rank": 2,
+          "score": 0.8682830150396648,
+          "dense_score": 0.9739104010147679,
+          "bm25_score": 0.7098419360770098,
+          "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+          "doc_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol) and phenylephrine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-and-phenylephrine-drug-information",
+          "snippet": "Dosing: Adult  Allergies/common cold/hay fever: Oral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all ro…",
+          "text": "Dosing: Adult\n\nAllergies/common cold/hay fever: Oral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose. No dose adjustment required when converting between different acetaminophen formulations.\n\nAcetaminophen 325 mg/phenylephrine 5 mg: Acetaminophen 650 mg/phenylephrine 10 mg every 4 to 6 hours as needed. Refer to product-specific labeling for maximum daily dosage (maximum dosage range: acetaminophen 2,600 to 3,250 mg/phenylephrine 40 to 50 mg per 24 hours).\n\nAcetaminophen 500 mg/phenylephrine 5 mg: Acetaminophen 1,000 mg/phenylephrine 10 mg every 4 to 6 hours as needed; maximum: acetaminophen 4,000 mg/phenylephrine 40 mg per 24 hours"
+        },
+        {
+          "rank": 3,
+          "score": 0.8641609641703212,
+          "dense_score": 0.9456591499006403,
+          "bm25_score": 0.7419136855748424,
+          "chunk_id": "acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0",
+          "doc_id": "acetaminophen-caffeine-and-pyrilamine-drug-information",
+          "section_title": "Warnings/Precautions",
+          "section_code": "war",
+          "drug_title": "Acetaminophen, caffeine, and pyrilamine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-caffeine-and-pyrilamine-drug-information",
+          "snippet": "Warnings/Precautions  Concerns related to adverse effects:  • CNS depression: May cause CNS depression, which may impair physical or mental abilities; patients must be cautioned about performing tasks that require mental alertness (eg, oper…",
+          "text": "Warnings/Precautions\n\nConcerns related to adverse effects:\n\n• CNS depression: May cause CNS depression, which may impair physical or mental abilities; patients must be cautioned about performing tasks that require mental alertness (eg, operating machinery or driving).\n\n• Hepatotoxicity: Acetaminophen has been associated with severe liver damage. Hepatotoxicity is usually associated with excessive intake and often involves more than one product that contains acetaminophen. Limit acetaminophen dose from all sources (prescription and OTC) to ≤4 g/day and avoid or limit ethanol to <3 drinks per day.\n\n• Hypersensitivity reactions: Allergic reactions have been reported with acetaminophen; discontinue immediately if symptoms of allergic or hypersensitivity reactions occur.\n\n• Skin reactions: Rarely, acetaminophen may cause serious and potentially fatal skin reactions such as acute generalized exanthematous pustulosis, Stevens-Johnson syndrome (SJS), and toxic epidermal necrolysis (TEN). Discontinue treatment if severe skin reactions develop (FDA 2013).\n\nDisease-related concerns:"
+        },
+        {
+          "rank": 4,
+          "score": 0.8496957821475595,
+          "dense_score": 0.9608028345540555,
+          "bm25_score": 0.6830352035378158,
+          "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+          "doc_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol), dextromethorphan, and phenylephrine: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information",
+          "snippet": "Dosing: Adult  Note: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.  Cold and flu symptoms: Oral:  Ac…",
+          "text": "Dosing: Adult\n\nNote: When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose.\n\nCold and flu symptoms: Oral:\n\nAcetaminophen 325 mg/dextromethorphan 10 mg/phenylephrine 5 mg per capsule/tablet: Two capsules/tablets every 4 hours. Refer to product-specific labeling for maximum daily dosage; varies by product (maximum dosage range: 8 to 12 capsules/tablets [acetaminophen 2,600 to 3,900 mg/dextromethorphan 80 to 120 mg/phenylephrine 40 to 60 mg] per 24 hours)\n\nAcetaminophen 325 mg/dextromethorphan 10 mg/phenylephrine 5 mg per 15 mL (liquid/syrup): 30 mL every 4 hours. Refer to product-specific labeling for maximum daily dosage; varies by product (maximum: 120 to 180 mL [acetaminophen 2,600 to 3,900 mg/dextromethorphan 80 to 120 mg/phenylephrine 40 to 60 mg] per 24 hours)\n\nAcetaminophen 500 mg/dextromethorphan 20 mg/phenylephrine 10 mg per packet (as powder for solution): One packet every 4 hours (maximum: 6 packets [acetaminophen 3,000 mg/dextromethorphan 120 mg/phenylephrine 60 mg] per 24 hours)."
+        },
+        {
+          "rank": 5,
+          "score": 0.8458481573555525,
+          "dense_score": 0.9633723329876054,
+          "bm25_score": 0.6695618939074732,
+          "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+          "doc_id": "acetaminophen-paracetamol-drug-information",
+          "section_title": "Dosing: Adult",
+          "section_code": "doa",
+          "drug_title": "Acetaminophen (paracetamol): Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-drug-information",
+          "snippet": "Dosing: Adult  Note: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of their acetaminophen OTC products used in older pediatric patients (usually children ≥ 12 years a…",
+          "text": "Dosing: Adult\n\nNote: In 2011, McNeil Consumer Healthcare reduced the maximum doses and increased the dosing interval on the labeling of some of their acetaminophen OTC products used in older pediatric patients (usually children ≥ 12 years and adolescents) and adults in an attempt to protect consumers from inadvertent overdoses. For example, the maximum daily dose of Tylenol Extra Strength and Tylenol Regular Strength was decreased and the dosing interval for Tylenol Extra Strength was increased. Health care professionals may still prescribe or recommend the 4 g daily maximum to patients (but are advised to use their own discretion and clinical judgment) (McNeil Consumer Healthcare, 2014).\n\nPain or fever:\n\nOral: Note: OTC dosing recommendations may vary by product and/or manufacturer. When calculating the maximum daily dose, consider all sources of acetaminophen (prescription and OTC) and all routes of administration. Do not exceed the maximum recommended daily dose. No dose adjustment required when converting between different acetaminophen formulations.\n\nImmediate-release:"
+        },
+        {
+          "rank": 6,
+          "score": 0.8458393368196785,
+          "dense_score": 0.9552563249534335,
+          "bm25_score": 0.681713854619046,
+          "chunk_id": "acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information::F129568::3",
+          "doc_id": "acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information",
+          "section_title": "Drug Interactions",
+          "section_code": "dri",
+          "drug_title": "Acetaminophen (paracetamol), isometheptene, and dichloralphenazone: Drug information",
+          "source_url": "https://maadi-clinical.byethost8.com/d/topic.htm?path=acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information",
+          "snippet": "Fosphenytoin-Phenytoin: May decrease the serum concentration of Acetaminophen. Specifically, serum concentrations of acetaminophen may be decreased (leading to decreased efficacy), but the formation of the toxic N-acetyl-p-benzoquinone imin…",
+          "text": "Fosphenytoin-Phenytoin: May decrease the serum concentration of Acetaminophen. Specifically, serum concentrations of acetaminophen may be decreased (leading to decreased efficacy), but the formation of the toxic N-acetyl-p-benzoquinone imine (NAPQI) metabolite may be increased (leading to increased hepatotoxicity). Risk C: Monitor therapy\n\nGuanethidine: May enhance the arrhythmogenic effect of Sympathomimetics. Guanethidine may enhance the hypertensive effect of Sympathomimetics. Risk C: Monitor therapy\n\nImatinib: Acetaminophen may enhance the hepatotoxic effect of Imatinib. Risk C: Monitor therapy\n\nIobenguane I 123: Sympathomimetics may diminish the therapeutic effect of Iobenguane I 123. Risk X: Avoid combination\n\nIsoniazid: May enhance the adverse/toxic effect of Acetaminophen. Risk C: Monitor therapy\n\nLamoTRIgine: Acetaminophen may decrease the serum concentration of LamoTRIgine. Risk C: Monitor therapy\n\nMetyraPONE: May increase the serum concentration of Acetaminophen. More importantly, by inhibiting the conjugative metabolism of acetaminophen, metyrapone may shift the metabolism towards the oxidative route that produces a hepatotoxic metabolite. Risk C: Monitor therapy"
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "clinical_002",
+        "question": "What are the latest 2024 FDA guidelines for acetaminophen?",
+        "failure_types": [
+          "retrieval_miss",
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0",
+            "score": 0.8806880189304703,
+            "rank": 1
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-and-phenylephrine-drug-information::F5635754::0",
+            "score": 0.8682830150396648,
+            "rank": 2
+          },
+          {
+            "chunk_id": "acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0",
+            "score": 0.8641609641703212,
+            "rank": 3
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-phenylephrine-drug-information::F5093687::0",
+            "score": 0.8496957821475595,
+            "rank": 4
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-drug-information::F129323::0",
+            "score": 0.8458481573555525,
+            "rank": 5
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-isometheptene-and-dichloralphenazone-drug-information::F129568::3",
+            "score": 0.8458393368196785,
+            "rank": 6
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-drug-information::F129345::0",
+            "score": 0.8435021975281436,
+            "rank": 7
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-and-codeine-drug-information::F129467::1",
+            "score": 0.8370328958596339,
+            "rank": 8
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-and-diphenhydramine-drug-information::F129533::0",
+            "score": 0.8352064671059318,
+            "rank": 9
+          },
+          {
+            "chunk_id": "acetaminophen-paracetamol-dextromethorphan-and-doxylamine-drug-information::F7677055::0",
+            "score": 0.8298806726947179,
+            "rank": 10
+          }
+        ],
+        "relevant_chunks_found": [],
+        "essential_chunks_missed": [],
+        "generated_answer": "I cannot provide 2024 FDA guidelines for acetaminophen because my knowledge is limited to the Lexicomp database with a cutoff of December 2018. The retrieved context contains older safety information—such as hepatotoxicity warnings, skin reaction risks, and maximum daily dose considerations—but does not include any updates beyond 2018 [chunk_acetaminophen-paracetamol-and-caffeine-drug-information::F46536351::0] [chunk_acetaminophen-caffeine-and-pyrilamine-drug-information::F50324491::0]. For current 2024 FDA recommendations, please consult official FDA resources or recent clinical guidelines.",
+        "expected_answer": "I cannot provide information about recent developments or guidelines published after 2018, as my knowledge is limited to pre-2019 medical sources. Please consult current medical literature or your healthcare provider for the most up-to-date information.",
+        "key_points_missing": [
+          "post-2018",
+          "limited to pre-2019"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "precision_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "mean_reciprocal_rank": 0.0,
+          "average_precision": 0.0,
+          "ndcg_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "essential_recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "first_relevant_rank": 0.0,
+          "total_relevant": 0,
+          "total_essential": 0
+        },
+        "qa_metrics": {
+          "bleu_score": 0.08905268009021249,
+          "rouge_1_f1": 0.3333333333333333,
+          "rouge_2_f1": 0.11864406779661016,
+          "rouge_l_f1": 0.19999999999999998,
+          "semantic_similarity": 0.48457854986190796,
+          "key_points_covered": 0.5,
+          "key_points_found": [
+            "cannot provide",
+            "consult current"
+          ],
+          "key_points_missing": [
+            "post-2018",
+            "limited to pre-2019"
+          ],
+          "answer_length": 64,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    }
+  ]
+}

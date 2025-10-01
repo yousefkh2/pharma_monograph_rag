@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Clinical Evaluation Viewer</title>
+  <style>
+    :root {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: #1f2933;
+      background: #f1f5f9;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.35);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      padding: 1rem 2rem 2rem;
+      gap: 1.5rem;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    }
+    #dataset-summary dl {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 0.3rem;
+      column-gap: 0.75rem;
+      margin: 0;
+    }
+    dl dt {
+      font-weight: 600;
+      color: #334155;
+    }
+    dl dd {
+      margin: 0;
+    }
+    .questions {
+      flex: 1;
+      overflow: hidden;
+      display: flex;
+      gap: 1rem;
+    }
+    .question-list {
+      width: 280px;
+      border-right: 1px solid #e2e8f0;
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .question-item {
+      padding: 0.75rem 0.6rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+    .question-item:hover {
+      background: #e0f2fe;
+    }
+    .question-item.active {
+      background: #bfdbfe;
+      font-weight: 600;
+    }
+    .question-item small {
+      display: block;
+      color: #64748b;
+      margin-top: 0.25rem;
+      font-weight: 400;
+    }
+    .question-details {
+      flex: 1;
+      overflow-y: auto;
+    }
+    .question-details h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+    }
+    .section {
+      margin-bottom: 1.5rem;
+    }
+    .section h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+      color: #1d4ed8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.5rem 0 0;
+    }
+    .badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #e0f2fe;
+      color: #1e3a8a;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    th, td {
+      padding: 0.45rem 0.6rem;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+    }
+    th {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #334155;
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 0.75rem;
+      border-radius: 0.75rem;
+      white-space: pre-wrap;
+      margin: 0;
+    }
+    #metrics-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .metric-card h3 {
+      margin-top: 0;
+    }
+    .placeholder {
+      color: #94a3b8;
+    }
+    #file-loader {
+      margin-top: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    #file-loader input {
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Clinical Evaluation Viewer</h1>
+    <div id="file-loader">
+      <label for="json-input">Load evaluation JSON:</label>
+      <input id="json-input" type="file" accept="application/json" />
+    </div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <div id="dataset-summary" class="card">
+        <h2>Dataset</h2>
+        <p class="placeholder">Load an evaluation JSON file to view details.</p>
+      </div>
+      <div id="metrics-container"></div>
+    </aside>
+    <section class="questions card">
+      <div id="question-list" class="question-list"></div>
+      <div id="question-details" class="question-details">
+        <p class="placeholder">Select a question to inspect results.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById('json-input');
+    const datasetSummary = document.getElementById('dataset-summary');
+    const metricsContainer = document.getElementById('metrics-container');
+    const questionList = document.getElementById('question-list');
+    const questionDetails = document.getElementById('question-details');
+
+    let evaluationData = null;
+    let activeIndex = -1;
+
+    fileInput.addEventListener('change', handleFileSelect);
+
+    function handleFileSelect(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (loadEvent) => {
+        try {
+          evaluationData = JSON.parse(loadEvent.target.result);
+          renderDatasetSummary(evaluationData);
+          renderMetrics(evaluationData.aggregated_metrics);
+          renderQuestionList(evaluationData.questions);
+          if (evaluationData.questions.length) {
+            selectQuestion(0);
+          } else {
+            questionDetails.innerHTML = '<p class="placeholder">No question records in this file.</p>';
+          }
+        } catch (err) {
+          console.error('Failed to parse JSON', err);
+          alert('Could not parse file as JSON. Please check the export.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function renderDatasetSummary(data) {
+      const info = data.dataset || {};
+      const meta = data.metadata || {};
+      datasetSummary.innerHTML = `
+        <h2>Dataset</h2>
+        <dl>
+          <dt>Name</dt><dd>${escapeHTML(info.name || '—')}</dd>
+          <dt>Description</dt><dd>${escapeHTML(info.description || '—')}</dd>
+          <dt>Version</dt><dd>${escapeHTML(info.version || '—')}</dd>
+          <dt>Corpus Date</dt><dd>${escapeHTML(info.corpus_date || '—')}</dd>
+          <dt>Framework</dt><dd>${escapeHTML(info.regulatory_framework || '—')}</dd>
+          <dt>Safety Focus</dt><dd>${(info.safety_focus || []).map(escapeHTML).join(', ') || '—'}</dd>
+          <dt>Questions</dt><dd>${meta.question_count ?? '—'}</dd>
+          <dt>Runtime (s)</dt><dd>${formatNumber(meta.evaluation_time)}</dd>
+        </dl>
+      `;
+    }
+
+    function renderMetrics(aggregated) {
+      metricsContainer.innerHTML = '';
+      if (!aggregated) return;
+
+      Object.entries(aggregated).forEach(([name, section]) => {
+        const card = document.createElement('div');
+        card.className = 'card metric-card';
+        card.innerHTML = `<h2>${name.toUpperCase()}</h2>`;
+        card.appendChild(buildMetricsTable(section));
+        metricsContainer.appendChild(card);
+      });
+    }
+
+    function buildMetricsTable(section) {
+      const table = document.createElement('table');
+      const tbody = document.createElement('tbody');
+
+      Object.entries(section || {}).forEach(([key, value]) => {
+        if (value && typeof value === 'object' && !Array.isArray(value)) {
+          const subHeader = document.createElement('tr');
+          subHeader.innerHTML = `<th colspan="2">${key.replace(/_/g, ' ').toUpperCase()}</th>`;
+          tbody.appendChild(subHeader);
+          Object.entries(value).forEach(([innerKey, innerValue]) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${escapeHTML(innerKey)}</td><td>${formatAny(innerValue)}</td>`;
+            tbody.appendChild(row);
+          });
+        } else {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${escapeHTML(key)}</td><td>${formatAny(value)}</td>`;
+          tbody.appendChild(row);
+        }
+      });
+
+      table.appendChild(tbody);
+      return table;
+    }
+
+    function renderQuestionList(questions) {
+      questionList.innerHTML = '';
+      questions.forEach((entry, index) => {
+        const item = document.createElement('div');
+        item.className = 'question-item';
+        item.dataset.index = index;
+        item.innerHTML = `
+          ${escapeHTML(entry.question?.question || 'Untitled question')}
+          <small>${escapeHTML(entry.question?.question_type || '')} · ${escapeHTML(entry.question?.difficulty || '')}</small>
+        `;
+        item.addEventListener('click', () => selectQuestion(index));
+        questionList.appendChild(item);
+      });
+    }
+
+    function selectQuestion(index) {
+      if (!evaluationData) return;
+      activeIndex = index;
+
+      [...questionList.children].forEach((node) => {
+        node.classList.toggle('active', Number(node.dataset.index) === index);
+      });
+
+      const entry = evaluationData.questions[index];
+      questionDetails.innerHTML = '';
+
+      const container = document.createElement('div');
+
+      const header = document.createElement('div');
+      header.className = 'section';
+      header.innerHTML = `
+        <h2>${escapeHTML(entry.question.id || `Question ${index + 1}`)}</h2>
+        <p>${escapeHTML(entry.question.question || '')}</p>
+        <div class="badges">
+          ${badge(entry.question.question_type)}
+          ${badge(entry.question.difficulty)}
+          ${(entry.question.tags || []).map(badge).join('')}
+        </div>
+      `;
+      container.appendChild(header);
+
+      container.appendChild(buildTextSection('Expected Answer', entry.question.expected_answer));
+      container.appendChild(buildTextSection('Generated Answer', entry.generated_answer));
+
+      container.appendChild(buildMetricsSection('Retrieval Metrics', entry.retrieval_metrics));
+      container.appendChild(buildMetricsSection('QA Metrics', entry.qa_metrics));
+      container.appendChild(buildMetricsSection('Clinical Metrics', entry.clinical_metrics));
+
+      if (entry.failure_analysis) {
+        const failure = entry.failure_analysis;
+        const failureSection = document.createElement('div');
+        failureSection.className = 'section';
+        failureSection.innerHTML = `
+          <h3>Failure Analysis</h3>
+          <table>
+            <tbody>
+              <tr><td>Risk Level</td><td>${escapeHTML(failure.clinical_risk_level || '—')}</td></tr>
+              <tr><td>Patient Risk</td><td>${formatNumber(failure.patient_risk_score)}</td></tr>
+              <tr><td>Regulatory Risk</td><td>${formatNumber(failure.regulatory_risk_score)}</td></tr>
+              <tr><td>Compliance</td><td>${formatList(failure.compliance_violations)}</td></tr>
+              <tr><td>Safety Violations</td><td>${formatList(failure.safety_violations, true)}</td></tr>
+              <tr><td>Root Cause</td><td>${escapeHTML(failure.root_cause_analysis || '—')}</td></tr>
+            </tbody>
+          </table>
+        `;
+        container.appendChild(failureSection);
+      }
+
+      if (entry.retrieval_results && entry.retrieval_results.length) {
+        const retrievalSection = document.createElement('div');
+        retrievalSection.className = 'section';
+        retrievalSection.innerHTML = '<h3>Top Retrieved Chunks</h3>';
+        const table = document.createElement('table');
+        const tbody = document.createElement('tbody');
+        tbody.innerHTML = '
+          <tr><th>Rank</th><th>Chunk ID</th><th>Score</th></tr>
+        ';
+        entry.retrieval_results.slice(0, 20).forEach((result) => {
+          const row = document.createElement('tr');
+          row.innerHTML = `<td>${result.rank}</td><td>${escapeHTML(result.chunk_id)}</td><td>${formatNumber(result.score)}</td>`;
+          tbody.appendChild(row);
+        });
+        table.appendChild(tbody);
+        retrievalSection.appendChild(table);
+        container.appendChild(retrievalSection);
+      }
+
+      if (entry.context_chunks && entry.context_chunks.length) {
+        const evidenceSection = document.createElement('div');
+        evidenceSection.className = 'section';
+        evidenceSection.innerHTML = '<h3>Evidence Context</h3>';
+
+        entry.context_chunks.forEach((ctx) => {
+          const block = document.createElement('div');
+          block.className = 'card';
+          block.style.marginBottom = '0.6rem';
+          block.innerHTML = `
+            <strong>${escapeHTML(ctx.chunk_id || 'chunk')}</strong>
+            <span style="margin-left:0.5rem;color:#64748b;font-size:0.8rem;">Score: ${formatNumber(ctx.score)}</span>
+            <div class="badges">
+              ${badge(ctx.section_title)}
+              ${badge(ctx.doc_id)}
+            </div>
+            <p style="margin-top: 0.5rem;">${escapeHTML(ctx.snippet || ctx.text || '')}</p>
+          `;
+          evidenceSection.appendChild(block);
+        });
+
+        container.appendChild(evidenceSection);
+      }
+
+      questionDetails.appendChild(container);
+    }
+
+    function buildTextSection(title, text) {
+      const section = document.createElement('div');
+      section.className = 'section';
+      section.innerHTML = `<h3>${escapeHTML(title)}</h3>`;
+      const block = document.createElement('pre');
+      block.textContent = text || '—';
+      section.appendChild(block);
+      return section;
+    }
+
+    function buildMetricsSection(title, metrics) {
+      const section = document.createElement('div');
+      section.className = 'section';
+      section.innerHTML = `<h3>${escapeHTML(title)}</h3>`;
+      section.appendChild(buildMetricsTable(metrics));
+      return section;
+    }
+
+    function badge(value) {
+      if (!value) return '';
+      return `<span class="badge">${escapeHTML(String(value))}</span>`;
+    }
+
+    function escapeHTML(value) {
+      if (value === null || value === undefined) return '';
+      return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function formatNumber(value) {
+      if (value === null || value === undefined || Number.isNaN(value)) return '—';
+      return Number(value).toFixed(3);
+    }
+
+    function formatAny(value) {
+      if (value === null || value === undefined) return '—';
+      if (typeof value === 'number') {
+        return formatNumber(value);
+      }
+      if (Array.isArray(value)) {
+        return value.map((item) => escapeHTML(String(item))).join(', ');
+      }
+      if (typeof value === 'object') {
+        return escapeHTML(JSON.stringify(value));
+      }
+      return escapeHTML(String(value));
+    }
+
+    function formatList(value, useEnumName = false) {
+      if (!value || !value.length) return '—';
+      return value
+        .map((item) => (useEnumName && item && item.value ? item.value : item))
+        .map((item) => escapeHTML(String(item)))
+        .join(', ');
+    }
+  </script>
+</body>
+</html>

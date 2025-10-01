@@ -1,0 +1,60 @@
+{
+  "name": "Minimal Test Dataset",
+  "description": "Basic test dataset for pharmacy copilot evaluation",
+  "version": "1.0.0",
+  "questions": [
+    {
+      "id": "test_001",
+      "question": "What is the maximum daily dose of acetaminophen for adults?",
+      "question_type": "dosage",
+      "difficulty": "easy",
+      "expected_answer": "The maximum daily dose of acetaminophen for adults is 4000 mg (4 grams) per day to avoid hepatotoxicity.",
+      "answer_key_points": [
+        "4000 mg maximum",
+        "4 grams",
+        "hepatotoxicity"
+      ],
+      "relevant_chunks": [
+        {
+          "chunk_id": "acetaminophen-drug-information_section_7",
+          "relevance_score": 0.9,
+          "is_essential": true,
+          "note": null
+        }
+      ],
+      "drug_names": [
+        "acetaminophen"
+      ],
+      "tags": [
+        "dosing",
+        "hepatotoxicity",
+        "maximum_dose"
+      ],
+      "source_note": null,
+      "reasoning": null
+    },
+    {
+      "id": "test_002",
+      "question": "What are the latest 2024 guidelines for ibuprofen use?",
+      "question_type": "general_info",
+      "difficulty": "medium",
+      "expected_answer": "I cannot provide information about guidelines published after 2018, as my knowledge is limited to pre-2019 medical sources.",
+      "answer_key_points": [
+        "cannot provide",
+        "post-2018",
+        "limited knowledge"
+      ],
+      "relevant_chunks": [],
+      "drug_names": [
+        "ibuprofen"
+      ],
+      "tags": [
+        "post-cutoff",
+        "refusal",
+        "guidelines"
+      ],
+      "source_note": null,
+      "reasoning": null
+    }
+  ]
+}
