@@ -30,12 +30,32 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "amoxicillin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-amoxicillin-2018#dosage",
+          "role": "support",
+          "text": "Pediatric AOM first-line: amoxicillin 80–90 mg/kg/day PO divided q12h for 5–10 days; typical max daily dose ~4,000 mg."
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#peds",
+          "role": "support",
+          "text": "Amoxicillin oral suspension 400 mg/5 mL = 80 mg/mL; use oral syringe; rounding to practical mL is acceptable."
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+          "role": "distractor",
+          "text": "Adult acute bacterial sinusitis regimens (e.g., 500 mg TID or 875 mg BID) differ from pediatric AOM dosing."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-amoxicillin-2018#dosage",
+          "lexi-amoxicillin-2018#peds"
+        ],
+        "disallowed_chunk_ids": ["lexi-amoxicillin-2018#adult-sinusitis"]
+      },
+      "drug_names": ["amoxicillin"],
+      "tags": ["dosage"],
       "gold": {
         "dose_per_dose_mg": 810,
         "doses_per_day": 2,
@@ -84,12 +104,32 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "acetaminophen"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+          "role": "support",
+          "text": "Acetaminophen 10–15 mg/kg/dose PO q4–6h PRN fever/pain; do not exceed 75 mg/kg/day or 4,000 mg/day; ~5 doses/24h."
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#max",
+          "role": "support",
+          "text": "Common liquid: 160 mg/5 mL (32 mg/mL). Use weight-based dosing and state per-dose mL."
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#rectal",
+          "role": "distractor",
+          "text": "Rectal suppository dosing differs from oral liquids and is not used for this calculation."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-acetaminophen-2018#peds-dosing",
+          "lexi-acetaminophen-2018#max"
+        ],
+        "disallowed_chunk_ids": ["lexi-acetaminophen-2018#rectal"]
+      },
+      "drug_names": ["acetaminophen"],
+      "tags": ["dosage"],
       "gold": {
         "dose_per_dose_mg": 180,
         "doses_per_day": 4,
@@ -138,12 +178,32 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "ibuprofen"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+          "role": "support",
+          "text": "Ibuprofen 10 mg/kg/dose PO q6–8h PRN; maximum 40 mg/kg/day; avoid in dehydration or significant renal risk."
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#max",
+          "role": "support",
+          "text": "Oral suspension 100 mg/5 mL (20 mg/mL); compute per-dose mL from weight-based mg."
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+          "role": "distractor",
+          "text": "Adult OTC capsule labeling (200 mg) is not applicable to pediatric suspension dosing."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-ibuprofen-2018#peds-dosing",
+          "lexi-ibuprofen-2018#max"
+        ],
+        "disallowed_chunk_ids": ["lexi-ibuprofen-2018#adult-capsules"]
+      },
+      "drug_names": ["ibuprofen"],
+      "tags": ["dosage"],
       "gold": {
         "dose_per_dose_mg": 120,
         "doses_per_day": 4,
@@ -157,10 +217,7 @@
         },
         "renal_adjustment": "avoid in significant renal impairment/dehydration",
         "hepatic_adjustment": "use caution",
-        "contraindications": [
-          "<6 months age",
-          "active GI bleed"
-        ],
+        "contraindications": ["<6 months age", "active GI bleed"],
         "interactions": [],
         "recency_risk": false,
         "citations": [
@@ -193,12 +250,32 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "apixaban"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+          "role": "support",
+          "text": "NVAF: apixaban 5 mg BID; reduce to 2.5 mg BID if the patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL."
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#ddi",
+          "role": "support",
+          "text": "Avoid with strong dual CYP3A4/P-gp inhibitors/inducers; assess hepatic impairment."
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#vte",
+          "role": "distractor",
+          "text": "VTE treatment: 10 mg BID x7 days then 5 mg BID—this regimen does not apply to NVAF dosing decisions."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-apixaban-2018#dosing-nvaf",
+          "lexi-apixaban-2018#ddi"
+        ],
+        "disallowed_chunk_ids": ["lexi-apixaban-2018#vte"]
+      },
+      "drug_names": ["apixaban"],
+      "tags": ["dosage"],
       "gold": {
         "dose_per_dose_mg": 2.5,
         "doses_per_day": 2,
@@ -207,9 +284,7 @@
         "max_daily_mg": 10,
         "renal_adjustment": "criteria-based reduction as above",
         "hepatic_adjustment": "avoid in severe hepatic impairment",
-        "contraindications": [
-          "active bleeding"
-        ],
+        "contraindications": ["active bleeding"],
         "interactions": [
           {
             "drug": "strong CYP3A4/P-gp inhibitors",
@@ -248,12 +323,33 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "enoxaparin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-enoxaparin-2018#dosing",
+          "role": "support",
+          "text": "Acute DVT treatment (normal renal function): enoxaparin 1 mg/kg SC q12h (preferred) or 1.5 mg/kg SC once daily (alternative)."
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#renal",
+          "role": "support",
+          "text": "If CrCl <30 mL/min, use 1 mg/kg SC once daily and monitor anti-Xa as indicated."
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+          "role": "distractor",
+          "text": "VTE prophylaxis doses (e.g., 40 mg SC daily) are not treatment doses and should not be used here."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-enoxaparin-2018#dosing",
+          "lexi-enoxaparin-2018#renal"
+        ],
+        "disallowed_chunk_ids": ["lexi-enoxaparin-2018#prophylaxis"]
+      },
+
+      "drug_names": ["enoxaparin"],
+      "tags": ["dosage"],
       "gold": {
         "dose_per_dose_mg": 85,
         "doses_per_day": 2,
@@ -297,21 +393,38 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "metformin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-metformin-2018#renal",
+          "role": "support",
+          "text": "Metformin: contraindicated if eGFR <30 mL/min/1.73 m². At 30–45, generally avoid initiation; if continuing, reduce dose and monitor renal function."
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#contra",
+          "role": "support",
+          "text": "Avoid in hepatic impairment or conditions predisposing to lactic acidosis; manage iodinated contrast per eGFR."
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#old-crcl60",
+          "role": "distractor",
+          "text": "Older conservative thresholds (e.g., avoid if CrCl <60) are superseded by eGFR-based guidance."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-metformin-2018#renal",
+          "lexi-metformin-2018#contra"
+        ],
+        "disallowed_chunk_ids": ["lexi-metformin-2018#old-crcl60"]
+      },
+      "drug_names": ["metformin"],
+      "tags": ["dosage"],
       "gold": {
         "decision": "contraindicated",
         "calc_rule": "eGFR <30 \u2192 do not initiate/continue",
         "renal_adjustment": "eGFR 30\u201345: avoid initiation; reduce if continuing; monitor",
         "hepatic_adjustment": "avoid in hepatic impairment",
-        "contraindications": [
-          "eGFR <30",
-          "acute/chronic metabolic acidosis"
-        ],
+        "contraindications": ["eGFR <30", "acute/chronic metabolic acidosis"],
         "interactions": [
           {
             "drug": "iodinated contrast",
@@ -320,10 +433,7 @@
           }
         ],
         "recency_risk": false,
-        "citations": [
-          "lexi-metformin-2018#renal",
-          "lexi-metformin-2018#contra"
-        ]
+        "citations": ["lexi-metformin-2018#renal", "lexi-metformin-2018#contra"]
       }
     },
     {
@@ -349,21 +459,38 @@
           "is_essential": false
         }
       ],
-      "drug_names": [
-        "nitrofurantoin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#renal",
+          "role": "support",
+          "text": "Nitrofurantoin: avoid when eGFR/CrCl <30 mL/min due to inadequate urinary concentrations and increased toxicity risk."
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#contra",
+          "role": "support",
+          "text": "Contraindications include late-term pregnancy (at term) and significant renal dysfunction."
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+          "role": "distractor",
+          "text": "Prophylaxis regimens (e.g., low-dose at bedtime) do not override renal cutoffs for acute cystitis treatment."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": [
+          "lexi-nitrofurantoin-2018#renal",
+          "lexi-nitrofurantoin-2018#contra"
+        ],
+        "disallowed_chunk_ids": ["lexi-nitrofurantoin-2018#prophylaxis"]
+      },
+      "drug_names": ["nitrofurantoin"],
+      "tags": ["dosage"],
       "gold": {
         "decision": "avoid",
         "calc_rule": "Avoid if eGFR/CrCl <30",
         "renal_adjustment": "not recommended below threshold",
         "hepatic_adjustment": "use caution",
-        "contraindications": [
-          "CrCl <30",
-          "late-term pregnancy (at term)"
-        ],
+        "contraindications": ["CrCl <30", "late-term pregnancy (at term)"],
         "interactions": [],
         "recency_risk": false,
         "citations": [
@@ -390,12 +517,24 @@
           "is_essential": true
         }
       ],
-      "drug_names": [
-        "warfarin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+          "role": "support",
+          "text": "TMP-SMX markedly increases warfarin effect via CYP2C9 inhibition and gut-flora changes; expect INR rise. Prefer alternatives; if used, reduce warfarin dose and increase INR monitoring."
+        },
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+          "role": "distractor",
+          "text": "Cephalexin has minimal effect on warfarin relative to TMP-SMX; management differs."
+        }
       ],
-      "tags": [
-        "interaction"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["lexi-warfarin-2018#ddi-tmp-smx"],
+        "disallowed_chunk_ids": ["lexi-warfarin-2018#ddi-cephalexin"]
+      },
+      "drug_names": ["warfarin"],
+      "tags": ["interaction"],
       "gold": {
         "interactions": [
           {
@@ -407,9 +546,7 @@
         ],
         "contraindications": [],
         "recency_risk": false,
-        "citations": [
-          "lexi-warfarin-2018#ddi-tmp-smx"
-        ]
+        "citations": ["lexi-warfarin-2018#ddi-tmp-smx"]
       }
     },
     {
@@ -430,12 +567,24 @@
           "is_essential": true
         }
       ],
-      "drug_names": [
-        "atorvastatin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+          "role": "support",
+          "text": "Clarithromycin is a strong CYP3A4 inhibitor; coadministration increases atorvastatin levels and myopathy/rhabdomyolysis risk. Avoid; if unavoidable, hold or use the lowest dose with close monitoring."
+        },
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+          "role": "distractor",
+          "text": "Azithromycin has little CYP3A4 inhibition and is not a suitable proxy for clarithromycin interactions."
+        }
       ],
-      "tags": [
-        "interaction"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["lexi-atorvastatin-2018#ddi-macrolides"],
+        "disallowed_chunk_ids": ["lexi-atorvastatin-2018#ddi-azithro"]
+      },
+      "drug_names": ["atorvastatin"],
+      "tags": ["interaction"],
       "gold": {
         "interactions": [
           {
@@ -447,9 +596,7 @@
         ],
         "contraindications": [],
         "recency_risk": false,
-        "citations": [
-          "lexi-atorvastatin-2018#ddi-macrolides"
-        ]
+        "citations": ["lexi-atorvastatin-2018#ddi-macrolides"]
       }
     },
     {
@@ -470,12 +617,24 @@
           "is_essential": true
         }
       ],
-      "drug_names": [
-        "linezolid"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+          "role": "support",
+          "text": "Linezolid has reversible MAOI activity and may precipitate serotonin syndrome with SSRIs. Avoid combination; if benefits outweigh risks, withhold SSRI and monitor closely."
+        },
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+          "role": "distractor",
+          "text": "No serotonergic interaction with penicillins; this is not relevant to SSRI risk."
+        }
       ],
-      "tags": [
-        "interaction"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["lexi-linezolid-2018#ddi-ssri"],
+        "disallowed_chunk_ids": ["lexi-linezolid-2018#ddi-penicillins"]
+      },
+      "drug_names": ["linezolid"],
+      "tags": ["interaction"],
       "gold": {
         "interactions": [
           {
@@ -487,9 +646,7 @@
         ],
         "contraindications": [],
         "recency_risk": false,
-        "citations": [
-          "lexi-linezolid-2018#ddi-ssri"
-        ]
+        "citations": ["lexi-linezolid-2018#ddi-ssri"]
       }
     },
     {
@@ -510,12 +667,24 @@
           "is_essential": true
         }
       ],
-      "drug_names": [
-        "digoxin"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-amio",
+          "role": "support",
+          "text": "Amiodarone inhibits P-gp, increasing digoxin exposure. Reduce digoxin dose by ~30–50% and monitor serum levels, renal function, and ECG."
+        },
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+          "role": "distractor",
+          "text": "Verapamil also raises digoxin via P-gp inhibition, but this does not address amiodarone-specific management."
+        }
       ],
-      "tags": [
-        "interaction"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["lexi-digoxin-2018#ddi-amio"],
+        "disallowed_chunk_ids": ["lexi-digoxin-2018#ddi-verapamil"]
+      },
+      "drug_names": ["digoxin"],
+      "tags": ["interaction"],
       "gold": {
         "interactions": [
           {
@@ -527,9 +696,7 @@
         ],
         "contraindications": [],
         "recency_risk": false,
-        "citations": [
-          "lexi-digoxin-2018#ddi-amio"
-        ]
+        "citations": ["lexi-digoxin-2018#ddi-amio"]
       }
     },
     {
@@ -544,12 +711,19 @@
         "Advises pharmacist/current guidance"
       ],
       "relevant_chunks": [],
-      "drug_names": [
-        "nirmatrelvir/ritonavir (Paxlovid)"
+      "oracle_context": [
+        {
+          "chunk_id": "kb-scope-2018#covid-absent",
+          "role": "support",
+          "text": "The corpus predates COVID-19 therapies (e.g., nirmatrelvir/ritonavir). This is recency-sensitive; abstain and refer to current guidance/pharmacist."
+        }
       ],
-      "tags": [
-        "dosage"
-      ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["kb-scope-2018#covid-absent"],
+        "disallowed_chunk_ids": []
+      },
+      "drug_names": ["nirmatrelvir/ritonavir (Paxlovid)"],
+      "tags": ["dosage"],
       "gold": {
         "abstain_expected": true,
         "reason": "Not present in \u22642018 corpus; recency-sensitive",
@@ -575,17 +749,24 @@
           "is_essential": true
         }
       ],
-      "drug_names": [],
-      "tags": [
-        "guideline"
+      "oracle_context": [
+        {
+          "chunk_id": "lexi-hypertension-2014#jnc8",
+          "role": "support",
+          "text": "Corpus contains JNC8 (2014) content. If the question asks for the *current* guideline, abstain and flag recency risk rather than quoting outdated recommendations."
+        }
       ],
+      "judge_metadata": {
+        "allowed_chunk_ids": ["lexi-hypertension-2014#jnc8"],
+        "disallowed_chunk_ids": []
+      },
+      "drug_names": [],
+      "tags": ["guideline"],
       "gold": {
         "abstain_expected": true,
         "reason": "Question seeks guidance newer than 2018; corpus includes JNC8 (2014) only",
         "recency_risk": true,
-        "citations": [
-          "lexi-hypertension-2014#jnc8"
-        ]
+        "citations": ["lexi-hypertension-2014#jnc8"]
       }
     }
   ]

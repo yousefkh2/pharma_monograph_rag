@@ -62,6 +62,8 @@ class EvalQuestion:
     # Reasoning/explanation
     reasoning: Optional[str] = None  # Why this is the correct answer
     gold: Optional[Dict[str, object]] = None  # Rich evaluable structure for LLM judge
+    oracle_context: Optional[List[Dict[str, object]]] = None
+    judge_metadata: Optional[Dict[str, object]] = None
 
 
 @dataclass
@@ -100,6 +102,8 @@ class EvalDataset:
                 "source_note": q.source_note,
                 "reasoning": q.reasoning,
                 "gold": q.gold,
+                "oracle_context": q.oracle_context,
+                "judge_metadata": q.judge_metadata,
             }
             for q in self.questions
         ]
@@ -140,6 +144,8 @@ class EvalDataset:
                 source_note=q_data.get("source_note"),
                 reasoning=q_data.get("reasoning"),
                 gold=q_data.get("gold"),
+                oracle_context=q_data.get("oracle_context"),
+                judge_metadata=q_data.get("judge_metadata"),
             )
             questions.append(question)
         

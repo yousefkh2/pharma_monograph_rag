@@ -136,6 +136,7 @@ async def evaluate_question(
                 f"Ensure contraindication mention: {item}"
                 for item in question.contraindication_checks
             )
+        judge_metadata = getattr(question, "judge_metadata", None)
         generated_answer = await llm_client.generate_answer(
             question=question.question,
             contexts=search_results,
@@ -143,6 +144,8 @@ async def evaluate_question(
             key_points=question.answer_key_points,
             knowledge_cutoff=(regulatory.knowledge_cutoff_date if regulatory else None),
             safety_notes=safety_notes or None,
+            allowed_chunk_ids=(judge_metadata or {}).get("allowed_chunk_ids") if judge_metadata else None,
+            disallowed_chunk_ids=(judge_metadata or {}).get("disallowed_chunk_ids") if judge_metadata else None,
         )
     else:
         generated_answer = generate_answer_stub(question.question, search_results)
@@ -218,14 +221,14 @@ async def run_clinical_evaluation(args: argparse.Namespace) -> None:
         for question in dataset.questions:
             print(f"Evaluating question {question.id}: {question.question[:50]}...")
             
-            result, failure_case = await evaluate_question(
-                client,
-                question,
-                qa_evaluator,
-                clinical_evaluator,
-                top_k=args.top_k,
-                llm_client=llm_client,
-            )
+    result, failure_case = await evaluate_question(
+        client,
+        question,
+        qa_evaluator,
+        clinical_evaluator,
+        top_k=args.top_k,
+        llm_client=llm_client,
+    )
             
             all_results.append(result)
             all_failures.append(failure_case)

@@ -1,0 +1,4505 @@
+{
+  "dataset": {
+    "name": "pharmacy_copilot_pharmacist_eval_v1",
+    "description": "Gold pharmacist scenarios for LLM evaluation (enriched for deterministic scoring).",
+    "version": "1.2.0"
+  },
+  "metadata": {
+    "question_count": 13,
+    "evaluation_time": 45.52696704864502
+  },
+  "aggregated_metrics": {
+    "retrieval": {
+      "recall_at_k": {
+        "1": 0.6538461538461539,
+        "3": 0.9230769230769231,
+        "5": 0.9230769230769231,
+        "10": 0.9230769230769231,
+        "20": 0.9230769230769231
+      },
+      "precision_at_k": {
+        "1": 0.9230769230769231,
+        "3": 0.5897435897435896,
+        "5": 0.5897435897435896,
+        "10": 0.5897435897435896,
+        "20": 0.5897435897435896
+      },
+      "mean_reciprocal_rank": 0.9230769230769231,
+      "average_precision": 0.9230769230769231,
+      "ndcg_at_k": {
+        "1": 0.9230769230769231,
+        "3": 0.9230769230769231,
+        "5": 0.9230769230769231,
+        "10": 0.9230769230769231,
+        "20": 0.9230769230769231
+      },
+      "essential_recall_at_k": {
+        "1": 0.9230769230769231,
+        "3": 0.9230769230769231,
+        "5": 0.9230769230769231,
+        "10": 0.9230769230769231,
+        "20": 0.9230769230769231
+      },
+      "first_relevant_rank": 0.9230769230769231,
+      "total_relevant": 19,
+      "total_essential": 12
+    },
+    "qa": {
+      "bleu_score": 0.025039855942530782,
+      "rouge_1_f1": 0.3232143602237476,
+      "rouge_2_f1": 0.14263327965875588,
+      "rouge_l_f1": 0.22401230360575278,
+      "semantic_similarity": 0.5363636704591604,
+      "key_points_covered": 0.17124542124542122,
+      "key_points_found": [],
+      "key_points_missing": [],
+      "answer_length": 29,
+      "has_answer": true,
+      "factual_accuracy": null,
+      "helpfulness": null
+    }
+  },
+  "failure_cases": [
+    {
+      "question_id": "q001",
+      "question": "5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?",
+      "failure_types": [
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-amoxicillin-2018#dosage",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#peds",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-amoxicillin-2018#dosage",
+        "lexi-amoxicillin-2018#peds"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"to nearest whole mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension (80 mg/mL)\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM.\"}",
+      "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
+      "key_points_missing": [
+        "Uses high-dose 80–90 mg/kg/day regimen",
+        "Per-dose ≈810 mg for 18 kg",
+        "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+        "Max daily 4 g acknowledged",
+        "No renal adjustment if normal function",
+        "Cites pediatric dosage section"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.012379356666628198,
+        "rouge_1_f1": 0.46601941747572806,
+        "rouge_2_f1": 0.21782178217821782,
+        "rouge_l_f1": 0.27184466019417475,
+        "semantic_similarity": 0.7578401565551758,
+        "key_points_covered": 0.14285714285714285,
+        "key_points_found": [
+          "BID (q12h) frequency"
+        ],
+        "key_points_missing": [
+          "Uses high-dose 80–90 mg/kg/day regimen",
+          "Per-dose ≈810 mg for 18 kg",
+          "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+          "Max daily 4 g acknowledged",
+          "No renal adjustment if normal function",
+          "Cites pediatric dosage section"
+        ],
+        "answer_length": 35,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "medium",
+      "notes": null
+    },
+    {
+      "question_id": "q002",
+      "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
+      "failure_types": [
+        "qa_incorrect",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#max",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#rectal",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-acetaminophen-2018#max",
+        "lexi-acetaminophen-2018#peds-dosing"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
+      "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
+      "key_points_missing": [
+        "Per-dose 15 mg/kg used",
+        "q4–6h acceptable; target q6h in calc",
+        "180 mg per dose for 12 kg",
+        "Volume ≈5.625 mL from 32 mg/mL",
+        "Daily max 75 mg/kg/day and ≤4 g",
+        "Pediatric dosing section cited"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.01990229309015536,
+        "rouge_1_f1": 0.5098039215686274,
+        "rouge_2_f1": 0.26,
+        "rouge_l_f1": 0.37254901960784315,
+        "semantic_similarity": 0.6983720660209656,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Per-dose 15 mg/kg used",
+          "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
+          "Volume ≈5.625 mL from 32 mg/mL",
+          "Daily max 75 mg/kg/day and ≤4 g",
+          "Pediatric dosing section cited"
+        ],
+        "answer_length": 44,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q003",
+      "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
+      "failure_types": [
+        "qa_incorrect",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#max",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-ibuprofen-2018#max",
+        "lexi-ibuprofen-2018#peds-dosing"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+      "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
+      "key_points_missing": [
+        "10 mg/kg per dose",
+        "q6–8h frequency",
+        "120 mg per dose for 12 kg",
+        "6 mL at 20 mg/mL",
+        "Max 40 mg/kg/day (480 mg)",
+        "Contraindication: <6 months; caution renal/dehydration"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03174113892916949,
+        "rouge_1_f1": 0.54,
+        "rouge_2_f1": 0.22448979591836735,
+        "rouge_l_f1": 0.32,
+        "semantic_similarity": 0.6980445384979248,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "10 mg/kg per dose",
+          "q6–8h frequency",
+          "120 mg per dose for 12 kg",
+          "6 mL at 20 mg/mL",
+          "Max 40 mg/kg/day (480 mg)",
+          "Contraindication: <6 months; caution renal/dehydration"
+        ],
+        "answer_length": 43,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q004",
+      "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
+      "failure_types": [
+        "qa_incorrect",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#ddi",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#vte",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-apixaban-2018#ddi",
+        "lexi-apixaban-2018#dosing-nvaf"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
+      "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
+      "key_points_missing": [
+        "Interaction caveat: strong CYP3A4/P-gp",
+        "Hepatic impairment caution"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.07010731258887337,
+        "rouge_1_f1": 0.3658536585365854,
+        "rouge_2_f1": 0.225,
+        "rouge_l_f1": 0.3170731707317073,
+        "semantic_similarity": 0.504306972026825,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "Dose reduction criteria (2 of 3)",
+          "Final dose 2.5 mg BID"
+        ],
+        "key_points_missing": [
+          "Interaction caveat: strong CYP3A4/P-gp",
+          "Hepatic impairment caution"
+        ],
+        "answer_length": 25,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q005",
+      "question": "85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?",
+      "failure_types": [
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-enoxaparin-2018#dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#renal",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-enoxaparin-2018#dosing",
+        "lexi-enoxaparin-2018#renal"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin 1 mg/kg SC q12h is the preferred regimen for acute DVT treatment.\"}",
+      "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
+      "key_points_missing": [
+        "Alternative 1.5 mg/kg q24h",
+        "Per-dose 85 mg for 85 kg",
+        "Renal adjustment for CrCl <30"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.05345137572833361,
+        "rouge_1_f1": 0.4210526315789473,
+        "rouge_2_f1": 0.2162162162162162,
+        "rouge_l_f1": 0.2631578947368421,
+        "semantic_similarity": 0.7221252918243408,
+        "key_points_covered": 0.25,
+        "key_points_found": [
+          "1 mg/kg q12h primary regimen"
+        ],
+        "key_points_missing": [
+          "Alternative 1.5 mg/kg q24h",
+          "Per-dose 85 mg for 85 kg",
+          "Renal adjustment for CrCl <30"
+        ],
+        "answer_length": 18,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "medium",
+      "notes": null
+    },
+    {
+      "question_id": "q006",
+      "question": "Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?",
+      "failure_types": [
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-metformin-2018#renal",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#contra",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#old-crcl60",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-metformin-2018#contra",
+        "lexi-metformin-2018#renal"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-metformin-2018#renal\"],\"notes\":\"Metformin is contraindicated for this patient with eGFR <30 mL/min/1.73 m².\"}",
+      "expected_answer": "No—contraindicated at eGFR <30. If 30–45, generally avoid initiation; if continuing, reduce dose and monitor. Avoid in hepatic impairment.",
+      "key_points_missing": [
+        "30–45: avoid initiation; if continuing, reduce & monitor",
+        "Hepatic impairment: avoid (lactic acidosis risk)"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.014847755848337078,
+        "rouge_1_f1": 0.12698412698412698,
+        "rouge_2_f1": 0.03278688524590164,
+        "rouge_l_f1": 0.09523809523809523,
+        "semantic_similarity": 0.502720832824707,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Contraindicated if eGFR <30"
+        ],
+        "key_points_missing": [
+          "30–45: avoid initiation; if continuing, reduce & monitor",
+          "Hepatic impairment: avoid (lactic acidosis risk)"
+        ],
+        "answer_length": 12,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q007",
+      "question": "Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?",
+      "failure_types": [
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#renal",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#contra",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-nitrofurantoin-2018#contra",
+        "lexi-nitrofurantoin-2018#renal"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid use if eGFR/CrCl <30 due to inadequate urinary concentrations and increased toxicity risk.\",\n  \"citations\": [\"lexi-nitrofurantoin-2018#renal\"],\n  \"notes\": \"Avoid nitrofurantoin in eGFR/CrCl <30 due to efficacy and toxicity concerns. Common contraindications include significant renal dysfunction.\"",
+      "expected_answer": "Avoid nitrofurantoin when eGFR/CrCl <30 mL/min due to low urinary levels and toxicity risk.",
+      "key_points_missing": [
+        "Rationale: efficacy/toxicity",
+        "List common contraindications where relevant"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.02165443026227167,
+        "rouge_1_f1": 0.31578947368421056,
+        "rouge_2_f1": 0.16216216216216214,
+        "rouge_l_f1": 0.2631578947368421,
+        "semantic_similarity": 0.8040880560874939,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Avoid if eGFR/CrCl <30"
+        ],
+        "key_points_missing": [
+          "Rationale: efficacy/toxicity",
+          "List common contraindications where relevant"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "medium",
+      "notes": null
+    },
+    {
+      "question_id": "q008",
+      "question": "Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?",
+      "failure_types": [
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-warfarin-2018#ddi-tmp-smx"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-warfarin-2018#ddi-tmp-smx\"],\"notes\":\"Avoid TMP-SMX with warfarin; if used, reduce warfarin dose and monitor INR closely.\"}",
+      "expected_answer": "Major interaction (CYP2C9 inhibition + gut flora). Avoid if possible; otherwise increase INR monitoring and reduce warfarin dose.",
+      "key_points_missing": [
+        "Mechanism: CYP2C9 inhibition + gut flora",
+        "Severity: major",
+        "Action: avoid or close INR monitoring with dose reduction"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.01576090101000953,
+        "rouge_1_f1": 0.26229508196721313,
+        "rouge_2_f1": 0.06779661016949153,
+        "rouge_l_f1": 0.16393442622950818,
+        "semantic_similarity": 0.2904668152332306,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: CYP2C9 inhibition + gut flora",
+          "Severity: major",
+          "Action: avoid or close INR monitoring with dose reduction"
+        ],
+        "answer_length": 14,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q009",
+      "question": "Patient on atorvastatin needs clarithromycin. What’s the risk and action?",
+      "failure_types": [
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-atorvastatin-2018#ddi-macrolides"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "```json\n{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"lexi-atorvastatin-2018#ddi-macrolides\"],\n  \"notes\": \"Clarithromycin increases atorvastatin levels, raising myopathy/rhabdomyolysis risk; avoid or use lowest dose with monitoring.\"\n}\n```",
+      "expected_answer": "Major interaction (strong CYP3A4 inhibitor). Avoid coadministration; if unavoidable, hold atorvastatin or limit to the lowest dose and monitor for myopathy.",
+      "key_points_missing": [
+        "Mechanism: strong CYP3A4 inhibition",
+        "Severity: major",
+        "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.00669034204596002,
+        "rouge_1_f1": 0.22580645161290325,
+        "rouge_2_f1": 0.03333333333333333,
+        "rouge_l_f1": 0.16129032258064516,
+        "semantic_similarity": 0.3073867857456207,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: strong CYP3A4 inhibition",
+          "Severity: major",
+          "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+        ],
+        "answer_length": 33,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q010",
+      "question": "Starting linezolid in a patient on sertraline. Is this safe?",
+      "failure_types": [
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-linezolid-2018#ddi-ssri"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome.\"}",
+      "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
+      "key_points_missing": [
+        "Mechanism: MAOI activity → ↑serotonin",
+        "Severity: major",
+        "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03958676905214559,
+        "rouge_1_f1": 0.24137931034482757,
+        "rouge_2_f1": 0.10714285714285714,
+        "rouge_l_f1": 0.13793103448275862,
+        "semantic_similarity": 0.39001569151878357,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: MAOI activity → ↑serotonin",
+          "Severity: major",
+          "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+        ],
+        "answer_length": 9,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q011",
+      "question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
+      "failure_types": [
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-amio",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-digoxin-2018#ddi-amio"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
+      "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
+      "key_points_missing": [
+        "Mechanism: P-gp inhibition → ↑digoxin",
+        "Severity: major"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03210641011174957,
+        "rouge_1_f1": 0.33766233766233766,
+        "rouge_2_f1": 0.18666666666666668,
+        "rouge_l_f1": 0.2337662337662338,
+        "semantic_similarity": 0.6881264448165894,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Action: reduce dose ~30–50% + monitor levels and ECG"
+        ],
+        "key_points_missing": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q012",
+      "question": "COVID-19 patient asks for Paxlovid dosing and interaction checks.",
+      "failure_types": [
+        "retrieval_miss",
+        "retrieval_irrelevant",
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "kb-scope-2018#covid-absent",
+          "score": 0.0,
+          "rank": 1
+        }
+      ],
+      "relevant_chunks_found": [],
+      "essential_chunks_missed": [],
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"kb-scope-2018#covid-absent\"],\n  \"notes\": \"This corpus predates COVID-19 therapies; refer to current guidance or a pharmacist.\"\n}",
+      "expected_answer": "ABSTAIN. Not in ≤2018 corpus; recency-sensitive therapy. Advise consulting current guidance/pharmacist.",
+      "key_points_missing": [
+        "Explicit abstention",
+        "Sets recency_risk = true",
+        "Advises pharmacist/current guidance"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 0,
+        "total_essential": 0
+      },
+      "qa_metrics": {
+        "bleu_score": 0.0035177264276945075,
+        "rouge_1_f1": 0.23529411764705882,
+        "rouge_2_f1": 0.04081632653061225,
+        "rouge_l_f1": 0.23529411764705882,
+        "semantic_similarity": 0.3990210294723511,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Explicit abstention",
+          "Sets recency_risk = true",
+          "Advises pharmacist/current guidance"
+        ],
+        "answer_length": 29,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "both_systems",
+      "severity": "high",
+      "notes": null
+    },
+    {
+      "question_id": "q013",
+      "question": "What is the current first-line pharmacologic therapy per latest hypertension guidelines?",
+      "failure_types": [
+        "qa_incorrect",
+        "qa_incomplete",
+        "e2e_low_quality"
+      ],
+      "retrieved_chunks": [
+        {
+          "chunk_id": "lexi-hypertension-2014#jnc8",
+          "score": 0.0,
+          "rank": 1
+        }
+      ],
+      "relevant_chunks_found": [
+        "lexi-hypertension-2014#jnc8"
+      ],
+      "essential_chunks_missed": [],
+      "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": null, \"max_daily_mg\": null, \"rounding\": null, \"calc_rule\": null, \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current hypertension management.\"}",
+      "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
+      "key_points_missing": [
+        "Explicit abstention for ‘current’ guideline ask",
+        "Sets recency_risk = true"
+      ],
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.0037723154915721355,
+        "rouge_1_f1": 0.15384615384615385,
+        "rouge_2_f1": 0.08,
+        "rouge_l_f1": 0.07692307692307693,
+        "semantic_similarity": 0.21021303534507751,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Recognize JNC8 (2014) is outdated for ‘current’"
+        ],
+        "key_points_missing": [
+          "Explicit abstention for ‘current’ guideline ask",
+          "Sets recency_risk = true"
+        ],
+        "answer_length": 26,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "root_cause": "qa_system",
+      "severity": "high",
+      "notes": null
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "q001",
+      "question": {
+        "id": "q001",
+        "question": "5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
+        "answer_key_points": [
+          "Uses high-dose 80–90 mg/kg/day regimen",
+          "BID (q12h) frequency",
+          "Per-dose ≈810 mg for 18 kg",
+          "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+          "Max daily 4 g acknowledged",
+          "No renal adjustment if normal function",
+          "Cites pediatric dosage section"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-amoxicillin-2018#dosage",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-amoxicillin-2018#peds",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "amoxicillin"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "dose_per_dose_mg": 810,
+          "doses_per_day": 2,
+          "total_daily_mg": 1620,
+          "calc_rule": "90 mg/kg/day divided q12h",
+          "max_daily_mg": 4000,
+          "volume_per_dose_mL": 10.125,
+          "rounding": {
+            "to": "10 mL per dose",
+            "basis": "80 mg/mL (400 mg/5 mL)"
+          },
+          "renal_adjustment": "none if normal renal function",
+          "hepatic_adjustment": "none specified",
+          "contraindications": [],
+          "interactions": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-amoxicillin-2018#dosage",
+            "lexi-amoxicillin-2018#peds"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-amoxicillin-2018#dosage",
+            "role": "support",
+            "text": "Pediatric AOM first-line: amoxicillin 80–90 mg/kg/day PO divided q12h for 5–10 days; typical max daily dose ~4,000 mg."
+          },
+          {
+            "chunk_id": "lexi-amoxicillin-2018#peds",
+            "role": "support",
+            "text": "Amoxicillin oral suspension 400 mg/5 mL = 80 mg/mL; use oral syringe; rounding to practical mL is acceptable."
+          },
+          {
+            "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+            "role": "distractor",
+            "text": "Adult acute bacterial sinusitis regimens (e.g., 500 mg TID or 875 mg BID) differ from pediatric AOM dosing."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-amoxicillin-2018#dosage",
+            "lexi-amoxicillin-2018#peds"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-amoxicillin-2018#adult-sinusitis"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"to nearest whole mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension (80 mg/mL)\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM.\"}",
+      "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.012379356666628198,
+        "rouge_1_f1": 0.46601941747572806,
+        "rouge_2_f1": 0.21782178217821782,
+        "rouge_l_f1": 0.27184466019417475,
+        "semantic_similarity": 0.7578401565551758,
+        "key_points_covered": 0.14285714285714285,
+        "key_points_found": [
+          "BID (q12h) frequency"
+        ],
+        "key_points_missing": [
+          "Uses high-dose 80–90 mg/kg/day regimen",
+          "Per-dose ≈810 mg for 18 kg",
+          "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+          "Max daily 4 g acknowledged",
+          "No renal adjustment if normal function",
+          "Cites pediatric dosage section"
+        ],
+        "answer_length": 35,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-amoxicillin-2018#dosage",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#peds",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-amoxicillin-2018#dosage",
+          "role": "support",
+          "text": "Pediatric AOM first-line: amoxicillin 80–90 mg/kg/day PO divided q12h for 5–10 days; typical max daily dose ~4,000 mg."
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#peds",
+          "role": "support",
+          "text": "Amoxicillin oral suspension 400 mg/5 mL = 80 mg/mL; use oral syringe; rounding to practical mL is acceptable."
+        },
+        {
+          "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+          "role": "distractor",
+          "text": "Adult acute bacterial sinusitis regimens (e.g., 500 mg TID or 875 mg BID) differ from pediatric AOM dosing."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q001",
+        "question": "5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?",
+        "failure_types": [
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-amoxicillin-2018#dosage",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-amoxicillin-2018#peds",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-amoxicillin-2018#adult-sinusitis",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-amoxicillin-2018#dosage",
+          "lexi-amoxicillin-2018#peds"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"to nearest whole mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension (80 mg/mL)\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM.\"}",
+        "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
+        "key_points_missing": [
+          "Uses high-dose 80–90 mg/kg/day regimen",
+          "Per-dose ≈810 mg for 18 kg",
+          "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+          "Max daily 4 g acknowledged",
+          "No renal adjustment if normal function",
+          "Cites pediatric dosage section"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.012379356666628198,
+          "rouge_1_f1": 0.46601941747572806,
+          "rouge_2_f1": 0.21782178217821782,
+          "rouge_l_f1": 0.27184466019417475,
+          "semantic_similarity": 0.7578401565551758,
+          "key_points_covered": 0.14285714285714285,
+          "key_points_found": [
+            "BID (q12h) frequency"
+          ],
+          "key_points_missing": [
+            "Uses high-dose 80–90 mg/kg/day regimen",
+            "Per-dose ≈810 mg for 18 kg",
+            "Volume ≈10.1 mL from 400 mg/5 mL (80 mg/mL); rounding to 10 mL OK",
+            "Max daily 4 g acknowledged",
+            "No renal adjustment if normal function",
+            "Cites pediatric dosage section"
+          ],
+          "answer_length": 35,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "medium",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q002",
+      "question": {
+        "id": "q002",
+        "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
+        "answer_key_points": [
+          "Per-dose 15 mg/kg used",
+          "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
+          "Volume ≈5.625 mL from 32 mg/mL",
+          "Daily max 75 mg/kg/day and ≤4 g",
+          "Pediatric dosing section cited"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-acetaminophen-2018#max",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "acetaminophen"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "dose_per_dose_mg": 180,
+          "doses_per_day": 4,
+          "total_daily_mg": 720,
+          "calc_rule": "15 mg/kg/dose q6h (10–15 mg/kg q4–6h acceptable)",
+          "max_daily_mg": 900,
+          "volume_per_dose_mL": 5.625,
+          "rounding": {
+            "to": "5.6 mL",
+            "basis": "32 mg/mL (160 mg/5 mL)"
+          },
+          "renal_adjustment": "none for standard antipyresis",
+          "hepatic_adjustment": "use caution in hepatic impairment",
+          "contraindications": [],
+          "interactions": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-acetaminophen-2018#peds-dosing",
+            "lexi-acetaminophen-2018#max"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+            "role": "support",
+            "text": "Acetaminophen 10–15 mg/kg/dose PO q4–6h PRN fever/pain; do not exceed 75 mg/kg/day or 4,000 mg/day; ~5 doses/24h."
+          },
+          {
+            "chunk_id": "lexi-acetaminophen-2018#max",
+            "role": "support",
+            "text": "Common liquid: 160 mg/5 mL (32 mg/mL). Use weight-based dosing and state per-dose mL."
+          },
+          {
+            "chunk_id": "lexi-acetaminophen-2018#rectal",
+            "role": "distractor",
+            "text": "Rectal suppository dosing differs from oral liquids and is not used for this calculation."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-acetaminophen-2018#peds-dosing",
+            "lexi-acetaminophen-2018#max"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-acetaminophen-2018#rectal"
+          ]
+        }
+      },
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
+      "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.01990229309015536,
+        "rouge_1_f1": 0.5098039215686274,
+        "rouge_2_f1": 0.26,
+        "rouge_l_f1": 0.37254901960784315,
+        "semantic_similarity": 0.6983720660209656,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Per-dose 15 mg/kg used",
+          "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
+          "Volume ≈5.625 mL from 32 mg/mL",
+          "Daily max 75 mg/kg/day and ≤4 g",
+          "Pediatric dosing section cited"
+        ],
+        "answer_length": 44,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#max",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#rectal",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+          "role": "support",
+          "text": "Acetaminophen 10–15 mg/kg/dose PO q4–6h PRN fever/pain; do not exceed 75 mg/kg/day or 4,000 mg/day; ~5 doses/24h."
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#max",
+          "role": "support",
+          "text": "Common liquid: 160 mg/5 mL (32 mg/mL). Use weight-based dosing and state per-dose mL."
+        },
+        {
+          "chunk_id": "lexi-acetaminophen-2018#rectal",
+          "role": "distractor",
+          "text": "Rectal suppository dosing differs from oral liquids and is not used for this calculation."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q002",
+        "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
+        "failure_types": [
+          "qa_incorrect",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-acetaminophen-2018#peds-dosing",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-acetaminophen-2018#max",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-acetaminophen-2018#rectal",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-acetaminophen-2018#max",
+          "lexi-acetaminophen-2018#peds-dosing"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
+        "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
+        "key_points_missing": [
+          "Per-dose 15 mg/kg used",
+          "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
+          "Volume ≈5.625 mL from 32 mg/mL",
+          "Daily max 75 mg/kg/day and ≤4 g",
+          "Pediatric dosing section cited"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.01990229309015536,
+          "rouge_1_f1": 0.5098039215686274,
+          "rouge_2_f1": 0.26,
+          "rouge_l_f1": 0.37254901960784315,
+          "semantic_similarity": 0.6983720660209656,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "Per-dose 15 mg/kg used",
+            "q4–6h acceptable; target q6h in calc",
+            "180 mg per dose for 12 kg",
+            "Volume ≈5.625 mL from 32 mg/mL",
+            "Daily max 75 mg/kg/day and ≤4 g",
+            "Pediatric dosing section cited"
+          ],
+          "answer_length": 44,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q003",
+      "question": {
+        "id": "q003",
+        "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
+        "answer_key_points": [
+          "10 mg/kg per dose",
+          "q6–8h frequency",
+          "120 mg per dose for 12 kg",
+          "6 mL at 20 mg/mL",
+          "Max 40 mg/kg/day (480 mg)",
+          "Contraindication: <6 months; caution renal/dehydration"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-ibuprofen-2018#max",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "ibuprofen"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "dose_per_dose_mg": 120,
+          "doses_per_day": 4,
+          "total_daily_mg": 480,
+          "calc_rule": "10 mg/kg/dose q6–8h; max 40 mg/kg/day",
+          "max_daily_mg": 480,
+          "volume_per_dose_mL": 6.0,
+          "rounding": {
+            "to": "6 mL",
+            "basis": "20 mg/mL (100 mg/5 mL)"
+          },
+          "renal_adjustment": "avoid in significant renal impairment/dehydration",
+          "hepatic_adjustment": "use caution",
+          "contraindications": [
+            "<6 months age",
+            "active GI bleed"
+          ],
+          "interactions": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-ibuprofen-2018#peds-dosing",
+            "lexi-ibuprofen-2018#max"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+            "role": "support",
+            "text": "Ibuprofen 10 mg/kg/dose PO q6–8h PRN; maximum 40 mg/kg/day; avoid in dehydration or significant renal risk."
+          },
+          {
+            "chunk_id": "lexi-ibuprofen-2018#max",
+            "role": "support",
+            "text": "Oral suspension 100 mg/5 mL (20 mg/mL); compute per-dose mL from weight-based mg."
+          },
+          {
+            "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+            "role": "distractor",
+            "text": "Adult OTC capsule labeling (200 mg) is not applicable to pediatric suspension dosing."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-ibuprofen-2018#peds-dosing",
+            "lexi-ibuprofen-2018#max"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-ibuprofen-2018#adult-capsules"
+          ]
+        }
+      },
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+      "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03174113892916949,
+        "rouge_1_f1": 0.54,
+        "rouge_2_f1": 0.22448979591836735,
+        "rouge_l_f1": 0.32,
+        "semantic_similarity": 0.6980445384979248,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "10 mg/kg per dose",
+          "q6–8h frequency",
+          "120 mg per dose for 12 kg",
+          "6 mL at 20 mg/mL",
+          "Max 40 mg/kg/day (480 mg)",
+          "Contraindication: <6 months; caution renal/dehydration"
+        ],
+        "answer_length": 43,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#max",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+          "role": "support",
+          "text": "Ibuprofen 10 mg/kg/dose PO q6–8h PRN; maximum 40 mg/kg/day; avoid in dehydration or significant renal risk."
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#max",
+          "role": "support",
+          "text": "Oral suspension 100 mg/5 mL (20 mg/mL); compute per-dose mL from weight-based mg."
+        },
+        {
+          "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+          "role": "distractor",
+          "text": "Adult OTC capsule labeling (200 mg) is not applicable to pediatric suspension dosing."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q003",
+        "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
+        "failure_types": [
+          "qa_incorrect",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-ibuprofen-2018#peds-dosing",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-ibuprofen-2018#max",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-ibuprofen-2018#adult-capsules",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-ibuprofen-2018#max",
+          "lexi-ibuprofen-2018#peds-dosing"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+        "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
+        "key_points_missing": [
+          "10 mg/kg per dose",
+          "q6–8h frequency",
+          "120 mg per dose for 12 kg",
+          "6 mL at 20 mg/mL",
+          "Max 40 mg/kg/day (480 mg)",
+          "Contraindication: <6 months; caution renal/dehydration"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.03174113892916949,
+          "rouge_1_f1": 0.54,
+          "rouge_2_f1": 0.22448979591836735,
+          "rouge_l_f1": 0.32,
+          "semantic_similarity": 0.6980445384979248,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "10 mg/kg per dose",
+            "q6–8h frequency",
+            "120 mg per dose for 12 kg",
+            "6 mL at 20 mg/mL",
+            "Max 40 mg/kg/day (480 mg)",
+            "Contraindication: <6 months; caution renal/dehydration"
+          ],
+          "answer_length": 43,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q004",
+      "question": {
+        "id": "q004",
+        "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
+        "answer_key_points": [
+          "Dose reduction criteria (2 of 3)",
+          "Final dose 2.5 mg BID",
+          "Interaction caveat: strong CYP3A4/P-gp",
+          "Hepatic impairment caution"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-apixaban-2018#ddi",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "apixaban"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "dose_per_dose_mg": 2.5,
+          "doses_per_day": 2,
+          "total_daily_mg": 5,
+          "calc_rule": "If ≥2 of {age ≥80, weight ≤60 kg, SCr ≥1.5} → 2.5 mg BID",
+          "max_daily_mg": 10,
+          "renal_adjustment": "criteria-based reduction as above",
+          "hepatic_adjustment": "avoid in severe hepatic impairment",
+          "contraindications": [
+            "active bleeding"
+          ],
+          "interactions": [
+            {
+              "drug": "strong CYP3A4/P-gp inhibitors",
+              "severity": "major",
+              "action": "avoid or reduce/monitor"
+            }
+          ],
+          "recency_risk": false,
+          "citations": [
+            "lexi-apixaban-2018#dosing-nvaf",
+            "lexi-apixaban-2018#ddi"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+            "role": "support",
+            "text": "NVAF: apixaban 5 mg BID; reduce to 2.5 mg BID if the patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL."
+          },
+          {
+            "chunk_id": "lexi-apixaban-2018#ddi",
+            "role": "support",
+            "text": "Avoid with strong dual CYP3A4/P-gp inhibitors/inducers; assess hepatic impairment."
+          },
+          {
+            "chunk_id": "lexi-apixaban-2018#vte",
+            "role": "distractor",
+            "text": "VTE treatment: 10 mg BID x7 days then 5 mg BID—this regimen does not apply to NVAF dosing decisions."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-apixaban-2018#dosing-nvaf",
+            "lexi-apixaban-2018#ddi"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-apixaban-2018#vte"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
+      "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.07010731258887337,
+        "rouge_1_f1": 0.3658536585365854,
+        "rouge_2_f1": 0.225,
+        "rouge_l_f1": 0.3170731707317073,
+        "semantic_similarity": 0.504306972026825,
+        "key_points_covered": 0.5,
+        "key_points_found": [
+          "Dose reduction criteria (2 of 3)",
+          "Final dose 2.5 mg BID"
+        ],
+        "key_points_missing": [
+          "Interaction caveat: strong CYP3A4/P-gp",
+          "Hepatic impairment caution"
+        ],
+        "answer_length": 25,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#ddi",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#vte",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+          "role": "support",
+          "text": "NVAF: apixaban 5 mg BID; reduce to 2.5 mg BID if the patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL."
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#ddi",
+          "role": "support",
+          "text": "Avoid with strong dual CYP3A4/P-gp inhibitors/inducers; assess hepatic impairment."
+        },
+        {
+          "chunk_id": "lexi-apixaban-2018#vte",
+          "role": "distractor",
+          "text": "VTE treatment: 10 mg BID x7 days then 5 mg BID—this regimen does not apply to NVAF dosing decisions."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q004",
+        "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
+        "failure_types": [
+          "qa_incorrect",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-apixaban-2018#dosing-nvaf",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-apixaban-2018#ddi",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-apixaban-2018#vte",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-apixaban-2018#ddi",
+          "lexi-apixaban-2018#dosing-nvaf"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, serum creatinine ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
+        "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
+        "key_points_missing": [
+          "Interaction caveat: strong CYP3A4/P-gp",
+          "Hepatic impairment caution"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.07010731258887337,
+          "rouge_1_f1": 0.3658536585365854,
+          "rouge_2_f1": 0.225,
+          "rouge_l_f1": 0.3170731707317073,
+          "semantic_similarity": 0.504306972026825,
+          "key_points_covered": 0.5,
+          "key_points_found": [
+            "Dose reduction criteria (2 of 3)",
+            "Final dose 2.5 mg BID"
+          ],
+          "key_points_missing": [
+            "Interaction caveat: strong CYP3A4/P-gp",
+            "Hepatic impairment caution"
+          ],
+          "answer_length": 25,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q005",
+      "question": {
+        "id": "q005",
+        "question": "85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
+        "answer_key_points": [
+          "1 mg/kg q12h primary regimen",
+          "Alternative 1.5 mg/kg q24h",
+          "Per-dose 85 mg for 85 kg",
+          "Renal adjustment for CrCl <30"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-enoxaparin-2018#dosing",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-enoxaparin-2018#renal",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "enoxaparin"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "dose_per_dose_mg": 85,
+          "doses_per_day": 2,
+          "total_daily_mg": 170,
+          "calc_rule": "1 mg/kg q12h (or 1.5 mg/kg q24h alternative)",
+          "max_daily_mg": null,
+          "renal_adjustment": "CrCl <30: 1 mg/kg once daily",
+          "hepatic_adjustment": "use caution",
+          "contraindications": [
+            "active major bleeding",
+            "history of HIT (use alternative)"
+          ],
+          "interactions": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-enoxaparin-2018#dosing",
+            "lexi-enoxaparin-2018#renal"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-enoxaparin-2018#dosing",
+            "role": "support",
+            "text": "Acute DVT treatment (normal renal function): enoxaparin 1 mg/kg SC q12h (preferred) or 1.5 mg/kg SC once daily (alternative)."
+          },
+          {
+            "chunk_id": "lexi-enoxaparin-2018#renal",
+            "role": "support",
+            "text": "If CrCl <30 mL/min, use 1 mg/kg SC once daily and monitor anti-Xa as indicated."
+          },
+          {
+            "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+            "role": "distractor",
+            "text": "VTE prophylaxis doses (e.g., 40 mg SC daily) are not treatment doses and should not be used here."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-enoxaparin-2018#dosing",
+            "lexi-enoxaparin-2018#renal"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-enoxaparin-2018#prophylaxis"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin 1 mg/kg SC q12h is the preferred regimen for acute DVT treatment.\"}",
+      "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.05345137572833361,
+        "rouge_1_f1": 0.4210526315789473,
+        "rouge_2_f1": 0.2162162162162162,
+        "rouge_l_f1": 0.2631578947368421,
+        "semantic_similarity": 0.7221252918243408,
+        "key_points_covered": 0.25,
+        "key_points_found": [
+          "1 mg/kg q12h primary regimen"
+        ],
+        "key_points_missing": [
+          "Alternative 1.5 mg/kg q24h",
+          "Per-dose 85 mg for 85 kg",
+          "Renal adjustment for CrCl <30"
+        ],
+        "answer_length": 18,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-enoxaparin-2018#dosing",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#renal",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-enoxaparin-2018#dosing",
+          "role": "support",
+          "text": "Acute DVT treatment (normal renal function): enoxaparin 1 mg/kg SC q12h (preferred) or 1.5 mg/kg SC once daily (alternative)."
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#renal",
+          "role": "support",
+          "text": "If CrCl <30 mL/min, use 1 mg/kg SC once daily and monitor anti-Xa as indicated."
+        },
+        {
+          "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+          "role": "distractor",
+          "text": "VTE prophylaxis doses (e.g., 40 mg SC daily) are not treatment doses and should not be used here."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q005",
+        "question": "85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?",
+        "failure_types": [
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-enoxaparin-2018#dosing",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-enoxaparin-2018#renal",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-enoxaparin-2018#prophylaxis",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-enoxaparin-2018#dosing",
+          "lexi-enoxaparin-2018#renal"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin 1 mg/kg SC q12h is the preferred regimen for acute DVT treatment.\"}",
+        "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
+        "key_points_missing": [
+          "Alternative 1.5 mg/kg q24h",
+          "Per-dose 85 mg for 85 kg",
+          "Renal adjustment for CrCl <30"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.05345137572833361,
+          "rouge_1_f1": 0.4210526315789473,
+          "rouge_2_f1": 0.2162162162162162,
+          "rouge_l_f1": 0.2631578947368421,
+          "semantic_similarity": 0.7221252918243408,
+          "key_points_covered": 0.25,
+          "key_points_found": [
+            "1 mg/kg q12h primary regimen"
+          ],
+          "key_points_missing": [
+            "Alternative 1.5 mg/kg q24h",
+            "Per-dose 85 mg for 85 kg",
+            "Renal adjustment for CrCl <30"
+          ],
+          "answer_length": 18,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "medium",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q006",
+      "question": {
+        "id": "q006",
+        "question": "Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "No—contraindicated at eGFR <30. If 30–45, generally avoid initiation; if continuing, reduce dose and monitor. Avoid in hepatic impairment.",
+        "answer_key_points": [
+          "Contraindicated if eGFR <30",
+          "30–45: avoid initiation; if continuing, reduce & monitor",
+          "Hepatic impairment: avoid (lactic acidosis risk)"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-metformin-2018#renal",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-metformin-2018#contra",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "metformin"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "decision": "contraindicated",
+          "calc_rule": "eGFR <30 → do not initiate/continue",
+          "renal_adjustment": "eGFR 30–45: avoid initiation; reduce if continuing; monitor",
+          "hepatic_adjustment": "avoid in hepatic impairment",
+          "contraindications": [
+            "eGFR <30",
+            "acute/chronic metabolic acidosis"
+          ],
+          "interactions": [
+            {
+              "drug": "iodinated contrast",
+              "severity": "major",
+              "action": "hold around procedure per eGFR"
+            }
+          ],
+          "recency_risk": false,
+          "citations": [
+            "lexi-metformin-2018#renal",
+            "lexi-metformin-2018#contra"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-metformin-2018#renal",
+            "role": "support",
+            "text": "Metformin: contraindicated if eGFR <30 mL/min/1.73 m². At 30–45, generally avoid initiation; if continuing, reduce dose and monitor renal function."
+          },
+          {
+            "chunk_id": "lexi-metformin-2018#contra",
+            "role": "support",
+            "text": "Avoid in hepatic impairment or conditions predisposing to lactic acidosis; manage iodinated contrast per eGFR."
+          },
+          {
+            "chunk_id": "lexi-metformin-2018#old-crcl60",
+            "role": "distractor",
+            "text": "Older conservative thresholds (e.g., avoid if CrCl <60) are superseded by eGFR-based guidance."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-metformin-2018#renal",
+            "lexi-metformin-2018#contra"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-metformin-2018#old-crcl60"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-metformin-2018#renal\"],\"notes\":\"Metformin is contraindicated for this patient with eGFR <30 mL/min/1.73 m².\"}",
+      "expected_answer": "No—contraindicated at eGFR <30. If 30–45, generally avoid initiation; if continuing, reduce dose and monitor. Avoid in hepatic impairment.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.014847755848337078,
+        "rouge_1_f1": 0.12698412698412698,
+        "rouge_2_f1": 0.03278688524590164,
+        "rouge_l_f1": 0.09523809523809523,
+        "semantic_similarity": 0.502720832824707,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Contraindicated if eGFR <30"
+        ],
+        "key_points_missing": [
+          "30–45: avoid initiation; if continuing, reduce & monitor",
+          "Hepatic impairment: avoid (lactic acidosis risk)"
+        ],
+        "answer_length": 12,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-metformin-2018#renal",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#contra",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#old-crcl60",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-metformin-2018#renal",
+          "role": "support",
+          "text": "Metformin: contraindicated if eGFR <30 mL/min/1.73 m². At 30–45, generally avoid initiation; if continuing, reduce dose and monitor renal function."
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#contra",
+          "role": "support",
+          "text": "Avoid in hepatic impairment or conditions predisposing to lactic acidosis; manage iodinated contrast per eGFR."
+        },
+        {
+          "chunk_id": "lexi-metformin-2018#old-crcl60",
+          "role": "distractor",
+          "text": "Older conservative thresholds (e.g., avoid if CrCl <60) are superseded by eGFR-based guidance."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q006",
+        "question": "Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?",
+        "failure_types": [
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-metformin-2018#renal",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-metformin-2018#contra",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-metformin-2018#old-crcl60",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-metformin-2018#contra",
+          "lexi-metformin-2018#renal"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-metformin-2018#renal\"],\"notes\":\"Metformin is contraindicated for this patient with eGFR <30 mL/min/1.73 m².\"}",
+        "expected_answer": "No—contraindicated at eGFR <30. If 30–45, generally avoid initiation; if continuing, reduce dose and monitor. Avoid in hepatic impairment.",
+        "key_points_missing": [
+          "30–45: avoid initiation; if continuing, reduce & monitor",
+          "Hepatic impairment: avoid (lactic acidosis risk)"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.014847755848337078,
+          "rouge_1_f1": 0.12698412698412698,
+          "rouge_2_f1": 0.03278688524590164,
+          "rouge_l_f1": 0.09523809523809523,
+          "semantic_similarity": 0.502720832824707,
+          "key_points_covered": 0.3333333333333333,
+          "key_points_found": [
+            "Contraindicated if eGFR <30"
+          ],
+          "key_points_missing": [
+            "30–45: avoid initiation; if continuing, reduce & monitor",
+            "Hepatic impairment: avoid (lactic acidosis risk)"
+          ],
+          "answer_length": 12,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q007",
+      "question": {
+        "id": "q007",
+        "question": "Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "Avoid nitrofurantoin when eGFR/CrCl <30 mL/min due to low urinary levels and toxicity risk.",
+        "answer_key_points": [
+          "Avoid if eGFR/CrCl <30",
+          "Rationale: efficacy/toxicity",
+          "List common contraindications where relevant"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#renal",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          },
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#contra",
+            "relevance_score": 1.0,
+            "is_essential": false,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "nitrofurantoin"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "decision": "avoid",
+          "calc_rule": "Avoid if eGFR/CrCl <30",
+          "renal_adjustment": "not recommended below threshold",
+          "hepatic_adjustment": "use caution",
+          "contraindications": [
+            "CrCl <30",
+            "late-term pregnancy (at term)"
+          ],
+          "interactions": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-nitrofurantoin-2018#renal",
+            "lexi-nitrofurantoin-2018#contra"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#renal",
+            "role": "support",
+            "text": "Nitrofurantoin: avoid when eGFR/CrCl <30 mL/min due to inadequate urinary concentrations and increased toxicity risk."
+          },
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#contra",
+            "role": "support",
+            "text": "Contraindications include late-term pregnancy (at term) and significant renal dysfunction."
+          },
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+            "role": "distractor",
+            "text": "Prophylaxis regimens (e.g., low-dose at bedtime) do not override renal cutoffs for acute cystitis treatment."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-nitrofurantoin-2018#renal",
+            "lexi-nitrofurantoin-2018#contra"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-nitrofurantoin-2018#prophylaxis"
+          ]
+        }
+      },
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid use if eGFR/CrCl <30 due to inadequate urinary concentrations and increased toxicity risk.\",\n  \"citations\": [\"lexi-nitrofurantoin-2018#renal\"],\n  \"notes\": \"Avoid nitrofurantoin in eGFR/CrCl <30 due to efficacy and toxicity concerns. Common contraindications include significant renal dysfunction.\"",
+      "expected_answer": "Avoid nitrofurantoin when eGFR/CrCl <30 mL/min due to low urinary levels and toxicity risk.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.5,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.6666666666666666,
+          "5": 0.6666666666666666,
+          "10": 0.6666666666666666,
+          "20": 0.6666666666666666
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 2,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.02165443026227167,
+        "rouge_1_f1": 0.31578947368421056,
+        "rouge_2_f1": 0.16216216216216214,
+        "rouge_l_f1": 0.2631578947368421,
+        "semantic_similarity": 0.8040880560874939,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Avoid if eGFR/CrCl <30"
+        ],
+        "key_points_missing": [
+          "Rationale: efficacy/toxicity",
+          "List common contraindications where relevant"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#renal",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#contra",
+          "score": 0.0,
+          "rank": 2
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+          "score": 0.0,
+          "rank": 3
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#renal",
+          "role": "support",
+          "text": "Nitrofurantoin: avoid when eGFR/CrCl <30 mL/min due to inadequate urinary concentrations and increased toxicity risk."
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#contra",
+          "role": "support",
+          "text": "Contraindications include late-term pregnancy (at term) and significant renal dysfunction."
+        },
+        {
+          "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+          "role": "distractor",
+          "text": "Prophylaxis regimens (e.g., low-dose at bedtime) do not override renal cutoffs for acute cystitis treatment."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q007",
+        "question": "Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?",
+        "failure_types": [
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#renal",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#contra",
+            "score": 0.0,
+            "rank": 2
+          },
+          {
+            "chunk_id": "lexi-nitrofurantoin-2018#prophylaxis",
+            "score": 0.0,
+            "rank": 3
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-nitrofurantoin-2018#contra",
+          "lexi-nitrofurantoin-2018#renal"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid use if eGFR/CrCl <30 due to inadequate urinary concentrations and increased toxicity risk.\",\n  \"citations\": [\"lexi-nitrofurantoin-2018#renal\"],\n  \"notes\": \"Avoid nitrofurantoin in eGFR/CrCl <30 due to efficacy and toxicity concerns. Common contraindications include significant renal dysfunction.\"",
+        "expected_answer": "Avoid nitrofurantoin when eGFR/CrCl <30 mL/min due to low urinary levels and toxicity risk.",
+        "key_points_missing": [
+          "Rationale: efficacy/toxicity",
+          "List common contraindications where relevant"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.5,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.6666666666666666,
+            "5": 0.6666666666666666,
+            "10": 0.6666666666666666,
+            "20": 0.6666666666666666
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 2,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.02165443026227167,
+          "rouge_1_f1": 0.31578947368421056,
+          "rouge_2_f1": 0.16216216216216214,
+          "rouge_l_f1": 0.2631578947368421,
+          "semantic_similarity": 0.8040880560874939,
+          "key_points_covered": 0.3333333333333333,
+          "key_points_found": [
+            "Avoid if eGFR/CrCl <30"
+          ],
+          "key_points_missing": [
+            "Rationale: efficacy/toxicity",
+            "List common contraindications where relevant"
+          ],
+          "answer_length": 47,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "medium",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q008",
+      "question": {
+        "id": "q008",
+        "question": "Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?",
+        "question_type": "interaction",
+        "difficulty": "medium",
+        "expected_answer": "Major interaction (CYP2C9 inhibition + gut flora). Avoid if possible; otherwise increase INR monitoring and reduce warfarin dose.",
+        "answer_key_points": [
+          "Mechanism: CYP2C9 inhibition + gut flora",
+          "Severity: major",
+          "Action: avoid or close INR monitoring with dose reduction"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "warfarin"
+        ],
+        "tags": [
+          "interaction"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "interactions": [
+            {
+              "drug": "trimethoprim/sulfamethoxazole",
+              "mechanism": "CYP2C9 inhibition + gut flora change",
+              "severity": "major",
+              "action": "avoid if possible; otherwise increase INR monitoring and reduce warfarin dose"
+            }
+          ],
+          "contraindications": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-warfarin-2018#ddi-tmp-smx"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+            "role": "support",
+            "text": "TMP-SMX markedly increases warfarin effect via CYP2C9 inhibition and gut-flora changes; expect INR rise. Prefer alternatives; if used, reduce warfarin dose and increase INR monitoring."
+          },
+          {
+            "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+            "role": "distractor",
+            "text": "Cephalexin has minimal effect on warfarin relative to TMP-SMX; management differs."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-warfarin-2018#ddi-tmp-smx"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-warfarin-2018#ddi-cephalexin"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-warfarin-2018#ddi-tmp-smx\"],\"notes\":\"Avoid TMP-SMX with warfarin; if used, reduce warfarin dose and monitor INR closely.\"}",
+      "expected_answer": "Major interaction (CYP2C9 inhibition + gut flora). Avoid if possible; otherwise increase INR monitoring and reduce warfarin dose.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.01576090101000953,
+        "rouge_1_f1": 0.26229508196721313,
+        "rouge_2_f1": 0.06779661016949153,
+        "rouge_l_f1": 0.16393442622950818,
+        "semantic_similarity": 0.2904668152332306,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: CYP2C9 inhibition + gut flora",
+          "Severity: major",
+          "Action: avoid or close INR monitoring with dose reduction"
+        ],
+        "answer_length": 14,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+          "role": "support",
+          "text": "TMP-SMX markedly increases warfarin effect via CYP2C9 inhibition and gut-flora changes; expect INR rise. Prefer alternatives; if used, reduce warfarin dose and increase INR monitoring."
+        },
+        {
+          "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+          "role": "distractor",
+          "text": "Cephalexin has minimal effect on warfarin relative to TMP-SMX; management differs."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q008",
+        "question": "Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?",
+        "failure_types": [
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-warfarin-2018#ddi-tmp-smx",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-warfarin-2018#ddi-cephalexin",
+            "score": 0.0,
+            "rank": 2
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-warfarin-2018#ddi-tmp-smx"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-warfarin-2018#ddi-tmp-smx\"],\"notes\":\"Avoid TMP-SMX with warfarin; if used, reduce warfarin dose and monitor INR closely.\"}",
+        "expected_answer": "Major interaction (CYP2C9 inhibition + gut flora). Avoid if possible; otherwise increase INR monitoring and reduce warfarin dose.",
+        "key_points_missing": [
+          "Mechanism: CYP2C9 inhibition + gut flora",
+          "Severity: major",
+          "Action: avoid or close INR monitoring with dose reduction"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.5,
+            "5": 0.5,
+            "10": 0.5,
+            "20": 0.5
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.01576090101000953,
+          "rouge_1_f1": 0.26229508196721313,
+          "rouge_2_f1": 0.06779661016949153,
+          "rouge_l_f1": 0.16393442622950818,
+          "semantic_similarity": 0.2904668152332306,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "Mechanism: CYP2C9 inhibition + gut flora",
+            "Severity: major",
+            "Action: avoid or close INR monitoring with dose reduction"
+          ],
+          "answer_length": 14,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q009",
+      "question": {
+        "id": "q009",
+        "question": "Patient on atorvastatin needs clarithromycin. What’s the risk and action?",
+        "question_type": "interaction",
+        "difficulty": "medium",
+        "expected_answer": "Major interaction (strong CYP3A4 inhibitor). Avoid coadministration; if unavoidable, hold atorvastatin or limit to the lowest dose and monitor for myopathy.",
+        "answer_key_points": [
+          "Mechanism: strong CYP3A4 inhibition",
+          "Severity: major",
+          "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "atorvastatin"
+        ],
+        "tags": [
+          "interaction"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "interactions": [
+            {
+              "drug": "clarithromycin",
+              "mechanism": "strong CYP3A4 inhibition",
+              "severity": "major",
+              "action": "avoid coadministration; if unavoidable, hold atorvastatin or use lowest dose with monitoring"
+            }
+          ],
+          "contraindications": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-atorvastatin-2018#ddi-macrolides"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+            "role": "support",
+            "text": "Clarithromycin is a strong CYP3A4 inhibitor; coadministration increases atorvastatin levels and myopathy/rhabdomyolysis risk. Avoid; if unavoidable, hold or use the lowest dose with close monitoring."
+          },
+          {
+            "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+            "role": "distractor",
+            "text": "Azithromycin has little CYP3A4 inhibition and is not a suitable proxy for clarithromycin interactions."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-atorvastatin-2018#ddi-macrolides"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-atorvastatin-2018#ddi-azithro"
+          ]
+        }
+      },
+      "generated_answer": "```json\n{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"lexi-atorvastatin-2018#ddi-macrolides\"],\n  \"notes\": \"Clarithromycin increases atorvastatin levels, raising myopathy/rhabdomyolysis risk; avoid or use lowest dose with monitoring.\"\n}\n```",
+      "expected_answer": "Major interaction (strong CYP3A4 inhibitor). Avoid coadministration; if unavoidable, hold atorvastatin or limit to the lowest dose and monitor for myopathy.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.00669034204596002,
+        "rouge_1_f1": 0.22580645161290325,
+        "rouge_2_f1": 0.03333333333333333,
+        "rouge_l_f1": 0.16129032258064516,
+        "semantic_similarity": 0.3073867857456207,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: strong CYP3A4 inhibition",
+          "Severity: major",
+          "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+        ],
+        "answer_length": 33,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+          "role": "support",
+          "text": "Clarithromycin is a strong CYP3A4 inhibitor; coadministration increases atorvastatin levels and myopathy/rhabdomyolysis risk. Avoid; if unavoidable, hold or use the lowest dose with close monitoring."
+        },
+        {
+          "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+          "role": "distractor",
+          "text": "Azithromycin has little CYP3A4 inhibition and is not a suitable proxy for clarithromycin interactions."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q009",
+        "question": "Patient on atorvastatin needs clarithromycin. What’s the risk and action?",
+        "failure_types": [
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-atorvastatin-2018#ddi-macrolides",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-atorvastatin-2018#ddi-azithro",
+            "score": 0.0,
+            "rank": 2
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-atorvastatin-2018#ddi-macrolides"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "```json\n{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"lexi-atorvastatin-2018#ddi-macrolides\"],\n  \"notes\": \"Clarithromycin increases atorvastatin levels, raising myopathy/rhabdomyolysis risk; avoid or use lowest dose with monitoring.\"\n}\n```",
+        "expected_answer": "Major interaction (strong CYP3A4 inhibitor). Avoid coadministration; if unavoidable, hold atorvastatin or limit to the lowest dose and monitor for myopathy.",
+        "key_points_missing": [
+          "Mechanism: strong CYP3A4 inhibition",
+          "Severity: major",
+          "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.5,
+            "5": 0.5,
+            "10": 0.5,
+            "20": 0.5
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.00669034204596002,
+          "rouge_1_f1": 0.22580645161290325,
+          "rouge_2_f1": 0.03333333333333333,
+          "rouge_l_f1": 0.16129032258064516,
+          "semantic_similarity": 0.3073867857456207,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "Mechanism: strong CYP3A4 inhibition",
+            "Severity: major",
+            "Action: avoid; if unavoidable hold or use lowest dose with monitoring"
+          ],
+          "answer_length": 33,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q010",
+      "question": {
+        "id": "q010",
+        "question": "Starting linezolid in a patient on sertraline. Is this safe?",
+        "question_type": "interaction",
+        "difficulty": "medium",
+        "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
+        "answer_key_points": [
+          "Mechanism: MAOI activity → ↑serotonin",
+          "Severity: major",
+          "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "linezolid"
+        ],
+        "tags": [
+          "interaction"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "interactions": [
+            {
+              "drug": "sertraline (SSRI)",
+              "mechanism": "MAOI activity of linezolid → ↑serotonin",
+              "severity": "major",
+              "action": "avoid combination; if unavoidable, withhold SSRI or monitor closely"
+            }
+          ],
+          "contraindications": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-linezolid-2018#ddi-ssri"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+            "role": "support",
+            "text": "Linezolid has reversible MAOI activity and may precipitate serotonin syndrome with SSRIs. Avoid combination; if benefits outweigh risks, withhold SSRI and monitor closely."
+          },
+          {
+            "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+            "role": "distractor",
+            "text": "No serotonergic interaction with penicillins; this is not relevant to SSRI risk."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-linezolid-2018#ddi-ssri"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-linezolid-2018#ddi-penicillins"
+          ]
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome.\"}",
+      "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03958676905214559,
+        "rouge_1_f1": 0.24137931034482757,
+        "rouge_2_f1": 0.10714285714285714,
+        "rouge_l_f1": 0.13793103448275862,
+        "semantic_similarity": 0.39001569151878357,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Mechanism: MAOI activity → ↑serotonin",
+          "Severity: major",
+          "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+        ],
+        "answer_length": 9,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+          "role": "support",
+          "text": "Linezolid has reversible MAOI activity and may precipitate serotonin syndrome with SSRIs. Avoid combination; if benefits outweigh risks, withhold SSRI and monitor closely."
+        },
+        {
+          "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+          "role": "distractor",
+          "text": "No serotonergic interaction with penicillins; this is not relevant to SSRI risk."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q010",
+        "question": "Starting linezolid in a patient on sertraline. Is this safe?",
+        "failure_types": [
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-linezolid-2018#ddi-ssri",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-linezolid-2018#ddi-penicillins",
+            "score": 0.0,
+            "rank": 2
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-linezolid-2018#ddi-ssri"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome.\"}",
+        "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
+        "key_points_missing": [
+          "Mechanism: MAOI activity → ↑serotonin",
+          "Severity: major",
+          "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.5,
+            "5": 0.5,
+            "10": 0.5,
+            "20": 0.5
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.03958676905214559,
+          "rouge_1_f1": 0.24137931034482757,
+          "rouge_2_f1": 0.10714285714285714,
+          "rouge_l_f1": 0.13793103448275862,
+          "semantic_similarity": 0.39001569151878357,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "Mechanism: MAOI activity → ↑serotonin",
+            "Severity: major",
+            "Action: avoid; or stop SSRI/close monitoring if unavoidable"
+          ],
+          "answer_length": 9,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q011",
+      "question": {
+        "id": "q011",
+        "question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
+        "question_type": "interaction",
+        "difficulty": "medium",
+        "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
+        "answer_key_points": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major",
+          "Action: reduce dose ~30–50% + monitor levels and ECG"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-digoxin-2018#ddi-amio",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [
+          "digoxin"
+        ],
+        "tags": [
+          "interaction"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "interactions": [
+            {
+              "drug": "amiodarone",
+              "mechanism": "P-gp inhibition → ↑digoxin levels",
+              "severity": "major",
+              "action": "reduce digoxin dose by ~30–50% and monitor serum levels and ECG"
+            }
+          ],
+          "contraindications": [],
+          "recency_risk": false,
+          "citations": [
+            "lexi-digoxin-2018#ddi-amio"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-digoxin-2018#ddi-amio",
+            "role": "support",
+            "text": "Amiodarone inhibits P-gp, increasing digoxin exposure. Reduce digoxin dose by ~30–50% and monitor serum levels, renal function, and ECG."
+          },
+          {
+            "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+            "role": "distractor",
+            "text": "Verapamil also raises digoxin via P-gp inhibition, but this does not address amiodarone-specific management."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-digoxin-2018#ddi-amio"
+          ],
+          "disallowed_chunk_ids": [
+            "lexi-digoxin-2018#ddi-verapamil"
+          ]
+        }
+      },
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
+      "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 0.5,
+          "5": 0.5,
+          "10": 0.5,
+          "20": 0.5
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.03210641011174957,
+        "rouge_1_f1": 0.33766233766233766,
+        "rouge_2_f1": 0.18666666666666668,
+        "rouge_l_f1": 0.2337662337662338,
+        "semantic_similarity": 0.6881264448165894,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Action: reduce dose ~30–50% + monitor levels and ECG"
+        ],
+        "key_points_missing": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-amio",
+          "score": 0.0,
+          "rank": 1
+        },
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+          "score": 0.0,
+          "rank": 2
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-amio",
+          "role": "support",
+          "text": "Amiodarone inhibits P-gp, increasing digoxin exposure. Reduce digoxin dose by ~30–50% and monitor serum levels, renal function, and ECG."
+        },
+        {
+          "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+          "role": "distractor",
+          "text": "Verapamil also raises digoxin via P-gp inhibition, but this does not address amiodarone-specific management."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q011",
+        "question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
+        "failure_types": [
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-digoxin-2018#ddi-amio",
+            "score": 0.0,
+            "rank": 1
+          },
+          {
+            "chunk_id": "lexi-digoxin-2018#ddi-verapamil",
+            "score": 0.0,
+            "rank": 2
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-digoxin-2018#ddi-amio"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
+        "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
+        "key_points_missing": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 0.5,
+            "5": 0.5,
+            "10": 0.5,
+            "20": 0.5
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.03210641011174957,
+          "rouge_1_f1": 0.33766233766233766,
+          "rouge_2_f1": 0.18666666666666668,
+          "rouge_l_f1": 0.2337662337662338,
+          "semantic_similarity": 0.6881264448165894,
+          "key_points_covered": 0.3333333333333333,
+          "key_points_found": [
+            "Action: reduce dose ~30–50% + monitor levels and ECG"
+          ],
+          "key_points_missing": [
+            "Mechanism: P-gp inhibition → ↑digoxin",
+            "Severity: major"
+          ],
+          "answer_length": 47,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q012",
+      "question": {
+        "id": "q012",
+        "question": "COVID-19 patient asks for Paxlovid dosing and interaction checks.",
+        "question_type": "dosage",
+        "difficulty": "medium",
+        "expected_answer": "ABSTAIN. Not in ≤2018 corpus; recency-sensitive therapy. Advise consulting current guidance/pharmacist.",
+        "answer_key_points": [
+          "Explicit abstention",
+          "Sets recency_risk = true",
+          "Advises pharmacist/current guidance"
+        ],
+        "relevant_chunks": [],
+        "drug_names": [
+          "nirmatrelvir/ritonavir (Paxlovid)"
+        ],
+        "tags": [
+          "dosage"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "abstain_expected": true,
+          "reason": "Not present in ≤2018 corpus; recency-sensitive",
+          "recency_risk": true,
+          "citations": []
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "kb-scope-2018#covid-absent",
+            "role": "support",
+            "text": "The corpus predates COVID-19 therapies (e.g., nirmatrelvir/ritonavir). This is recency-sensitive; abstain and refer to current guidance/pharmacist."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "kb-scope-2018#covid-absent"
+          ],
+          "disallowed_chunk_ids": []
+        }
+      },
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"kb-scope-2018#covid-absent\"],\n  \"notes\": \"This corpus predates COVID-19 therapies; refer to current guidance or a pharmacist.\"\n}",
+      "expected_answer": "ABSTAIN. Not in ≤2018 corpus; recency-sensitive therapy. Advise consulting current guidance/pharmacist.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "precision_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "mean_reciprocal_rank": 0.0,
+        "average_precision": 0.0,
+        "ndcg_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "essential_recall_at_k": {
+          "1": 0.0,
+          "3": 0.0,
+          "5": 0.0,
+          "10": 0.0,
+          "20": 0.0
+        },
+        "first_relevant_rank": 0.0,
+        "total_relevant": 0,
+        "total_essential": 0
+      },
+      "qa_metrics": {
+        "bleu_score": 0.0035177264276945075,
+        "rouge_1_f1": 0.23529411764705882,
+        "rouge_2_f1": 0.04081632653061225,
+        "rouge_l_f1": 0.23529411764705882,
+        "semantic_similarity": 0.3990210294723511,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
+        "key_points_missing": [
+          "Explicit abstention",
+          "Sets recency_risk = true",
+          "Advises pharmacist/current guidance"
+        ],
+        "answer_length": 29,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "kb-scope-2018#covid-absent",
+          "score": 0.0,
+          "rank": 1
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "kb-scope-2018#covid-absent",
+          "role": "support",
+          "text": "The corpus predates COVID-19 therapies (e.g., nirmatrelvir/ritonavir). This is recency-sensitive; abstain and refer to current guidance/pharmacist."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q012",
+        "question": "COVID-19 patient asks for Paxlovid dosing and interaction checks.",
+        "failure_types": [
+          "retrieval_miss",
+          "retrieval_irrelevant",
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "kb-scope-2018#covid-absent",
+            "score": 0.0,
+            "rank": 1
+          }
+        ],
+        "relevant_chunks_found": [],
+        "essential_chunks_missed": [],
+        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"\",\n  \"calc_rule\": \"\",\n  \"citations\": [\"kb-scope-2018#covid-absent\"],\n  \"notes\": \"This corpus predates COVID-19 therapies; refer to current guidance or a pharmacist.\"\n}",
+        "expected_answer": "ABSTAIN. Not in ≤2018 corpus; recency-sensitive therapy. Advise consulting current guidance/pharmacist.",
+        "key_points_missing": [
+          "Explicit abstention",
+          "Sets recency_risk = true",
+          "Advises pharmacist/current guidance"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "precision_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "mean_reciprocal_rank": 0.0,
+          "average_precision": 0.0,
+          "ndcg_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "essential_recall_at_k": {
+            "1": 0.0,
+            "3": 0.0,
+            "5": 0.0,
+            "10": 0.0,
+            "20": 0.0
+          },
+          "first_relevant_rank": 0.0,
+          "total_relevant": 0,
+          "total_essential": 0
+        },
+        "qa_metrics": {
+          "bleu_score": 0.0035177264276945075,
+          "rouge_1_f1": 0.23529411764705882,
+          "rouge_2_f1": 0.04081632653061225,
+          "rouge_l_f1": 0.23529411764705882,
+          "semantic_similarity": 0.3990210294723511,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
+          "key_points_missing": [
+            "Explicit abstention",
+            "Sets recency_risk = true",
+            "Advises pharmacist/current guidance"
+          ],
+          "answer_length": 29,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "both_systems",
+        "severity": "high",
+        "notes": null
+      }
+    },
+    {
+      "question_id": "q013",
+      "question": {
+        "id": "q013",
+        "question": "What is the current first-line pharmacologic therapy per latest hypertension guidelines?",
+        "question_type": "guideline",
+        "difficulty": "medium",
+        "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
+        "answer_key_points": [
+          "Explicit abstention for ‘current’ guideline ask",
+          "Recognize JNC8 (2014) is outdated for ‘current’",
+          "Sets recency_risk = true"
+        ],
+        "relevant_chunks": [
+          {
+            "chunk_id": "lexi-hypertension-2014#jnc8",
+            "relevance_score": 1.0,
+            "is_essential": true,
+            "note": null
+          }
+        ],
+        "drug_names": [],
+        "tags": [
+          "guideline"
+        ],
+        "source_note": null,
+        "reasoning": null,
+        "gold": {
+          "abstain_expected": true,
+          "reason": "Question seeks guidance newer than 2018; corpus includes JNC8 (2014) only",
+          "recency_risk": true,
+          "citations": [
+            "lexi-hypertension-2014#jnc8"
+          ]
+        },
+        "oracle_context": [
+          {
+            "chunk_id": "lexi-hypertension-2014#jnc8",
+            "role": "support",
+            "text": "Corpus contains JNC8 (2014) content. If the question asks for the *current* guideline, abstain and flag recency risk rather than quoting outdated recommendations."
+          }
+        ],
+        "judge_metadata": {
+          "allowed_chunk_ids": [
+            "lexi-hypertension-2014#jnc8"
+          ],
+          "disallowed_chunk_ids": []
+        }
+      },
+      "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": null, \"max_daily_mg\": null, \"rounding\": null, \"calc_rule\": null, \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current hypertension management.\"}",
+      "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
+      "retrieval_metrics": {
+        "recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "precision_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "mean_reciprocal_rank": 1.0,
+        "average_precision": 1.0,
+        "ndcg_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "essential_recall_at_k": {
+          "1": 1.0,
+          "3": 1.0,
+          "5": 1.0,
+          "10": 1.0,
+          "20": 1.0
+        },
+        "first_relevant_rank": 1,
+        "total_relevant": 1,
+        "total_essential": 1
+      },
+      "qa_metrics": {
+        "bleu_score": 0.0037723154915721355,
+        "rouge_1_f1": 0.15384615384615385,
+        "rouge_2_f1": 0.08,
+        "rouge_l_f1": 0.07692307692307693,
+        "semantic_similarity": 0.21021303534507751,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
+          "Recognize JNC8 (2014) is outdated for ‘current’"
+        ],
+        "key_points_missing": [
+          "Explicit abstention for ‘current’ guideline ask",
+          "Sets recency_risk = true"
+        ],
+        "answer_length": 26,
+        "has_answer": true,
+        "factual_accuracy": null,
+        "helpfulness": null
+      },
+      "retrieval_results": [
+        {
+          "chunk_id": "lexi-hypertension-2014#jnc8",
+          "score": 0.0,
+          "rank": 1
+        }
+      ],
+      "context_chunks": [
+        {
+          "chunk_id": "lexi-hypertension-2014#jnc8",
+          "role": "support",
+          "text": "Corpus contains JNC8 (2014) content. If the question asks for the *current* guideline, abstain and flag recency risk rather than quoting outdated recommendations."
+        }
+      ],
+      "failure_analysis": {
+        "question_id": "q013",
+        "question": "What is the current first-line pharmacologic therapy per latest hypertension guidelines?",
+        "failure_types": [
+          "qa_incorrect",
+          "qa_incomplete",
+          "e2e_low_quality"
+        ],
+        "retrieved_chunks": [
+          {
+            "chunk_id": "lexi-hypertension-2014#jnc8",
+            "score": 0.0,
+            "rank": 1
+          }
+        ],
+        "relevant_chunks_found": [
+          "lexi-hypertension-2014#jnc8"
+        ],
+        "essential_chunks_missed": [],
+        "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": null, \"max_daily_mg\": null, \"rounding\": null, \"calc_rule\": null, \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current hypertension management.\"}",
+        "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
+        "key_points_missing": [
+          "Explicit abstention for ‘current’ guideline ask",
+          "Sets recency_risk = true"
+        ],
+        "retrieval_metrics": {
+          "recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "precision_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "mean_reciprocal_rank": 1.0,
+          "average_precision": 1.0,
+          "ndcg_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "essential_recall_at_k": {
+            "1": 1.0,
+            "3": 1.0,
+            "5": 1.0,
+            "10": 1.0,
+            "20": 1.0
+          },
+          "first_relevant_rank": 1,
+          "total_relevant": 1,
+          "total_essential": 1
+        },
+        "qa_metrics": {
+          "bleu_score": 0.0037723154915721355,
+          "rouge_1_f1": 0.15384615384615385,
+          "rouge_2_f1": 0.08,
+          "rouge_l_f1": 0.07692307692307693,
+          "semantic_similarity": 0.21021303534507751,
+          "key_points_covered": 0.3333333333333333,
+          "key_points_found": [
+            "Recognize JNC8 (2014) is outdated for ‘current’"
+          ],
+          "key_points_missing": [
+            "Explicit abstention for ‘current’ guideline ask",
+            "Sets recency_risk = true"
+          ],
+          "answer_length": 26,
+          "has_answer": true,
+          "factual_accuracy": null,
+          "helpfulness": null
+        },
+        "root_cause": "qa_system",
+        "severity": "high",
+        "notes": null
+      }
+    }
+  ]
+}

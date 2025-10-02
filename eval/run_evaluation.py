@@ -25,22 +25,25 @@ from eval.qa_metrics import QAEvaluator, aggregate_qa_metrics, format_qa_metrics
 from eval.failure_analysis import FailureAnalyzer, generate_failure_report
 from eval.serialization import to_serializable
 from eval.llm_client import LLMClient, config_from_args
+from eval.judge_results import execute_judge
 
 
 class PharmacyCopilotEvaluator:
     """End-to-end evaluator for the pharmacy copilot system."""
-    
+
     def __init__(
         self,
         service_url: str = "http://localhost:8001",
         timeout: float = 30.0,
         top_k_retrieval: int = 10,
         llm_client: Optional[LLMClient] = None,
+        oracle_context: bool = False,
     ):
         self.service_url = service_url
         self.timeout = timeout
         self.top_k_retrieval = top_k_retrieval
         self.llm_client = llm_client
+        self.oracle_context = oracle_context
         
         # Initialize evaluators
         self.qa_evaluator = QAEvaluator()
@@ -106,6 +109,8 @@ class PharmacyCopilotEvaluator:
                 question=question.question,
                 contexts=search_results,
                 key_points=question.answer_key_points,
+                allowed_chunk_ids=(question.judge_metadata or {}).get("allowed_chunk_ids") if hasattr(question, "judge_metadata") else None,
+                disallowed_chunk_ids=(question.judge_metadata or {}).get("disallowed_chunk_ids") if hasattr(question, "judge_metadata") else None,
             )
         return self._generate_answer_stub(question.question, search_results)
 
@@ -114,8 +119,11 @@ class PharmacyCopilotEvaluator:
         print(f"Evaluating question {question.id}: {question.question[:50]}...")
         
         # Call search service
-        search_response = await self._call_search_service(question.question)
-        search_results = search_response.get("results", [])
+        if self.oracle_context and getattr(question, "oracle_context", None):
+            search_results = question.oracle_context or []
+        else:
+            search_response = await self._call_search_service(question.question)
+            search_results = search_response.get("results", [])
         
         # Convert to RetrievalResult format
         retrieved = [
@@ -234,6 +242,13 @@ async def main():
     parser.add_argument("--report", type=Path, help="Output file for human-readable report (Markdown)")
     parser.add_argument("--timeout", type=float, default=float(os.getenv("EVAL_TIMEOUT", "30.0")), help="Request timeout in seconds")
     parser.add_argument("--top-k", type=int, default=int(os.getenv("EVAL_TOP_K", "10")), help="Number of chunks to retrieve")
+    parser.add_argument("--oracle-context", action="store_true", help="Use oracle context from dataset instead of live retrieval")
+    parser.add_argument("--auto-judge", action="store_true", help="Run GPT-4o mini judge after evaluation")
+    parser.add_argument("--judge-output", help="Path to save judge JSON (defaults to <json_output>_judge.json)")
+    parser.add_argument("--judge-llm-provider", default="openrouter", help="Judge LLM provider (default: openrouter)")
+    parser.add_argument("--judge-llm-model", default="openrouter/openai/gpt-4o-mini", help="Judge LLM model identifier")
+    parser.add_argument("--judge-llm-base-url", help="Judge LLM base URL override")
+    parser.add_argument("--judge-timeout", type=float, default=60.0, help="Judge LLM timeout in seconds")
     parser.add_argument("--use-llm", action="store_true", help="Generate answers with a configured LLM instead of snippet concatenation")
     parser.add_argument("--llm-provider", help="LLM provider identifier (ollama, openai, etc.)")
     parser.add_argument("--llm-model", help="LLM model name")
@@ -269,7 +284,11 @@ async def main():
     
     if args.output and not args.json_output:
         print("⚠️ --output is deprecated; please use --json-output going forward.")
-    json_output_path = args.json_output or args.output
+    json_output_path = None
+    if args.json_output:
+        json_output_path = Path(args.json_output)
+    elif args.output:
+        json_output_path = Path(args.output)
 
     async with AsyncExitStack() as stack:
         llm_client: Optional[LLMClient] = None
@@ -284,6 +303,7 @@ async def main():
             timeout=args.timeout,
             top_k_retrieval=args.top_k,
             llm_client=llm_client,
+            oracle_context=args.oracle_context,
         )
         await stack.enter_async_context(evaluator)
 
@@ -339,6 +359,28 @@ async def main():
             with args.report.open("w", encoding="utf-8") as f:
                 f.write(report)
             print(f"📄 Report saved to: {args.report}")
+
+        if args.auto_judge:
+            if not json_output_path:
+                print("⚠️ Auto-judge requested but --json-output was not provided. Skipping judge run.")
+            else:
+                judge_output_path = Path(args.judge_output) if args.judge_output else json_output_path.with_name(json_output_path.stem + "_judge.json")
+                print(f"⚖️ Running judge using {args.judge_llm_model}...")
+                await asyncio.to_thread(
+                    execute_judge,
+                    json_output_path,
+                    Path(args.dataset),
+                    judge_output_path,
+                    args.judge_llm_provider,
+                    args.judge_llm_model,
+                    args.judge_llm_base_url,
+                    None,
+                    None,
+                    None,
+                    None,
+                    args.judge_timeout,
+                )
+                print(f"📝 Judge results saved to: {judge_output_path}")
 
     return 0
 
