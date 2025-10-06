@@ -1,0 +1,100 @@
+{
+  "results": [
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The answer correctly calculates the dose, volume, frequency, and maximum daily dose, and cites appropriate chunks. However, the rounding rule is slightly misphrased but still acceptable.",
+      "question_id": "q001",
+      "question": "5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?"
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The answer correctly calculates the dose and volume, cites appropriate chunks, and adheres to the maximum daily dose. All clinically substantive fields are supported.",
+      "question_id": "q002",
+      "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?"
+    },
+    {
+      "score": 80,
+      "verdict": "manual_review",
+      "rationale": "The answer correctly provides the dose, volume, frequency, and maximum daily dose, but the rounding rule is not supported by the evidence. The notes mention caution in dehydration or renal risk, which is acceptable, but the rounding rule is not aligned with the gold reference.",
+      "question_id": "q003",
+      "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?"
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The answer correctly identifies the dose of apixaban as 2.5 mg BID based on the criteria met, cites appropriate chunks for support, and includes necessary interaction warnings. All clinically substantive fields are supported.",
+      "question_id": "q004",
+      "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?"
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The answer correctly provides the enoxaparin dose of 85 mg per dose, frequency of q12h, and cites an allowed chunk. It also includes the renal adjustment information, fulfilling the requirements.",
+      "question_id": "q005",
+      "question": "85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?"
+    },
+    {
+      "score": 80,
+      "verdict": "manual_review",
+      "rationale": "The answer correctly identifies metformin as contraindicated at eGFR <30 and cites one allowed chunk. However, it lacks coverage for the recommendation to avoid initiation at eGFR 30–45 and does not mention the need to reduce dose and monitor if continuing, which is critical information.",
+      "question_id": "q006",
+      "question": "Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?"
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The model correctly advises against nitrofurantoin use at eGFR 25 mL/min, citing appropriate evidence and rationale.",
+      "question_id": "q007",
+      "question": "Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?"
+    },
+    {
+      "score": 75,
+      "verdict": "manual_review",
+      "rationale": "The model correctly identifies the major interaction and mechanism but does not explicitly state the severity or action in the expected format. It cites the correct chunk but lacks clarity in the action recommendation.",
+      "question_id": "q008",
+      "question": "Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?"
+    },
+    {
+      "score": 70,
+      "verdict": "manual_review",
+      "rationale": "The model correctly identifies the major interaction and cites the appropriate chunk, but the action is not clearly stated as 'avoid coadministration' and the frequency is inaccurately noted as 'hold' instead of specifying avoidance.",
+      "question_id": "q009",
+      "question": "Patient on atorvastatin needs clarithromycin. What’s the risk and action?"
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The model correctly identifies the major interaction and provides appropriate actions. It cites an allowed chunk and covers the key points, although it lacks specific numeric values for dose and frequency.",
+      "question_id": "q010",
+      "question": "Starting linezolid in a patient on sertraline. Is this safe?"
+    },
+    {
+      "score": 80,
+      "verdict": "manual_review",
+      "rationale": "The model correctly identifies the major interaction and the need to reduce the digoxin dose by 30-50%, citing the appropriate chunk. However, it does not explicitly mention the mechanism of action (P-gp inhibition) in the main response, which is a critical aspect of the interaction management.",
+      "question_id": "q011",
+      "question": "Patient on digoxin will start amiodarone. What’s the interaction management?"
+    },
+    {
+      "score": 70,
+      "verdict": "manual_review",
+      "rationale": "The model correctly abstains and advises consulting current guidance, but the evidence coverage for the explicit abstention is not fully supported by the allowed chunk.",
+      "question_id": "q012",
+      "question": "COVID-19 patient asks for Paxlovid dosing and interaction checks."
+    },
+    {
+      "score": 85,
+      "verdict": "pass",
+      "rationale": "The model correctly abstains from providing current guidelines, cites the outdated JNC8 (2014) reference, and sets recency risk. All key points are covered.",
+      "question_id": "q013",
+      "question": "What is the current first-line pharmacologic therapy per latest hypertension guidelines?"
+    }
+  ],
+  "summary": {
+    "mean_score": 80.76923076923077,
+    "median_score": 85,
+    "count": 13
+  }
+}

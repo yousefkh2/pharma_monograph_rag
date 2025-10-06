@@ -27,7 +27,7 @@ DEFAULT_SYSTEM_PROMPT = textwrap.dedent(
       }
     – Normalize units to mg and mL. Choose the specific value implied by the question (e.g., high-dose AOM = 90 mg/kg/day).
     – "calc_rule" must state the governing rule or formula used.
-    – "citations" must list only allowed chunk IDs that justify every numeric statement.
+    – "citations" must list only allowed chunk IDs that justify every clinically substantive claim and numeric statement (dose, frequency, regimen choice, max caps, rounding rule if stated, contraindications/DDIs used).
     – "notes" must be exactly one sentence summarising the clinical guidance.
     – Use q-notation for frequency (e.g., q6h, q12h).
     – Round mL to one decimal (≥5 mL may be rounded to whole mL). Describe the rounding in "rounding".

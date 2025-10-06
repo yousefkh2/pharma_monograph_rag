@@ -2,8 +2,8 @@
 
 **Dataset**: pharmacy_copilot_pharmacist_eval_v1
 **Questions**: 13
-**Evaluation Time**: 38.60 seconds
-**Average Time per Question**: 2.97 seconds
+**Evaluation Time**: 48.28 seconds
+**Average Time per Question**: 3.71 seconds
 
 
 === Aggregated Retrieval Metrics ===
@@ -50,40 +50,31 @@
 
 📝 Answer Quality:
   Has Answer: True
-  Answer Length: 32 words
+  Answer Length: 30 words
 
 📊 Lexical Overlap:
-  BLEU: 0.023
-  ROUGE-1 F1: 0.320
-  ROUGE-2 F1: 0.146
-  ROUGE-L F1: 0.229
+  BLEU: 0.025
+  ROUGE-1 F1: 0.323
+  ROUGE-2 F1: 0.153
+  ROUGE-L F1: 0.233
 
-🧠 Semantic Similarity: 0.514
+🧠 Semantic Similarity: 0.605
 
-🎯 Key Points Coverage: 0.122
+🎯 Key Points Coverage: 0.253
 
 # Failure Analysis Report
 
 ## Summary
 - **Total Failures**: 13
-- **By Severity**: {'critical': 1, 'high': 7, 'medium': 5}
+- **By Severity**: {'high': 7, 'medium': 6}
 - **By Root Cause**: {'both_systems': 5, 'qa_system': 8}
 
 ## Failure Types
-- **e2e_low_quality**: 8 (61.5%)
-- **qa_incomplete**: 12 (92.3%)
+- **e2e_low_quality**: 6 (46.2%)
+- **qa_incomplete**: 13 (100.0%)
 - **qa_incorrect**: 7 (53.8%)
-- **qa_no_answer**: 1 (7.7%)
 - **retrieval_irrelevant**: 5 (38.5%)
 - **retrieval_miss**: 1 (7.7%)
-
-## Critical Failures
-### q011
-**Question**: Patient on digoxin will start amiodarone. What’s the interaction management?
-**Failure Types**: ['retrieval_irrelevant', 'qa_no_answer', 'e2e_low_quality']
-**Root Cause**: both_systems
-**Generated**: ...
-**Expected**: Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG....
 
 ## High Severity Failures
 ### q004

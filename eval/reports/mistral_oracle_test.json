@@ -6,7 +6,7 @@
   },
   "metadata": {
     "question_count": 13,
-    "evaluation_time": 38.59561514854431
+    "evaluation_time": 36.630980014801025
   },
   "aggregated_metrics": {
     "retrieval": {
@@ -45,15 +45,15 @@
       "total_essential": 12
     },
     "qa": {
-      "bleu_score": 0.022999393797347632,
-      "rouge_1_f1": 0.31971367872319484,
-      "rouge_2_f1": 0.14591924102617468,
-      "rouge_l_f1": 0.22872508253455115,
-      "semantic_similarity": 0.5141194623250228,
-      "key_points_covered": 0.12179487179487178,
+      "bleu_score": 0.028045020904268345,
+      "rouge_1_f1": 0.3518275331126603,
+      "rouge_2_f1": 0.16845839732471155,
+      "rouge_l_f1": 0.2457091951713097,
+      "semantic_similarity": 0.5623397552050077,
+      "key_points_covered": 0.19871794871794873,
       "key_points_found": [],
       "key_points_missing": [],
-      "answer_length": 32,
+      "answer_length": 37,
       "has_answer": true,
       "factual_accuracy": null,
       "helpfulness": null
@@ -88,7 +88,7 @@
         "lexi-amoxicillin-2018#peds"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"volume rounded to 10 mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 doses = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 810,\n  \"volume_per_dose_mL\": 10.1,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": 4000,\n  \"rounding\": \"rounding to practical mL is acceptable\",\n  \"calc_rule\": \"80-90 mg/kg/day for pediatric AOM, 18 kg child, 810 mg per dose\",\n  \"citations\": [\"lexi-amoxicillin-2018#dosage\"],\n  \"notes\": \"Use 400 mg/5 mL suspension, rounding to 10 mL is acceptable\"\n}",
       "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
       "key_points_missing": [
         "Uses high-dose 80–90 mg/kg/day regimen",
@@ -135,11 +135,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.017343155406919743,
-        "rouge_1_f1": 0.49019607843137253,
-        "rouge_2_f1": 0.26,
-        "rouge_l_f1": 0.2549019607843137,
-        "semantic_similarity": 0.7492385506629944,
+        "bleu_score": 0.049170665107362836,
+        "rouge_1_f1": 0.5454545454545454,
+        "rouge_2_f1": 0.32558139534883723,
+        "rouge_l_f1": 0.36363636363636365,
+        "semantic_similarity": 0.722523033618927,
         "key_points_covered": 0.0,
         "key_points_found": [],
         "key_points_missing": [
@@ -151,7 +151,7 @@
           "No renal adjustment if normal function",
           "Cites pediatric dosage section"
         ],
-        "answer_length": 35,
+        "answer_length": 44,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -164,6 +164,7 @@
       "question_id": "q002",
       "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
       "failure_types": [
+        "qa_incorrect",
         "qa_incomplete"
       ],
       "retrieved_chunks": [
@@ -188,11 +189,12 @@
         "lexi-acetaminophen-2018#peds-dosing"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "{\"dose_per_dose_mg\":180,\"volume_per_dose_mL\":5.6,\"frequency\":\"q6h\",\"max_daily_mg\":900,\"rounding\":\"volume rounded to one decimal\",\"calc_rule\":\"15 mg/kg/dose × 12 kg = 180 mg/dose; 180 mg ÷ 32 mg/mL = 5.625 mL (rounded to 5.6 mL); 180 mg/dose × 5 doses = 900 mg/day (≤75 mg/kg/day × 12 kg)\",\"citations\":[\"lexi-acetaminophen-2018#peds-dosing\",\"lexi-acetaminophen-2018#max\"],\"notes\":\"Use 15 mg/kg/dose q6h for fever in a 12 kg child.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
       "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
       "key_points_missing": [
         "Per-dose 15 mg/kg used",
         "q4–6h acceptable; target q6h in calc",
+        "180 mg per dose for 12 kg",
         "Volume ≈5.625 mL from 32 mg/mL",
         "Daily max 75 mg/kg/day and ≤4 g",
         "Pediatric dosing section cited"
@@ -233,35 +235,35 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.012790111752520098,
-        "rouge_1_f1": 0.42975206611570255,
-        "rouge_2_f1": 0.2521008403361345,
-        "rouge_l_f1": 0.3140495867768595,
-        "semantic_similarity": 0.7506438493728638,
-        "key_points_covered": 0.16666666666666666,
-        "key_points_found": [
-          "180 mg per dose for 12 kg"
-        ],
+        "bleu_score": 0.01990229309015536,
+        "rouge_1_f1": 0.5098039215686274,
+        "rouge_2_f1": 0.26,
+        "rouge_l_f1": 0.37254901960784315,
+        "semantic_similarity": 0.6983720660209656,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
         "key_points_missing": [
           "Per-dose 15 mg/kg used",
           "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
           "Volume ≈5.625 mL from 32 mg/mL",
           "Daily max 75 mg/kg/day and ≤4 g",
           "Pediatric dosing section cited"
         ],
-        "answer_length": 47,
+        "answer_length": 44,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
       },
       "root_cause": "qa_system",
-      "severity": "medium",
+      "severity": "high",
       "notes": null
     },
     {
       "question_id": "q003",
       "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
       "failure_types": [
+        "qa_incorrect",
         "qa_incomplete"
       ],
       "retrieved_chunks": [
@@ -286,9 +288,10 @@
         "lexi-ibuprofen-2018#peds-dosing"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6,\n  \"frequency\": \"q6h-q8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, q6-8h, max 40 mg/kg/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg per dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
       "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
       "key_points_missing": [
+        "10 mg/kg per dose",
         "q6–8h frequency",
         "120 mg per dose for 12 kg",
         "6 mL at 20 mg/mL",
@@ -331,29 +334,28 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.03422889064182968,
-        "rouge_1_f1": 0.5242718446601942,
-        "rouge_2_f1": 0.21782178217821777,
-        "rouge_l_f1": 0.3300970873786408,
-        "semantic_similarity": 0.7427911758422852,
-        "key_points_covered": 0.16666666666666666,
-        "key_points_found": [
-          "10 mg/kg per dose"
-        ],
+        "bleu_score": 0.03174113892916949,
+        "rouge_1_f1": 0.54,
+        "rouge_2_f1": 0.22448979591836735,
+        "rouge_l_f1": 0.32,
+        "semantic_similarity": 0.6980445384979248,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
         "key_points_missing": [
+          "10 mg/kg per dose",
           "q6–8h frequency",
           "120 mg per dose for 12 kg",
           "6 mL at 20 mg/mL",
           "Max 40 mg/kg/day (480 mg)",
           "Contraindication: <6 months; caution renal/dehydration"
         ],
-        "answer_length": 46,
+        "answer_length": 43,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
       },
       "root_cause": "qa_system",
-      "severity": "medium",
+      "severity": "high",
       "notes": null
     },
     {
@@ -361,8 +363,7 @@
       "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
       "failure_types": [
         "qa_incorrect",
-        "qa_incomplete",
-        "e2e_low_quality"
+        "qa_incomplete"
       ],
       "retrieved_chunks": [
         {
@@ -386,10 +387,9 @@
         "lexi-apixaban-2018#dosing-nvaf"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "{\n  \"dose_per_dose_mg\": 2.5,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"BID\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.5 mg\",\n  \"calc_rule\": \"Reduce NVAF dose to 2.5 mg BID if patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL\",\n  \"citations\": [\"lexi-apixaban-2018#dosing-nvaf\"],\n  \"notes\": \"Avoid strong CYP3A4/P-gp inhibitors/inducers and assess hepatic impairment.\"",
+      "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, SCr ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
       "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
       "key_points_missing": [
-        "Dose reduction criteria (2 of 3)",
         "Interaction caveat: strong CYP3A4/P-gp",
         "Hepatic impairment caution"
       ],
@@ -429,21 +429,21 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.06415002032419974,
-        "rouge_1_f1": 0.42553191489361697,
-        "rouge_2_f1": 0.2608695652173913,
-        "rouge_l_f1": 0.40425531914893614,
-        "semantic_similarity": 0.540663480758667,
-        "key_points_covered": 0.25,
+        "bleu_score": 0.09773203328422657,
+        "rouge_1_f1": 0.3950617283950617,
+        "rouge_2_f1": 0.27848101265822783,
+        "rouge_l_f1": 0.345679012345679,
+        "semantic_similarity": 0.534562885761261,
+        "key_points_covered": 0.5,
         "key_points_found": [
+          "Dose reduction criteria (2 of 3)",
           "Final dose 2.5 mg BID"
         ],
         "key_points_missing": [
-          "Dose reduction criteria (2 of 3)",
           "Interaction caveat: strong CYP3A4/P-gp",
           "Hepatic impairment caution"
         ],
-        "answer_length": 50,
+        "answer_length": 24,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -480,13 +480,10 @@
         "lexi-enoxaparin-2018#renal"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin is dosed by weight for acute DVT treatment.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 85,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest whole number\",\n  \"calc_rule\": \"1 mg/kg q12h (primary regimen) or 1.5 mg/kg q24h (alternative) for normal renal function\",\n  \"citations\": [\"lexi-enoxaparin-2018#dosing\"],\n  \"notes\": \"Renal adjustment may be necessary for CrCl <30 (lexi-enoxaparin-2018#renal)\"\n}",
       "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
       "key_points_missing": [
-        "1 mg/kg q12h primary regimen",
-        "Alternative 1.5 mg/kg q24h",
-        "Per-dose 85 mg for 85 kg",
-        "Renal adjustment for CrCl <30"
+        "Per-dose 85 mg for 85 kg"
       ],
       "retrieval_metrics": {
         "recall_at_k": {
@@ -524,20 +521,21 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.035915449791025796,
-        "rouge_1_f1": 0.3661971830985915,
-        "rouge_2_f1": 0.14492753623188406,
-        "rouge_l_f1": 0.22535211267605634,
-        "semantic_similarity": 0.7254299521446228,
-        "key_points_covered": 0.0,
-        "key_points_found": [],
-        "key_points_missing": [
+        "bleu_score": 0.021200871506368693,
+        "rouge_1_f1": 0.45454545454545453,
+        "rouge_2_f1": 0.18604651162790697,
+        "rouge_l_f1": 0.2727272727272727,
+        "semantic_similarity": 0.7814668416976929,
+        "key_points_covered": 0.75,
+        "key_points_found": [
           "1 mg/kg q12h primary regimen",
           "Alternative 1.5 mg/kg q24h",
-          "Per-dose 85 mg for 85 kg",
           "Renal adjustment for CrCl <30"
         ],
-        "answer_length": 14,
+        "key_points_missing": [
+          "Per-dose 85 mg for 85 kg"
+        ],
+        "answer_length": 43,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -935,7 +933,7 @@
         "lexi-linezolid-2018#ddi-ssri"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome; if unavoidable, withhold SSRI and monitor closely.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid combination due to linezolid's reversible MAOI activity precipitating serotonin syndrome with SSRIs\",\n  \"citations\": [\"lexi-linezolid-2018#ddi-ssri\"],\n  \"notes\": \"Avoid combination of linezolid and SSRIs due to risk of serotonin syndrome\"\n}",
       "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
       "key_points_missing": [
         "Mechanism: MAOI activity → ↑serotonin",
@@ -978,11 +976,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.05485137356406637,
-        "rouge_1_f1": 0.3384615384615385,
-        "rouge_2_f1": 0.12698412698412698,
-        "rouge_l_f1": 0.27692307692307694,
-        "semantic_similarity": 0.43542739748954773,
+        "bleu_score": 0.03539596914884462,
+        "rouge_1_f1": 0.24,
+        "rouge_2_f1": 0.10958904109589042,
+        "rouge_l_f1": 0.13333333333333333,
+        "semantic_similarity": 0.5544469356536865,
         "key_points_covered": 0.0,
         "key_points_found": [],
         "key_points_missing": [
@@ -990,7 +988,7 @@
           "Severity: major",
           "Action: avoid; or stop SSRI/close monitoring if unavoidable"
         ],
-        "answer_length": 16,
+        "answer_length": 42,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -1004,8 +1002,8 @@
       "question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
       "failure_types": [
         "retrieval_irrelevant",
-        "qa_no_answer",
-        "e2e_low_quality"
+        "qa_incorrect",
+        "qa_incomplete"
       ],
       "retrieved_chunks": [
         {
@@ -1023,12 +1021,11 @@
         "lexi-digoxin-2018#ddi-amio"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
       "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
       "key_points_missing": [
         "Mechanism: P-gp inhibition → ↑digoxin",
-        "Severity: major",
-        "Action: reduce dose ~30–50% + monitor levels and ECG"
+        "Severity: major"
       ],
       "retrieval_metrics": {
         "recall_at_k": {
@@ -1066,25 +1063,26 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.0,
-        "rouge_1_f1": 0.0,
-        "rouge_2_f1": 0.0,
-        "rouge_l_f1": 0.0,
-        "semantic_similarity": 0.0,
-        "key_points_covered": 0.0,
-        "key_points_found": [],
-        "key_points_missing": [
-          "Mechanism: P-gp inhibition → ↑digoxin",
-          "Severity: major",
+        "bleu_score": 0.03210641011174957,
+        "rouge_1_f1": 0.33766233766233766,
+        "rouge_2_f1": 0.18666666666666668,
+        "rouge_l_f1": 0.2337662337662338,
+        "semantic_similarity": 0.6881264448165894,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
           "Action: reduce dose ~30–50% + monitor levels and ECG"
         ],
-        "answer_length": 0,
-        "has_answer": false,
+        "key_points_missing": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
       },
       "root_cause": "both_systems",
-      "severity": "critical",
+      "severity": "high",
       "notes": null
     },
     {
@@ -1189,7 +1187,7 @@
         "lexi-hypertension-2014#jnc8"
       ],
       "essential_chunks_missed": [],
-      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"qd\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to whole mg\",\n  \"calc_rule\": \"Recency risk: JNC8 (2014) is outdated for current guideline\",\n  \"citations\": [\"lexi-hypertension-2014#jnc8\"],\n  \"notes\": \"Current guidelines should be consulted for first-line pharmacologic therapy for hypertension.\"\n}",
+      "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": \"\", \"max_daily_mg\": null, \"rounding\": \"\", \"calc_rule\": \"\", \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current first-line hypertension therapy.\"}",
       "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
       "key_points_missing": [
         "Explicit abstention for ‘current’ guideline ask",
@@ -1231,11 +1229,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.005946955442598485,
-        "rouge_1_f1": 0.1875,
-        "rouge_2_f1": 0.0967741935483871,
-        "rouge_l_f1": 0.09375,
-        "semantic_similarity": 0.32051828503608704,
+        "bleu_score": 0.0035697281352520416,
+        "rouge_1_f1": 0.1568627450980392,
+        "rouge_2_f1": 0.0816326530612245,
+        "rouge_l_f1": 0.0784313725490196,
+        "semantic_similarity": 0.21403375267982483,
         "key_points_covered": 0.3333333333333333,
         "key_points_found": [
           "Recognize JNC8 (2014) is outdated for ‘current’"
@@ -1244,7 +1242,7 @@
           "Explicit abstention for ‘current’ guideline ask",
           "Sets recency_risk = true"
         ],
-        "answer_length": 39,
+        "answer_length": 27,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -1342,7 +1340,7 @@
           ]
         }
       },
-      "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"volume rounded to 10 mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 doses = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 810,\n  \"volume_per_dose_mL\": 10.1,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": 4000,\n  \"rounding\": \"rounding to practical mL is acceptable\",\n  \"calc_rule\": \"80-90 mg/kg/day for pediatric AOM, 18 kg child, 810 mg per dose\",\n  \"citations\": [\"lexi-amoxicillin-2018#dosage\"],\n  \"notes\": \"Use 400 mg/5 mL suspension, rounding to 10 mL is acceptable\"\n}",
       "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -1380,11 +1378,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.017343155406919743,
-        "rouge_1_f1": 0.49019607843137253,
-        "rouge_2_f1": 0.26,
-        "rouge_l_f1": 0.2549019607843137,
-        "semantic_similarity": 0.7492385506629944,
+        "bleu_score": 0.049170665107362836,
+        "rouge_1_f1": 0.5454545454545454,
+        "rouge_2_f1": 0.32558139534883723,
+        "rouge_l_f1": 0.36363636363636365,
+        "semantic_similarity": 0.722523033618927,
         "key_points_covered": 0.0,
         "key_points_found": [],
         "key_points_missing": [
@@ -1396,7 +1394,7 @@
           "No renal adjustment if normal function",
           "Cites pediatric dosage section"
         ],
-        "answer_length": 35,
+        "answer_length": 44,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -1463,7 +1461,7 @@
           "lexi-amoxicillin-2018#peds"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "<s> {\"dose_per_dose_mg\":810,\"volume_per_dose_mL\":10.1,\"frequency\":\"q12h\",\"max_daily_mg\":4000,\"rounding\":\"volume rounded to 10 mL\",\"calc_rule\":\"80 mg/kg/day × 18 kg = 1440 mg/day ÷ 2 doses = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension\",\"citations\":[\"lexi-amoxicillin-2018#dosage\",\"lexi-amoxicillin-2018#peds\"],\"notes\":\"High-dose amoxicillin 80–90 mg/kg/day for pediatric AOM\"}",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 810,\n  \"volume_per_dose_mL\": 10.1,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": 4000,\n  \"rounding\": \"rounding to practical mL is acceptable\",\n  \"calc_rule\": \"80-90 mg/kg/day for pediatric AOM, 18 kg child, 810 mg per dose\",\n  \"citations\": [\"lexi-amoxicillin-2018#dosage\"],\n  \"notes\": \"Use 400 mg/5 mL suspension, rounding to 10 mL is acceptable\"\n}",
         "expected_answer": "Amoxicillin 90 mg/kg/day divided q12h → 810 mg per dose (≈10.1 mL of 400 mg/5 mL), round to 10 mL per dose; max 4 g/day.",
         "key_points_missing": [
           "Uses high-dose 80–90 mg/kg/day regimen",
@@ -1510,11 +1508,11 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.017343155406919743,
-          "rouge_1_f1": 0.49019607843137253,
-          "rouge_2_f1": 0.26,
-          "rouge_l_f1": 0.2549019607843137,
-          "semantic_similarity": 0.7492385506629944,
+          "bleu_score": 0.049170665107362836,
+          "rouge_1_f1": 0.5454545454545454,
+          "rouge_2_f1": 0.32558139534883723,
+          "rouge_l_f1": 0.36363636363636365,
+          "semantic_similarity": 0.722523033618927,
           "key_points_covered": 0.0,
           "key_points_found": [],
           "key_points_missing": [
@@ -1526,7 +1524,7 @@
             "No renal adjustment if normal function",
             "Cites pediatric dosage section"
           ],
-          "answer_length": 35,
+          "answer_length": 44,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
@@ -1622,7 +1620,7 @@
           ]
         }
       },
-      "generated_answer": "{\"dose_per_dose_mg\":180,\"volume_per_dose_mL\":5.6,\"frequency\":\"q6h\",\"max_daily_mg\":900,\"rounding\":\"volume rounded to one decimal\",\"calc_rule\":\"15 mg/kg/dose × 12 kg = 180 mg/dose; 180 mg ÷ 32 mg/mL = 5.625 mL (rounded to 5.6 mL); 180 mg/dose × 5 doses = 900 mg/day (≤75 mg/kg/day × 12 kg)\",\"citations\":[\"lexi-acetaminophen-2018#peds-dosing\",\"lexi-acetaminophen-2018#max\"],\"notes\":\"Use 15 mg/kg/dose q6h for fever in a 12 kg child.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
       "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -1660,23 +1658,22 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.012790111752520098,
-        "rouge_1_f1": 0.42975206611570255,
-        "rouge_2_f1": 0.2521008403361345,
-        "rouge_l_f1": 0.3140495867768595,
-        "semantic_similarity": 0.7506438493728638,
-        "key_points_covered": 0.16666666666666666,
-        "key_points_found": [
-          "180 mg per dose for 12 kg"
-        ],
+        "bleu_score": 0.01990229309015536,
+        "rouge_1_f1": 0.5098039215686274,
+        "rouge_2_f1": 0.26,
+        "rouge_l_f1": 0.37254901960784315,
+        "semantic_similarity": 0.6983720660209656,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
         "key_points_missing": [
           "Per-dose 15 mg/kg used",
           "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
           "Volume ≈5.625 mL from 32 mg/mL",
           "Daily max 75 mg/kg/day and ≤4 g",
           "Pediatric dosing section cited"
         ],
-        "answer_length": 47,
+        "answer_length": 44,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -1719,6 +1716,7 @@
         "question_id": "q002",
         "question": "12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?",
         "failure_types": [
+          "qa_incorrect",
           "qa_incomplete"
         ],
         "retrieved_chunks": [
@@ -1743,11 +1741,12 @@
           "lexi-acetaminophen-2018#peds-dosing"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "{\"dose_per_dose_mg\":180,\"volume_per_dose_mL\":5.6,\"frequency\":\"q6h\",\"max_daily_mg\":900,\"rounding\":\"volume rounded to one decimal\",\"calc_rule\":\"15 mg/kg/dose × 12 kg = 180 mg/dose; 180 mg ÷ 32 mg/mL = 5.625 mL (rounded to 5.6 mL); 180 mg/dose × 5 doses = 900 mg/day (≤75 mg/kg/day × 12 kg)\",\"citations\":[\"lexi-acetaminophen-2018#peds-dosing\",\"lexi-acetaminophen-2018#max\"],\"notes\":\"Use 15 mg/kg/dose q6h for fever in a 12 kg child.\"}",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 180,\n  \"volume_per_dose_mL\": 5.625,\n  \"frequency\": \"q6h\",\n  \"max_daily_mg\": 1440,\n  \"max_daily_mL\": null,\n  \"rounding\": \"Rounded to one decimal (≥5 mL)\",\n  \"calc_rule\": \"15 mg/kg per dose, q4-6h, target q6h, 160 mg/5 mL, max 75 mg/kg/day or 4 g\",\n  \"citations\": [\"lexi-acetaminophen-2018#peds-dosing\", \"lexi-acetaminophen-2018#max\"],\n  \"notes\": \"Pediatric dosing; liquid form\"\n}",
         "expected_answer": "Acetaminophen 15 mg/kg/dose q6h (range 10–15 mg/kg q4–6h) → 180 mg per dose ≈5.6 mL of 160 mg/5 mL; max 75 mg/kg/day (900 mg), and ≤4 g absolute.",
         "key_points_missing": [
           "Per-dose 15 mg/kg used",
           "q4–6h acceptable; target q6h in calc",
+          "180 mg per dose for 12 kg",
           "Volume ≈5.625 mL from 32 mg/mL",
           "Daily max 75 mg/kg/day and ≤4 g",
           "Pediatric dosing section cited"
@@ -1788,29 +1787,28 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.012790111752520098,
-          "rouge_1_f1": 0.42975206611570255,
-          "rouge_2_f1": 0.2521008403361345,
-          "rouge_l_f1": 0.3140495867768595,
-          "semantic_similarity": 0.7506438493728638,
-          "key_points_covered": 0.16666666666666666,
-          "key_points_found": [
-            "180 mg per dose for 12 kg"
-          ],
+          "bleu_score": 0.01990229309015536,
+          "rouge_1_f1": 0.5098039215686274,
+          "rouge_2_f1": 0.26,
+          "rouge_l_f1": 0.37254901960784315,
+          "semantic_similarity": 0.6983720660209656,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
           "key_points_missing": [
             "Per-dose 15 mg/kg used",
             "q4–6h acceptable; target q6h in calc",
+            "180 mg per dose for 12 kg",
             "Volume ≈5.625 mL from 32 mg/mL",
             "Daily max 75 mg/kg/day and ≤4 g",
             "Pediatric dosing section cited"
           ],
-          "answer_length": 47,
+          "answer_length": 44,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
         },
         "root_cause": "qa_system",
-        "severity": "medium",
+        "severity": "high",
         "notes": null
       }
     },
@@ -1903,7 +1901,7 @@
           ]
         }
       },
-      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6,\n  \"frequency\": \"q6h-q8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, q6-8h, max 40 mg/kg/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg per dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
       "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -1941,23 +1939,22 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.03422889064182968,
-        "rouge_1_f1": 0.5242718446601942,
-        "rouge_2_f1": 0.21782178217821777,
-        "rouge_l_f1": 0.3300970873786408,
-        "semantic_similarity": 0.7427911758422852,
-        "key_points_covered": 0.16666666666666666,
-        "key_points_found": [
-          "10 mg/kg per dose"
-        ],
+        "bleu_score": 0.03174113892916949,
+        "rouge_1_f1": 0.54,
+        "rouge_2_f1": 0.22448979591836735,
+        "rouge_l_f1": 0.32,
+        "semantic_similarity": 0.6980445384979248,
+        "key_points_covered": 0.0,
+        "key_points_found": [],
         "key_points_missing": [
+          "10 mg/kg per dose",
           "q6–8h frequency",
           "120 mg per dose for 12 kg",
           "6 mL at 20 mg/mL",
           "Max 40 mg/kg/day (480 mg)",
           "Contraindication: <6 months; caution renal/dehydration"
         ],
-        "answer_length": 46,
+        "answer_length": 43,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -2000,6 +1997,7 @@
         "question_id": "q003",
         "question": "12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?",
         "failure_types": [
+          "qa_incorrect",
           "qa_incomplete"
         ],
         "retrieved_chunks": [
@@ -2024,9 +2022,10 @@
           "lexi-ibuprofen-2018#peds-dosing"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6,\n  \"frequency\": \"q6h-q8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, q6-8h, max 40 mg/kg/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg per dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 120,\n  \"volume_per_dose_mL\": 6.0,\n  \"frequency\": \"q6-8h\",\n  \"max_daily_mg\": 480,\n  \"rounding\": \"round to nearest 5 mL\",\n  \"calc_rule\": \"10 mg/kg/dose, max 4 doses/day\",\n  \"citations\": [\"lexi-ibuprofen-2018#peds-dosing\", \"lexi-ibuprofen-2018#max\"],\n  \"notes\": \"10 mg/kg/dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults\"\n}",
         "expected_answer": "Ibuprofen 10 mg/kg/dose q6–8h → 120 mg per dose (6 mL of 100 mg/5 mL); max 40 mg/kg/day (480 mg). Avoid if <6 months or dehydrated/renal issues.",
         "key_points_missing": [
+          "10 mg/kg per dose",
           "q6–8h frequency",
           "120 mg per dose for 12 kg",
           "6 mL at 20 mg/mL",
@@ -2069,29 +2068,28 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.03422889064182968,
-          "rouge_1_f1": 0.5242718446601942,
-          "rouge_2_f1": 0.21782178217821777,
-          "rouge_l_f1": 0.3300970873786408,
-          "semantic_similarity": 0.7427911758422852,
-          "key_points_covered": 0.16666666666666666,
-          "key_points_found": [
-            "10 mg/kg per dose"
-          ],
+          "bleu_score": 0.03174113892916949,
+          "rouge_1_f1": 0.54,
+          "rouge_2_f1": 0.22448979591836735,
+          "rouge_l_f1": 0.32,
+          "semantic_similarity": 0.6980445384979248,
+          "key_points_covered": 0.0,
+          "key_points_found": [],
           "key_points_missing": [
+            "10 mg/kg per dose",
             "q6–8h frequency",
             "120 mg per dose for 12 kg",
             "6 mL at 20 mg/mL",
             "Max 40 mg/kg/day (480 mg)",
             "Contraindication: <6 months; caution renal/dehydration"
           ],
-          "answer_length": 46,
+          "answer_length": 43,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
         },
         "root_cause": "qa_system",
-        "severity": "medium",
+        "severity": "high",
         "notes": null
       }
     },
@@ -2182,7 +2180,7 @@
           ]
         }
       },
-      "generated_answer": "{\n  \"dose_per_dose_mg\": 2.5,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"BID\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.5 mg\",\n  \"calc_rule\": \"Reduce NVAF dose to 2.5 mg BID if patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL\",\n  \"citations\": [\"lexi-apixaban-2018#dosing-nvaf\"],\n  \"notes\": \"Avoid strong CYP3A4/P-gp inhibitors/inducers and assess hepatic impairment.\"",
+      "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, SCr ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
       "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -2220,21 +2218,21 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.06415002032419974,
-        "rouge_1_f1": 0.42553191489361697,
-        "rouge_2_f1": 0.2608695652173913,
-        "rouge_l_f1": 0.40425531914893614,
-        "semantic_similarity": 0.540663480758667,
-        "key_points_covered": 0.25,
+        "bleu_score": 0.09773203328422657,
+        "rouge_1_f1": 0.3950617283950617,
+        "rouge_2_f1": 0.27848101265822783,
+        "rouge_l_f1": 0.345679012345679,
+        "semantic_similarity": 0.534562885761261,
+        "key_points_covered": 0.5,
         "key_points_found": [
+          "Dose reduction criteria (2 of 3)",
           "Final dose 2.5 mg BID"
         ],
         "key_points_missing": [
-          "Dose reduction criteria (2 of 3)",
           "Interaction caveat: strong CYP3A4/P-gp",
           "Hepatic impairment caution"
         ],
-        "answer_length": 50,
+        "answer_length": 24,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -2278,8 +2276,7 @@
         "question": "Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?",
         "failure_types": [
           "qa_incorrect",
-          "qa_incomplete",
-          "e2e_low_quality"
+          "qa_incomplete"
         ],
         "retrieved_chunks": [
           {
@@ -2303,10 +2300,9 @@
           "lexi-apixaban-2018#dosing-nvaf"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "{\n  \"dose_per_dose_mg\": 2.5,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"BID\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.5 mg\",\n  \"calc_rule\": \"Reduce NVAF dose to 2.5 mg BID if patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL\",\n  \"citations\": [\"lexi-apixaban-2018#dosing-nvaf\"],\n  \"notes\": \"Avoid strong CYP3A4/P-gp inhibitors/inducers and assess hepatic impairment.\"",
+        "generated_answer": "<s> {\"dose_per_dose_mg\":2.5,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":10,\"rounding\":\"none\",\"calc_rule\":\"2 of 3 criteria met (age ≥80 years, weight ≤60 kg, SCr ≥1.5 mg/dL)\",\"citations\":[\"lexi-apixaban-2018#dosing-nvaf\"],\"notes\":\"Dose reduced to 2.5 mg BID due to 2/3 criteria.\"}",
         "expected_answer": "Apixaban 2.5 mg BID (meets 2 of 3: age ≥80, weight ≤60 kg, SCr ≥1.5). Avoid with strong CYP3A4/P-gp inhibitors.",
         "key_points_missing": [
-          "Dose reduction criteria (2 of 3)",
           "Interaction caveat: strong CYP3A4/P-gp",
           "Hepatic impairment caution"
         ],
@@ -2346,21 +2342,21 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.06415002032419974,
-          "rouge_1_f1": 0.42553191489361697,
-          "rouge_2_f1": 0.2608695652173913,
-          "rouge_l_f1": 0.40425531914893614,
-          "semantic_similarity": 0.540663480758667,
-          "key_points_covered": 0.25,
+          "bleu_score": 0.09773203328422657,
+          "rouge_1_f1": 0.3950617283950617,
+          "rouge_2_f1": 0.27848101265822783,
+          "rouge_l_f1": 0.345679012345679,
+          "semantic_similarity": 0.534562885761261,
+          "key_points_covered": 0.5,
           "key_points_found": [
+            "Dose reduction criteria (2 of 3)",
             "Final dose 2.5 mg BID"
           ],
           "key_points_missing": [
-            "Dose reduction criteria (2 of 3)",
             "Interaction caveat: strong CYP3A4/P-gp",
             "Hepatic impairment caution"
           ],
-          "answer_length": 50,
+          "answer_length": 24,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
@@ -2452,7 +2448,7 @@
           ]
         }
       },
-      "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin is dosed by weight for acute DVT treatment.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": 85,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest whole number\",\n  \"calc_rule\": \"1 mg/kg q12h (primary regimen) or 1.5 mg/kg q24h (alternative) for normal renal function\",\n  \"citations\": [\"lexi-enoxaparin-2018#dosing\"],\n  \"notes\": \"Renal adjustment may be necessary for CrCl <30 (lexi-enoxaparin-2018#renal)\"\n}",
       "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -2490,20 +2486,21 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.035915449791025796,
-        "rouge_1_f1": 0.3661971830985915,
-        "rouge_2_f1": 0.14492753623188406,
-        "rouge_l_f1": 0.22535211267605634,
-        "semantic_similarity": 0.7254299521446228,
-        "key_points_covered": 0.0,
-        "key_points_found": [],
-        "key_points_missing": [
+        "bleu_score": 0.021200871506368693,
+        "rouge_1_f1": 0.45454545454545453,
+        "rouge_2_f1": 0.18604651162790697,
+        "rouge_l_f1": 0.2727272727272727,
+        "semantic_similarity": 0.7814668416976929,
+        "key_points_covered": 0.75,
+        "key_points_found": [
           "1 mg/kg q12h primary regimen",
           "Alternative 1.5 mg/kg q24h",
-          "Per-dose 85 mg for 85 kg",
           "Renal adjustment for CrCl <30"
         ],
-        "answer_length": 14,
+        "key_points_missing": [
+          "Per-dose 85 mg for 85 kg"
+        ],
+        "answer_length": 43,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -2570,13 +2567,10 @@
           "lexi-enoxaparin-2018#renal"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "<s> {\"dose_per_dose_mg\":85,\"volume_per_dose_mL\":null,\"frequency\":\"q12h\",\"max_daily_mg\":170,\"rounding\":\"none\",\"calc_rule\":\"1 mg/kg SC q12h (preferred)\",\"citations\":[\"lexi-enoxaparin-2018#dosing\"],\"notes\":\"Enoxaparin is dosed by weight for acute DVT treatment.\"}",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": 85,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest whole number\",\n  \"calc_rule\": \"1 mg/kg q12h (primary regimen) or 1.5 mg/kg q24h (alternative) for normal renal function\",\n  \"citations\": [\"lexi-enoxaparin-2018#dosing\"],\n  \"notes\": \"Renal adjustment may be necessary for CrCl <30 (lexi-enoxaparin-2018#renal)\"\n}",
         "expected_answer": "Enoxaparin 1 mg/kg SC q12h → 85 mg per dose (or 1.5 mg/kg once daily as alternative). If CrCl <30 mL/min: 1 mg/kg once daily.",
         "key_points_missing": [
-          "1 mg/kg q12h primary regimen",
-          "Alternative 1.5 mg/kg q24h",
-          "Per-dose 85 mg for 85 kg",
-          "Renal adjustment for CrCl <30"
+          "Per-dose 85 mg for 85 kg"
         ],
         "retrieval_metrics": {
           "recall_at_k": {
@@ -2614,20 +2608,21 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.035915449791025796,
-          "rouge_1_f1": 0.3661971830985915,
-          "rouge_2_f1": 0.14492753623188406,
-          "rouge_l_f1": 0.22535211267605634,
-          "semantic_similarity": 0.7254299521446228,
-          "key_points_covered": 0.0,
-          "key_points_found": [],
-          "key_points_missing": [
+          "bleu_score": 0.021200871506368693,
+          "rouge_1_f1": 0.45454545454545453,
+          "rouge_2_f1": 0.18604651162790697,
+          "rouge_l_f1": 0.2727272727272727,
+          "semantic_similarity": 0.7814668416976929,
+          "key_points_covered": 0.75,
+          "key_points_found": [
             "1 mg/kg q12h primary regimen",
             "Alternative 1.5 mg/kg q24h",
-            "Per-dose 85 mg for 85 kg",
             "Renal adjustment for CrCl <30"
           ],
-          "answer_length": 14,
+          "key_points_missing": [
+            "Per-dose 85 mg for 85 kg"
+          ],
+          "answer_length": 43,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
@@ -3700,7 +3695,7 @@
           ]
         }
       },
-      "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome; if unavoidable, withhold SSRI and monitor closely.\"}",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid combination due to linezolid's reversible MAOI activity precipitating serotonin syndrome with SSRIs\",\n  \"citations\": [\"lexi-linezolid-2018#ddi-ssri\"],\n  \"notes\": \"Avoid combination of linezolid and SSRIs due to risk of serotonin syndrome\"\n}",
       "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -3738,11 +3733,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.05485137356406637,
-        "rouge_1_f1": 0.3384615384615385,
-        "rouge_2_f1": 0.12698412698412698,
-        "rouge_l_f1": 0.27692307692307694,
-        "semantic_similarity": 0.43542739748954773,
+        "bleu_score": 0.03539596914884462,
+        "rouge_1_f1": 0.24,
+        "rouge_2_f1": 0.10958904109589042,
+        "rouge_l_f1": 0.13333333333333333,
+        "semantic_similarity": 0.5544469356536865,
         "key_points_covered": 0.0,
         "key_points_found": [],
         "key_points_missing": [
@@ -3750,7 +3745,7 @@
           "Severity: major",
           "Action: avoid; or stop SSRI/close monitoring if unavoidable"
         ],
-        "answer_length": 16,
+        "answer_length": 42,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -3804,7 +3799,7 @@
           "lexi-linezolid-2018#ddi-ssri"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "<s> {\"dose_per_dose_mg\":null,\"volume_per_dose_mL\":null,\"frequency\":null,\"max_daily_mg\":null,\"rounding\":null,\"calc_rule\":null,\"citations\":[\"lexi-linezolid-2018#ddi-ssri\"],\"notes\":\"Avoid combination due to risk of serotonin syndrome; if unavoidable, withhold SSRI and monitor closely.\"}",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": null,\n  \"max_daily_mg\": null,\n  \"rounding\": \"Not applicable\",\n  \"calc_rule\": \"Avoid combination due to linezolid's reversible MAOI activity precipitating serotonin syndrome with SSRIs\",\n  \"citations\": [\"lexi-linezolid-2018#ddi-ssri\"],\n  \"notes\": \"Avoid combination of linezolid and SSRIs due to risk of serotonin syndrome\"\n}",
         "expected_answer": "Major interaction: risk of serotonin syndrome (linezolid has MAOI activity). Avoid; if benefits outweigh risks, withhold SSRI or monitor very closely.",
         "key_points_missing": [
           "Mechanism: MAOI activity → ↑serotonin",
@@ -3847,11 +3842,11 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.05485137356406637,
-          "rouge_1_f1": 0.3384615384615385,
-          "rouge_2_f1": 0.12698412698412698,
-          "rouge_l_f1": 0.27692307692307694,
-          "semantic_similarity": 0.43542739748954773,
+          "bleu_score": 0.03539596914884462,
+          "rouge_1_f1": 0.24,
+          "rouge_2_f1": 0.10958904109589042,
+          "rouge_l_f1": 0.13333333333333333,
+          "semantic_similarity": 0.5544469356536865,
           "key_points_covered": 0.0,
           "key_points_found": [],
           "key_points_missing": [
@@ -3859,7 +3854,7 @@
             "Severity: major",
             "Action: avoid; or stop SSRI/close monitoring if unavoidable"
           ],
-          "answer_length": 16,
+          "answer_length": 42,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
@@ -3934,7 +3929,7 @@
           ]
         }
       },
-      "generated_answer": "",
+      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
       "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -3972,20 +3967,21 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.0,
-        "rouge_1_f1": 0.0,
-        "rouge_2_f1": 0.0,
-        "rouge_l_f1": 0.0,
-        "semantic_similarity": 0.0,
-        "key_points_covered": 0.0,
-        "key_points_found": [],
-        "key_points_missing": [
-          "Mechanism: P-gp inhibition → ↑digoxin",
-          "Severity: major",
+        "bleu_score": 0.03210641011174957,
+        "rouge_1_f1": 0.33766233766233766,
+        "rouge_2_f1": 0.18666666666666668,
+        "rouge_l_f1": 0.2337662337662338,
+        "semantic_similarity": 0.6881264448165894,
+        "key_points_covered": 0.3333333333333333,
+        "key_points_found": [
           "Action: reduce dose ~30–50% + monitor levels and ECG"
         ],
-        "answer_length": 0,
-        "has_answer": false,
+        "key_points_missing": [
+          "Mechanism: P-gp inhibition → ↑digoxin",
+          "Severity: major"
+        ],
+        "answer_length": 47,
+        "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
       },
@@ -4018,8 +4014,8 @@
         "question": "Patient on digoxin will start amiodarone. What’s the interaction management?",
         "failure_types": [
           "retrieval_irrelevant",
-          "qa_no_answer",
-          "e2e_low_quality"
+          "qa_incorrect",
+          "qa_incomplete"
         ],
         "retrieved_chunks": [
           {
@@ -4037,12 +4033,11 @@
           "lexi-digoxin-2018#ddi-amio"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "",
+        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"q12h\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to nearest 0.1 mL\",\n  \"calc_rule\": \"Reduce digoxin dose by 30-50% due to P-gp inhibition by amiodarone (criteria: 1/1)\",\n  \"citations\": [\"lexi-digoxin-2018#ddi-amio\"],\n  \"notes\": \"Monitor serum levels, renal function, and ECG when starting amiodarone in patients on digoxin.\"\n}",
         "expected_answer": "Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG.",
         "key_points_missing": [
           "Mechanism: P-gp inhibition → ↑digoxin",
-          "Severity: major",
-          "Action: reduce dose ~30–50% + monitor levels and ECG"
+          "Severity: major"
         ],
         "retrieval_metrics": {
           "recall_at_k": {
@@ -4080,25 +4075,26 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.0,
-          "rouge_1_f1": 0.0,
-          "rouge_2_f1": 0.0,
-          "rouge_l_f1": 0.0,
-          "semantic_similarity": 0.0,
-          "key_points_covered": 0.0,
-          "key_points_found": [],
-          "key_points_missing": [
-            "Mechanism: P-gp inhibition → ↑digoxin",
-            "Severity: major",
+          "bleu_score": 0.03210641011174957,
+          "rouge_1_f1": 0.33766233766233766,
+          "rouge_2_f1": 0.18666666666666668,
+          "rouge_l_f1": 0.2337662337662338,
+          "semantic_similarity": 0.6881264448165894,
+          "key_points_covered": 0.3333333333333333,
+          "key_points_found": [
             "Action: reduce dose ~30–50% + monitor levels and ECG"
           ],
-          "answer_length": 0,
-          "has_answer": false,
+          "key_points_missing": [
+            "Mechanism: P-gp inhibition → ↑digoxin",
+            "Severity: major"
+          ],
+          "answer_length": 47,
+          "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null
         },
         "root_cause": "both_systems",
-        "severity": "critical",
+        "severity": "high",
         "notes": null
       }
     },
@@ -4346,7 +4342,7 @@
           "disallowed_chunk_ids": []
         }
       },
-      "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"qd\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to whole mg\",\n  \"calc_rule\": \"Recency risk: JNC8 (2014) is outdated for current guideline\",\n  \"citations\": [\"lexi-hypertension-2014#jnc8\"],\n  \"notes\": \"Current guidelines should be consulted for first-line pharmacologic therapy for hypertension.\"\n}",
+      "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": \"\", \"max_daily_mg\": null, \"rounding\": \"\", \"calc_rule\": \"\", \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current first-line hypertension therapy.\"}",
       "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
       "retrieval_metrics": {
         "recall_at_k": {
@@ -4384,11 +4380,11 @@
         "total_essential": 1
       },
       "qa_metrics": {
-        "bleu_score": 0.005946955442598485,
-        "rouge_1_f1": 0.1875,
-        "rouge_2_f1": 0.0967741935483871,
-        "rouge_l_f1": 0.09375,
-        "semantic_similarity": 0.32051828503608704,
+        "bleu_score": 0.0035697281352520416,
+        "rouge_1_f1": 0.1568627450980392,
+        "rouge_2_f1": 0.0816326530612245,
+        "rouge_l_f1": 0.0784313725490196,
+        "semantic_similarity": 0.21403375267982483,
         "key_points_covered": 0.3333333333333333,
         "key_points_found": [
           "Recognize JNC8 (2014) is outdated for ‘current’"
@@ -4397,7 +4393,7 @@
           "Explicit abstention for ‘current’ guideline ask",
           "Sets recency_risk = true"
         ],
-        "answer_length": 39,
+        "answer_length": 27,
         "has_answer": true,
         "factual_accuracy": null,
         "helpfulness": null
@@ -4435,7 +4431,7 @@
           "lexi-hypertension-2014#jnc8"
         ],
         "essential_chunks_missed": [],
-        "generated_answer": "{\n  \"dose_per_dose_mg\": null,\n  \"volume_per_dose_mL\": null,\n  \"frequency\": \"qd\",\n  \"max_daily_mg\": null,\n  \"rounding\": \"Rounded to whole mg\",\n  \"calc_rule\": \"Recency risk: JNC8 (2014) is outdated for current guideline\",\n  \"citations\": [\"lexi-hypertension-2014#jnc8\"],\n  \"notes\": \"Current guidelines should be consulted for first-line pharmacologic therapy for hypertension.\"\n}",
+        "generated_answer": "<s> {\"dose_per_dose_mg\": null, \"volume_per_dose_mL\": null, \"frequency\": \"\", \"max_daily_mg\": null, \"rounding\": \"\", \"calc_rule\": \"\", \"citations\": [\"lexi-hypertension-2014#jnc8\"], \"notes\": \"The JNC8 (2014) guideline is outdated for current first-line hypertension therapy.\"}",
         "expected_answer": "ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk.",
         "key_points_missing": [
           "Explicit abstention for ‘current’ guideline ask",
@@ -4477,11 +4473,11 @@
           "total_essential": 1
         },
         "qa_metrics": {
-          "bleu_score": 0.005946955442598485,
-          "rouge_1_f1": 0.1875,
-          "rouge_2_f1": 0.0967741935483871,
-          "rouge_l_f1": 0.09375,
-          "semantic_similarity": 0.32051828503608704,
+          "bleu_score": 0.0035697281352520416,
+          "rouge_1_f1": 0.1568627450980392,
+          "rouge_2_f1": 0.0816326530612245,
+          "rouge_l_f1": 0.0784313725490196,
+          "semantic_similarity": 0.21403375267982483,
           "key_points_covered": 0.3333333333333333,
           "key_points_found": [
             "Recognize JNC8 (2014) is outdated for ‘current’"
@@ -4490,7 +4486,7 @@
             "Explicit abstention for ‘current’ guideline ask",
             "Sets recency_risk = true"
           ],
-          "answer_length": 39,
+          "answer_length": 27,
           "has_answer": true,
           "factual_accuracy": null,
           "helpfulness": null

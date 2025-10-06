@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Pharmacy Copilot Comparison</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .model-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .model-header {
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            text-align: center;
+        }
+        
+        .mistral { background: linear-gradient(135deg, #ff6b6b, #ee5a52); color: white; }
+        .claude { background: linear-gradient(135deg, #4ecdc4, #44a08d); color: white; }
+        .deepseek { background: linear-gradient(135deg, #45b7d1, #2980b9); color: white; }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 20px;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .detailed-comparison {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .comparison-header {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .question-comparison {
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .question-title {
+            background: #e9ecef;
+            padding: 15px;
+            font-weight: bold;
+        }
+        
+        .answers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px;
+            background: #dee2e6;
+        }
+        
+        .answer-cell {
+            background: white;
+            padding: 15px;
+        }
+        
+        .score-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .score-high { background: #d4edda; color: #155724; }
+        .score-med { background: #fff3cd; color: #856404; }
+        .score-low { background: #f8d7da; color: #721c24; }
+        
+        .answer-text {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .summary-table th,
+        .summary-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+        }
+        
+        .summary-table th {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .summary-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🏥 LLM Pharmacy Copilot Comparison</h1>
+        <p>Comprehensive Analysis Across Multiple Models</p>
+        <p>Generated on 2025-10-02 04:23:05</p>
+    </div>
+    
+    <div class="comparison-grid">
+
+        <div class="model-card">
+            <div class="model-header mistral">
+                Mistral 7B Instruct
+            </div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">73.8</div>
+                    <div class="metric-label">Mean Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">80.0</div>
+                    <div class="metric-label">Median Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">6</div>
+                    <div class="metric-label">Passed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">92.3%</div>
+                    <div class="metric-label">Recall@5</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="model-header claude">
+                Claude 3.5 Sonnet
+            </div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">85.4</div>
+                    <div class="metric-label">Mean Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">85.0</div>
+                    <div class="metric-label">Median Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">10</div>
+                    <div class="metric-label">Passed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">92.3%</div>
+                    <div class="metric-label">Recall@5</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="model-card">
+            <div class="model-header deepseek">
+                DeepSeek Chat
+            </div>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">64.2</div>
+                    <div class="metric-label">Mean Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">85.0</div>
+                    <div class="metric-label">Median Score</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">7</div>
+                    <div class="metric-label">Passed</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">92.3%</div>
+                    <div class="metric-label">Recall@5</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="detailed-comparison">
+        <div class="comparison-header">
+            📊 Summary Comparison
+        </div>
+        <table class="summary-table">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Mean Score</th>
+                    <th>Median Score</th>
+                    <th>Pass Count</th>
+                    <th>Manual Review</th>
+                    <th>Recall@5</th>
+                    <th>Precision@5</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><strong>Mistral 7B Instruct</strong></td>
+                    <td>73.8</td>
+                    <td>80.0</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>92.3%</td>
+                    <td>59.0%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>Claude 3.5 Sonnet</strong></td>
+                    <td>85.4</td>
+                    <td>85.0</td>
+                    <td>10</td>
+                    <td>3</td>
+                    <td>92.3%</td>
+                    <td>59.0%</td>
+                </tr>
+
+                <tr>
+                    <td><strong>DeepSeek Chat</strong></td>
+                    <td>64.2</td>
+                    <td>85.0</td>
+                    <td>7</td>
+                    <td>6</td>
+                    <td>92.3%</td>
+                    <td>59.0%</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="detailed-comparison">
+        <div class="comparison-header">
+            🔍 Question-by-Question Comparison
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q001: 5-year-old (18 kg) with acute otitis media. What is the amoxicillin dose and volume using 400 mg/5 mL suspension?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Mistral 7B Instruct: 70/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 810,
+  "volume_per_dose_mL": 10.1,
+  "frequency": "q12h",
+  "max_daily_mg": 4000,
+  "rounding": "volume rounded to 10 mL",
+  "calc_rule": "80 mg/kg/day \u00d7 18 kg = 1440 mg/day \u00f7 2 doses = 720 mg/dose; rounded to 810 mg/dose to match 400 mg/5 mL suspension",
+  "citations": [
+    "lexi-amoxicillin-2018#dosage",
+    "lexi-amoxicillin-2018#peds"
+  ],
+  "notes": "High-dose amoxicillin 80\u201390 mg/kg/day for pediatric AOM"
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 810,
+  "volume_per_dose_mL": 10,
+  "frequency": "q12h",
+  "max_daily_mg": 4000,
+  "rounding": "Rounded from 10.1 mL to 10 mL for practical measurement",
+  "calc_rule": "90 mg/kg/day \u00f7 2 doses = 45 mg/kg/dose; 18 kg \u00d7 45 mg/kg = 810 mg/dose; volume = 810 mg \u00f7 (80 mg/mL)",
+  "citations": [
+    "lexi-amoxicillin-2018#dosage",
+    "lexi-amoxicillin-2018#peds"
+  ],
+  "notes": "High-dose amoxicillin regimen for AOM using 400 mg/5 mL suspension with practical volume rounding per guidance."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 810,
+  "volume_per_dose_mL": 10.1,
+  "frequency": "q12h",
+  "max_daily_mg": 4000,
+  "rounding": "round mL to one decimal",
+  "calc_rule": "90 mg/kg/day divided q12h",
+  "citations": [
+    "lexi-amoxicillin-2018#dosage",
+    "lexi-amoxicillin-2018#peds"
+  ],
+  "notes": "High-dose amoxicillin for pediatric AOM."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q002: 12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Mistral 7B Instruct: 70/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 180,
+  "volume_per_dose_mL": 5.6,
+  "frequency": "q6h",
+  "max_daily_mg": 900,
+  "rounding": "volume rounded to one decimal",
+  "calc_rule": "15 mg/kg/dose \u00d7 12 kg = 180 mg/dose; 180 mg \u00f7 32 mg/mL = 5.625 mL (rounded to 5.6 mL); 180 mg/dose \u00d7 5 doses = 900 mg/day (\u226475 mg/kg/day \u00d7 12 kg)",
+  "citations": [
+    "lexi-acetaminophen-2018#peds-dosing",
+    "lexi-acetaminophen-2018#max"
+  ],
+  "notes": "Use 15 mg/kg/dose q6h for fever in a 12 kg child."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 95/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 180,
+  "volume_per_dose_mL": 5.6,
+  "frequency": "q6h",
+  "max_daily_mg": 900,
+  "rounding": "Rounded volume from 5.625 mL to 5.6 mL",
+  "calc_rule": "15 mg/kg/dose \u00d7 12 kg = 180 mg; max 75 mg/kg/day = 900 mg",
+  "citations": [
+    "lexi-acetaminophen-2018#peds-dosing",
+    "lexi-acetaminophen-2018#max"
+  ],
+  "notes": "Oral liquid acetaminophen dosed at 15 mg/kg/dose using 160 mg/5 mL concentration for fever management."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 180,
+  "volume_per_dose_mL": 5.6,
+  "frequency": "q6h",
+  "max_daily_mg": 900,
+  "rounding": "mL rounded to one decimal",
+  "calc_rule": "15 mg/kg/dose, max 75 mg/kg/day",
+  "citations": [
+    "lexi-acetaminophen-2018#peds-dosing",
+    "lexi-acetaminophen-2018#max"
+  ],
+  "notes": "Use 15 mg/kg/dose for fever in children."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q003: 12 kg child with fever: ibuprofen dose and volume using 100 mg/5 mL?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 120,
+  "volume_per_dose_mL": 6,
+  "frequency": "q6h-q8h",
+  "max_daily_mg": 480,
+  "rounding": "round to nearest 5 mL",
+  "calc_rule": "10 mg/kg/dose, q6-8h, max 40 mg/kg/day",
+  "citations": [
+    "lexi-ibuprofen-2018#peds-dosing",
+    "lexi-ibuprofen-2018#max"
+  ],
+  "notes": "10 mg/kg per dose, q6-8h; max 40 mg/kg/day; avoid in dehydration or significant renal risk; not applicable to adults"
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 120,
+  "volume_per_dose_mL": 6.0,
+  "frequency": "q6-8h",
+  "max_daily_mg": 480,
+  "rounding": "Rounded to nearest 0.5 mL",
+  "calc_rule": "10 mg/kg/dose \u00d7 12 kg = 120 mg; volume = 120 mg \u00f7 (100 mg/5 mL) = 6 mL; max 40 mg/kg/day = 480 mg",
+  "citations": [
+    "lexi-ibuprofen-2018#peds-dosing",
+    "lexi-ibuprofen-2018#max"
+  ],
+  "notes": "Weight-based dosing using 100 mg/5 mL suspension with caution in dehydration or renal risk."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 120,
+  "volume_per_dose_mL": 6,
+  "frequency": "q6h",
+  "max_daily_mg": 480,
+  "rounding": "mL rounded to whole mL",
+  "calc_rule": "10 mg/kg/dose x 12 kg",
+  "citations": [
+    "lexi-ibuprofen-2018#peds-dosing",
+    "lexi-ibuprofen-2018#max"
+  ],
+  "notes": "Ibuprofen 10 mg/kg/dose q6h for fever in a 12 kg child."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q004: Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 2.5,
+  "volume_per_dose_mL": null,
+  "frequency": "BID",
+  "max_daily_mg": null,
+  "rounding": "Rounded to nearest 0.5 mg",
+  "calc_rule": "Reduce NVAF dose to 2.5 mg BID if patient has ≥2 of: age ≥80 years, weight ≤60 kg, or serum creatinine ≥1.5 mg/dL",
+  "citations": ["lex...</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 2.5,
+  "volume_per_dose_mL": null,
+  "frequency": "q12h",
+  "max_daily_mg": 5,
+  "rounding": "No rounding needed for tablet dose",
+  "calc_rule": "Meets 2 of 3 criteria for dose reduction: age \u226580y (82y), weight \u226460kg (58kg), SCr \u22651.5mg/dL (1.6mg/dL)",
+  "citations": [
+    "lexi-apixaban-2018#dosing-nvaf"
+  ],
+  "notes": "Reduced dose of 2.5mg tablets twice daily indicated due to meeting multiple criteria for dose reduction in NVAF."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-low">
+                        DeepSeek Chat: 0/100
+                    </div>
+                    <div class="answer-text">```json
+{"dose_per_dose_mg":2.5,"volume_per_dose_mL":null,"frequency":"q12h","max_daily_mg":5,"rounding":"whole mg","calc_rule":"2 of 3 criteria met (age ≥80, weight ≤60 kg, SCr ≥1.5 mg/dL)","citations":["lexi-apixaban-2018#dosing-nvaf"],"notes":"Reduced dose due to age and renal impairment."}
+```</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q005: 85 kg adult with acute DVT: What is the enoxaparin treatment dose (normal renal function)?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 85,
+  "volume_per_dose_mL": null,
+  "frequency": "q12h",
+  "max_daily_mg": 170,
+  "rounding": "none",
+  "calc_rule": "1 mg/kg SC q12h (preferred)",
+  "citations": [
+    "lexi-enoxaparin-2018#dosing"
+  ],
+  "notes": "Enoxaparin is dosed by weight for acute DVT treatment."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 85,
+  "volume_per_dose_mL": 0.9,
+  "frequency": "q12h",
+  "max_daily_mg": 170,
+  "rounding": "Round to nearest 0.1 mL based on 100 mg/mL concentration",
+  "calc_rule": "1 mg/kg q12h (preferred regimen) x 85 kg = 85 mg per dose",
+  "citations": [
+    "lexi-enoxaparin-2018#dosing"
+  ],
+  "notes": "Preferred regimen is 1 mg/kg q12h for acute DVT with normal renal function, with 1.5 mg/kg daily as an alternative."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": 85,
+  "volume_per_dose_mL": null,
+  "frequency": "q12h",
+  "max_daily_mg": null,
+  "rounding": "whole mg",
+  "calc_rule": "1 mg/kg q12h",
+  "citations": [
+    "lexi-enoxaparin-2018#dosing"
+  ],
+  "notes": "Enoxaparin 1 mg/kg SC q12h is preferred for acute DVT treatment."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q006: Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 80/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": null,
+  "max_daily_mg": null,
+  "rounding": "Not applicable",
+  "calc_rule": "Contraindicated if eGFR <30, avoid initiation if 30-45, continue with dose reduction and monitoring",
+  "citations": ["lexi-metformin-2018#renal"],...</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 80/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "n/a",
+  "max_daily_mg": null,
+  "rounding": "n/a",
+  "calc_rule": "eGFR <30 mL/min/1.73m\u00b2 = contraindicated",
+  "citations": [
+    "lexi-metformin-2018#renal"
+  ],
+  "notes": "Metformin is contraindicated in this patient with eGFR 28 mL/min/1.73m\u00b2 due to risk of lactic acidosis."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 80/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "Contraindicated if eGFR <30 mL/min/1.73 m\u00b2",
+  "citations": [
+    "lexi-metformin-2018#renal"
+  ],
+  "notes": "Metformin is contraindicated in this patient due to eGFR <30 mL/min/1.73 m\u00b2."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q007: Uncomplicated cystitis: Should we use nitrofurantoin if eGFR is 25?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": null,
+  "max_daily_mg": null,
+  "rounding": "Not applicable",
+  "calc_rule": "Avoid use if eGFR/CrCl <30 due to inadequate urinary concentrations and increased toxicity risk.",
+  "citations": ["lexi-nitrofurantoin-2018#renal"...</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "Not applicable - contraindicated",
+  "calc_rule": "Contraindicated if eGFR <30 mL/min",
+  "citations": [
+    "lexi-nitrofurantoin-2018#renal",
+    "lexi-nitrofurantoin-2018#contra"
+  ],
+  "notes": "Nitrofurantoin is contraindicated at eGFR 25 mL/min due to inadequate urinary concentrations and increased toxicity risk."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "Avoid if eGFR <30 mL/min",
+  "citations": [
+    "lexi-nitrofurantoin-2018#renal",
+    "lexi-nitrofurantoin-2018#contra"
+  ],
+  "notes": "Nitrofurantoin is contraindicated in eGFR <30 mL/min."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q008: Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 80/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": null,
+  "max_daily_mg": null,
+  "rounding": null,
+  "calc_rule": null,
+  "citations": [
+    "lexi-warfarin-2018#ddi-tmp-smx"
+  ],
+  "notes": "Avoid TMP-SMX with warfarin; if used, reduce warfarin dose and monitor INR closely."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "n/a",
+  "max_daily_mg": null,
+  "rounding": "n/a",
+  "calc_rule": "Drug interaction via CYP2C9 inhibition and gut flora changes",
+  "citations": [
+    "lexi-warfarin-2018#ddi-tmp-smx"
+  ],
+  "notes": "TMP-SMX markedly increases warfarin effect requiring warfarin dose reduction and increased INR monitoring, with preference for alternative antibiotics."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        DeepSeek Chat: 75/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "",
+  "citations": [
+    "lexi-warfarin-2018#ddi-tmp-smx"
+  ],
+  "notes": "TMP-SMX increases warfarin effect; prefer alternatives or monitor INR closely."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q009: Patient on atorvastatin needs clarithromycin. What’s the risk and action?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-low">
+                        Mistral 7B Instruct: 0/100
+                    </div>
+                    <div class="answer-text">```json
+{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "",
+  "citations": ["lexi-atorvastatin-2018#ddi-macrolides"],
+  "notes": "Clarithromycin increases atorvastatin levels, raising myopathy/rhabdomyolysis risk...</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Claude 3.5 Sonnet: 75/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "hold",
+  "max_daily_mg": null,
+  "rounding": "not applicable",
+  "calc_rule": "hold atorvastatin during clarithromycin due to CYP3A4 inhibition; if unavoidable use lowest dose with monitoring",
+  "citations": [
+    "lexi-atorvastatin-2018#ddi-macrolides"
+  ],
+  "notes": "Major interaction increases myopathy/rhabdomyolysis risk through strong CYP3A4 inhibition."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-low">
+                        DeepSeek Chat: 0/100
+                    </div>
+                    <div class="answer-text">```json
+{"dose_per_dose_mg":null,"volume_per_dose_mL":null,"frequency":"","max_daily_mg":null,"rounding":"","calc_rule":"","citations":["lexi-atorvastatin-2018#ddi-macrolides"],"notes":"Avoid clarithromycin due to strong CYP3A4 inhibition and increased myopathy risk; if unavoidable, use lowest atorv...</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q010: Starting linezolid in a patient on sertraline. Is this safe?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Mistral 7B Instruct: 70/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": null,
+  "max_daily_mg": null,
+  "rounding": null,
+  "calc_rule": null,
+  "citations": [
+    "lexi-linezolid-2018#ddi-ssri"
+  ],
+  "notes": "Avoid combination due to risk of serotonin syndrome; if unavoidable, withhold SSRI and monitor closely."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "n/a",
+  "max_daily_mg": null,
+  "rounding": "n/a",
+  "calc_rule": "Contraindicated due to MAOI activity unless benefits outweigh risks",
+  "citations": [
+    "lexi-linezolid-2018#ddi-ssri"
+  ],
+  "notes": "Avoid combination due to serotonin syndrome risk; if necessary, withhold SSRI and monitor closely."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-low">
+                        DeepSeek Chat: 0/100
+                    </div>
+                    <div class="answer-text">```json
+{"dose_per_dose_mg":null,"volume_per_dose_mL":null,"frequency":"","max_daily_mg":null,"rounding":"","calc_rule":"","citations":["lexi-linezolid-2018#ddi-ssri"],"notes":"Avoid linezolid with sertraline due to risk of serotonin syndrome."}
+```</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q011: Patient on digoxin will start amiodarone. What’s the interaction management?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Mistral 7B Instruct: 75/100
+                    </div>
+                    <div class="answer-text"></div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        Claude 3.5 Sonnet: 75/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "maintain current",
+  "max_daily_mg": null,
+  "rounding": "reduce current dose by 30-50%",
+  "calc_rule": "reduce existing digoxin dose by 30-50% due to P-glycoprotein inhibition",
+  "citations": [
+    "lexi-digoxin-2018#ddi-amio"
+  ],
+  "notes": "Reduce digoxin dose by 30-50% when starting amiodarone and monitor digoxin levels, renal function, and ECG."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "",
+  "citations": [
+    "lexi-digoxin-2018#ddi-amio"
+  ],
+  "notes": "Reduce digoxin dose by 30\u201350% and monitor serum levels, renal function, and ECG."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q012: COVID-19 patient asks for Paxlovid dosing and interaction checks.
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "q12h",
+  "max_daily_mg": null,
+  "rounding": "Rounded to whole tablet",
+  "calc_rule": "Recency risk; refer to current guidance/pharmacist",
+  "citations": ["kb-scope-2018#covid-absent"],
+  "notes": "This context predates CO...</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "Not applicable - insufficient data",
+  "calc_rule": "Cannot calculate - predates COVID-19 therapies",
+  "citations": [
+    "kb-scope-2018#covid-absent"
+  ],
+  "notes": "Knowledge base predates COVID-19 therapies including Paxlovid (nirmatrelvir/ritonavir); refer to current clinical guidance and pharmacist."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-med">
+                        DeepSeek Chat: 70/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "",
+  "citations": [
+    "kb-scope-2018#covid-absent"
+  ],
+  "notes": "Context predates COVID-19 therapies; refer to current guidance."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="question-comparison">
+            <div class="question-title">
+                Q013: What is the current first-line pharmacologic therapy per latest hypertension guidelines?
+            </div>
+            <div class="answers-grid">
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Mistral 7B Instruct: 90/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "qd",
+  "max_daily_mg": null,
+  "rounding": "Rounded to whole mg",
+  "calc_rule": "Recency risk: JNC8 (2014) is outdated for current guideline",
+  "citations": [
+    "lexi-hypertension-2014#jnc8"
+  ],
+  "notes": "Current guidelines should be consulted for first-line pharmacologic therapy for hypertension."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        Claude 3.5 Sonnet: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "Not applicable",
+  "calc_rule": "No current dosing available",
+  "citations": [
+    "lexi-hypertension-2014#jnc8"
+  ],
+  "notes": "Cannot provide current first-line therapy as available guideline data from JNC8 (2014) is outdated."
+}</div>
+                </div>
+
+                <div class="answer-cell">
+                    <div class="score-badge score-high">
+                        DeepSeek Chat: 85/100
+                    </div>
+                    <div class="answer-text">{
+  "dose_per_dose_mg": null,
+  "volume_per_dose_mL": null,
+  "frequency": "",
+  "max_daily_mg": null,
+  "rounding": "",
+  "calc_rule": "",
+  "citations": [
+    "lexi-hypertension-2014#jnc8"
+  ],
+  "notes": "JNC8 (2014) is outdated for current hypertension guidelines."
+}</div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

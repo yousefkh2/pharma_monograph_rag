@@ -246,7 +246,7 @@ async def main():
     parser.add_argument("--auto-judge", action="store_true", help="Run GPT-4o mini judge after evaluation")
     parser.add_argument("--judge-output", help="Path to save judge JSON (defaults to <json_output>_judge.json)")
     parser.add_argument("--judge-llm-provider", default="openrouter", help="Judge LLM provider (default: openrouter)")
-    parser.add_argument("--judge-llm-model", default="openrouter/openai/gpt-4o-mini", help="Judge LLM model identifier")
+    parser.add_argument("--judge-llm-model", default="openai/gpt-4o-mini", help="Judge LLM model identifier")
     parser.add_argument("--judge-llm-base-url", help="Judge LLM base URL override")
     parser.add_argument("--judge-timeout", type=float, default=60.0, help="Judge LLM timeout in seconds")
     parser.add_argument("--use-llm", action="store_true", help="Generate answers with a configured LLM instead of snippet concatenation")

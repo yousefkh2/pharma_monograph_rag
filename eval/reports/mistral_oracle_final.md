@@ -2,8 +2,8 @@
 
 **Dataset**: pharmacy_copilot_pharmacist_eval_v1
 **Questions**: 13
-**Evaluation Time**: 38.60 seconds
-**Average Time per Question**: 2.97 seconds
+**Evaluation Time**: 34.15 seconds
+**Average Time per Question**: 2.63 seconds
 
 
 === Aggregated Retrieval Metrics ===
@@ -50,42 +50,38 @@
 
 📝 Answer Quality:
   Has Answer: True
-  Answer Length: 32 words
+  Answer Length: 51 words
 
 📊 Lexical Overlap:
-  BLEU: 0.023
-  ROUGE-1 F1: 0.320
-  ROUGE-2 F1: 0.146
-  ROUGE-L F1: 0.229
+  BLEU: 0.038
+  ROUGE-1 F1: 0.350
+  ROUGE-2 F1: 0.175
+  ROUGE-L F1: 0.263
 
-🧠 Semantic Similarity: 0.514
+🧠 Semantic Similarity: 0.648
 
-🎯 Key Points Coverage: 0.122
+🎯 Key Points Coverage: 0.377
 
 # Failure Analysis Report
 
 ## Summary
 - **Total Failures**: 13
-- **By Severity**: {'critical': 1, 'high': 7, 'medium': 5}
+- **By Severity**: {'high': 8, 'medium': 5}
 - **By Root Cause**: {'both_systems': 5, 'qa_system': 8}
 
 ## Failure Types
-- **e2e_low_quality**: 8 (61.5%)
-- **qa_incomplete**: 12 (92.3%)
-- **qa_incorrect**: 7 (53.8%)
-- **qa_no_answer**: 1 (7.7%)
+- **e2e_low_quality**: 4 (30.8%)
+- **qa_incomplete**: 13 (100.0%)
+- **qa_incorrect**: 8 (61.5%)
 - **retrieval_irrelevant**: 5 (38.5%)
 - **retrieval_miss**: 1 (7.7%)
 
-## Critical Failures
-### q011
-**Question**: Patient on digoxin will start amiodarone. What’s the interaction management?
-**Failure Types**: ['retrieval_irrelevant', 'qa_no_answer', 'e2e_low_quality']
-**Root Cause**: both_systems
-**Generated**: ...
-**Expected**: Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG....
-
 ## High Severity Failures
+### q002
+**Question**: 12 kg child with fever: acetaminophen dose and volume using 160 mg/5 mL?
+**Failure Types**: ['qa_incorrect', 'qa_incomplete']
+**Root Cause**: qa_system
+
 ### q004
 **Question**: Elderly patient with nonvalvular AF: 82 years, 58 kg, SCr 1.6 mg/dL. What apixaban dose?
 **Failure Types**: ['qa_incorrect', 'qa_incomplete', 'e2e_low_quality']
@@ -93,10 +89,5 @@
 
 ### q006
 **Question**: Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?
-**Failure Types**: ['qa_incorrect', 'qa_incomplete', 'e2e_low_quality']
+**Failure Types**: ['qa_incorrect', 'qa_incomplete']
 **Root Cause**: qa_system
-
-### q008
-**Question**: Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?
-**Failure Types**: ['retrieval_irrelevant', 'qa_incorrect', 'qa_incomplete', 'e2e_low_quality']
-**Root Cause**: both_systems

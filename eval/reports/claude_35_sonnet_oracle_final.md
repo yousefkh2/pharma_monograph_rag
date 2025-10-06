@@ -2,8 +2,8 @@
 
 **Dataset**: pharmacy_copilot_pharmacist_eval_v1
 **Questions**: 13
-**Evaluation Time**: 38.60 seconds
-**Average Time per Question**: 2.97 seconds
+**Evaluation Time**: 42.35 seconds
+**Average Time per Question**: 3.26 seconds
 
 
 === Aggregated Retrieval Metrics ===
@@ -50,40 +50,40 @@
 
 📝 Answer Quality:
   Has Answer: True
-  Answer Length: 32 words
+  Answer Length: 33 words
 
 📊 Lexical Overlap:
-  BLEU: 0.023
-  ROUGE-1 F1: 0.320
-  ROUGE-2 F1: 0.146
-  ROUGE-L F1: 0.229
+  BLEU: 0.025
+  ROUGE-1 F1: 0.308
+  ROUGE-2 F1: 0.140
+  ROUGE-L F1: 0.219
 
-🧠 Semantic Similarity: 0.514
+🧠 Semantic Similarity: 0.605
 
-🎯 Key Points Coverage: 0.122
+🎯 Key Points Coverage: 0.234
 
 # Failure Analysis Report
 
 ## Summary
 - **Total Failures**: 13
-- **By Severity**: {'critical': 1, 'high': 7, 'medium': 5}
+- **By Severity**: {'critical': 1, 'high': 6, 'medium': 6}
 - **By Root Cause**: {'both_systems': 5, 'qa_system': 8}
 
 ## Failure Types
-- **e2e_low_quality**: 8 (61.5%)
+- **e2e_low_quality**: 3 (23.1%)
 - **qa_incomplete**: 12 (92.3%)
-- **qa_incorrect**: 7 (53.8%)
+- **qa_incorrect**: 6 (46.2%)
 - **qa_no_answer**: 1 (7.7%)
 - **retrieval_irrelevant**: 5 (38.5%)
 - **retrieval_miss**: 1 (7.7%)
 
 ## Critical Failures
-### q011
-**Question**: Patient on digoxin will start amiodarone. What’s the interaction management?
-**Failure Types**: ['retrieval_irrelevant', 'qa_no_answer', 'e2e_low_quality']
-**Root Cause**: both_systems
-**Generated**: ...
-**Expected**: Major interaction (P-gp inhibition). Reduce digoxin dose by ~30–50% and monitor levels/ECG....
+### q013
+**Question**: What is the current first-line pharmacologic therapy per latest hypertension guidelines?
+**Failure Types**: ['qa_no_answer', 'e2e_low_quality']
+**Root Cause**: qa_system
+**Generated**: {"dose_per_dose_mg":null,"volume_per_dose_mL":null,"frequency":"","max_daily_mg":null,"rounding":"no...
+**Expected**: ABSTAIN if asked for ‘current’ guidance (2018 corpus includes JNC8/2014). Flag recency risk....
 
 ## High Severity Failures
 ### q004
@@ -93,10 +93,10 @@
 
 ### q006
 **Question**: Type 2 diabetes patient with eGFR 28 mL/min/1.73 m². Can we use metformin?
-**Failure Types**: ['qa_incorrect', 'qa_incomplete', 'e2e_low_quality']
+**Failure Types**: ['qa_incorrect', 'qa_incomplete']
 **Root Cause**: qa_system
 
 ### q008
 **Question**: Patient on warfarin needs TMP-SMX for UTI. Any interaction and what should we do?
-**Failure Types**: ['retrieval_irrelevant', 'qa_incorrect', 'qa_incomplete', 'e2e_low_quality']
+**Failure Types**: ['retrieval_irrelevant', 'qa_incorrect', 'qa_incomplete']
 **Root Cause**: both_systems
