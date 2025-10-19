@@ -19,6 +19,16 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from nano_vectordb import NanoVectorDB
 from pydantic import BaseModel, Field
 
+# Load environment variables from .env file
+try:
+    from dotenv import load_dotenv
+    PROJECT_ROOT = Path(__file__).resolve().parents[1]
+    env_path = PROJECT_ROOT / ".env"
+    if env_path.exists():
+        load_dotenv(dotenv_path=env_path)
+except ImportError:
+    pass  # dotenv is optional, environment variables may be set another way
+
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -56,6 +66,8 @@ class SearchHit(BaseModel):
     score: float
     dense_score: float
     bm25_score: float
+    dense_raw: Optional[float] = None
+    bm25_raw: Optional[float] = None
     chunk_id: str
     doc_id: Optional[str]
     section_title: Optional[str]
@@ -64,6 +76,19 @@ class SearchHit(BaseModel):
     source_url: Optional[str]
     snippet: str
     text: str
+
+
+DEFAULT_SELECTOR_PROVIDER = "openrouter"
+DEFAULT_SELECTOR_MODEL = "openai/gpt-5-mini"
+DEFAULT_SELECTOR_SYSTEM_PROMPT = (
+    "You are a pharmacy monograph selector. Choose exactly one doc_id from the catalog that best answers the question. "
+    "Rules: (1) Match the precise drug entity and formulation in the query; avoid combination products unless explicitly requested. "
+    "(2) Respect negations/exclusions (e.g., 'NOT amoxicillin-clavulanate' means do not select that doc). "
+    "(3) Prefer monographs whose scope matches the patient context (age group, renal/hepatic status, route, indication). "
+    "(4) Normalize noisy spelling, abbreviations, and brands to their canonical drugs (AOM, NVAF, BBW, mg/kg/day, etc.). "
+    "(5) If multiple docs are related, pick the single most specific one that directly answers the question. "
+    'Respond only with JSON of the form {{"doc_id":"<doc_id>","confidence":<0-1>,"reason":"<15-40 words>"}}.'
+)
 
 
 class SearchResponse(BaseModel):
@@ -84,8 +109,16 @@ def resolve_selector_base_url(provider: str, base_url: Optional[str]) -> str:
 
 
 def build_selector_config_from_args(args: argparse.Namespace) -> Optional[LLMConfig]:
-    provider = getattr(args, "selector_provider", None) or os.getenv("SELECTOR_LLM_PROVIDER")
-    model = getattr(args, "selector_model", None) or os.getenv("SELECTOR_LLM_MODEL")
+    provider = (
+        getattr(args, "selector_provider", None)
+        or os.getenv("SELECTOR_LLM_PROVIDER")
+        or DEFAULT_SELECTOR_PROVIDER
+    )
+    model = (
+        getattr(args, "selector_model", None)
+        or os.getenv("SELECTOR_LLM_MODEL")
+        or DEFAULT_SELECTOR_MODEL
+    )
     if not provider or not model:
         return None
 
@@ -94,7 +127,11 @@ def build_selector_config_from_args(args: argparse.Namespace) -> Optional[LLMCon
         getattr(args, "selector_base_url", None) or os.getenv("SELECTOR_LLM_BASE_URL"),
     )
 
-    api_key = getattr(args, "selector_api_key", None) or os.getenv("SELECTOR_LLM_API_KEY")
+    api_key = (
+        getattr(args, "selector_api_key", None)
+        or os.getenv("SELECTOR_LLM_API_KEY")
+        or os.getenv("EVAL_LLM_API_KEY")
+    )
     temperature = getattr(args, "selector_temperature", None)
     if temperature is None:
         temperature = float(os.getenv("SELECTOR_LLM_TEMPERATURE", "0.0"))
@@ -103,8 +140,12 @@ def build_selector_config_from_args(args: argparse.Namespace) -> Optional[LLMCon
         top_p = float(os.getenv("SELECTOR_LLM_TOP_P", "0.3"))
     max_tokens = getattr(args, "selector_max_tokens", None)
     if max_tokens is None:
-        max_tokens = int(os.getenv("SELECTOR_LLM_MAX_TOKENS", "256"))
-    system_prompt = getattr(args, "selector_system_prompt", None) or os.getenv("SELECTOR_LLM_SYSTEM_PROMPT") or DEFAULT_SYSTEM_PROMPT
+        max_tokens = int(os.getenv("SELECTOR_LLM_MAX_TOKENS", "2048"))
+    system_prompt = (
+        getattr(args, "selector_system_prompt", None)
+        or os.getenv("SELECTOR_LLM_SYSTEM_PROMPT")
+        or DEFAULT_SELECTOR_SYSTEM_PROMPT
+    )
 
     return LLMConfig(
         provider=provider,
@@ -454,6 +495,8 @@ class HybridSearchEngine:
                     score=score,
                     dense_score=dense_score,
                     bm25_score=bm25_score,
+                    dense_raw=dense_scores.get(chunk_id),
+                    bm25_raw=bm25_scores.get(chunk_id),
                     chunk_id=chunk_id,
                     doc_id=record.get("doc_id"),
                     section_title=record.get("section_title"),
@@ -1017,7 +1060,7 @@ def build_html() -> str:
               <div class='meta'>
                 <strong>${drugTitle}</strong> ${sourceLink}
               </div>
-              <div class='scores'>Combined: ${formatScore(hit.score)} · Dense: ${formatScore(hit.dense_score)} · BM25: ${formatScore(hit.bm25_score)}</div>
+              <div class='scores'>Combined: ${formatScore(hit.score)} · Dense: ${formatScore(hit.dense_score)} (${Number.isFinite(hit.dense_raw) ? formatScore(hit.dense_raw) : '—'}) · BM25: ${formatScore(hit.bm25_score)} (${Number.isFinite(hit.bm25_raw) ? formatScore(hit.bm25_raw) : '—'})</div>
               <div class='snippet' data-snippet='${snippetAttr}' data-full='${fullAttr}' data-has-more='${needsMore}'></div>
               <button type='button' class='toggle' data-expanded='false'>Show more</button>
             </article>
@@ -1091,7 +1134,7 @@ def build_html() -> str:
             <article class='card'>
               <h2>#${hit.rank} · ${sectionTitle}</h2>
               <div class='meta'><strong>${drugTitle}</strong></div>
-              <div class='scores'>Combined: ${formatScore(hit.score)} · Dense: ${formatScore(hit.dense_score)} · BM25: ${formatScore(hit.bm25_score)}</div>
+              <div class='scores'>Combined: ${formatScore(hit.score)} · Dense: ${formatScore(hit.dense_score)} (${Number.isFinite(hit.dense_raw) ? formatScore(hit.dense_raw) : '—'}) · BM25: ${formatScore(hit.bm25_score)} (${Number.isFinite(hit.bm25_raw) ? formatScore(hit.bm25_raw) : '—'})</div>
               <div class='snippet' data-snippet='${snippetAttr}' data-full='${fullAttr}' data-has-more='${needsMore}'></div>
               <button type='button' class='toggle' data-expanded='false'>Show more</button>
             </article>
@@ -1643,14 +1686,13 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
+async def async_main() -> None:
     args = parse_args()
 
     selector_config = build_selector_config_from_args(args)
     answer_config = build_answer_config_from_args(args)
 
-    # Build engine synchronously before starting uvicorn so startup failures surface early
-    engine = asyncio.run(HybridSearchEngine.create(
+    engine = await HybridSearchEngine.create(
         metadata_path=args.metadata,
         bm25_index_path=args.bm25,
         vectordb_path=args.vectordb,
@@ -1662,16 +1704,20 @@ def main() -> None:
         selector_candidates=args.selector_candidates,
         answer_config=answer_config,
         answer_timeout=args.answer_timeout,
-    ))
+    )
     app = create_app(engine)
 
     config = uvicorn.Config(app, host=args.host, port=args.port, reload=args.reload)
     server = uvicorn.Server(config)
 
     try:
-        asyncio.run(server.serve())
+        await server.serve()
     finally:
-        asyncio.run(engine.close())
+        await engine.close()
+
+
+def main() -> None:
+    asyncio.run(async_main())
 
 
 if __name__ == "__main__":

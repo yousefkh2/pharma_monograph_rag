@@ -1,0 +1,30 @@
+{"qid":"Q1","query":"5-year-old (18 kg) acute otitis media — calculate amoxicillin dose (mg/kg/day) and volume using 400 mg/5 mL suspension."}
+{"qid":"Q2","query":"12 kg child with fever — calculate acetaminophen dose (mg/kg) and volume using 160 mg/5 mL liquid."}
+{"qid":"Q3","query":"12 kg child with fever — calculate ibuprofen dose (mg/kg) and volume using 100 mg/5 mL suspension."}
+{"qid":"Q4","query":"Nonvalvular AF: 82 y, 58 kg, SCr 1.6 mg/dL — choose the apixaban dose (consider dose-reduction criteria)."}
+{"qid":"Q5","query":"Acute DVT treatment in normal renal function — what is the enoxaparin dosing regimen?"}
+{"qid":"Q6","query":"Type 2 diabetes, eGFR 28 — is metformin contraindicated or adjusted; what’s the recommendation?"}
+{"qid":"Q7","query":"Uncomplicated cystitis, eGFR 25 — is nitrofurantoin appropriate?"}
+{"qid":"Q8","query":"Warfarin co-administration with TMP-SMX — interaction severity and management action."}
+{"qid":"Q9","query":"Atorvastatin with clarithromycin — risks and what to do (hold/switch/monitor)."}
+{"qid":"Q10","query":"Linezolid in a patient on sertraline — is concomitant use safe; required washout/monitoring?"}
+{"qid":"Q11","query":"Digoxin starting amiodarone — interaction mechanism and dose adjustment/monitoring."}
+{"qid":"Q12","query":"Influenza treatment: eGFR 45 — what is the oseltamivir dose (renal adjustment)?"}
+{"qid":"Q13","query":"Adult hypertension — starting dose and max dose for lisinopril; any renal adjustment or contraindication?"}
+{"qid":"Q14","query":"Community-acquired pneumonia outpatient — standard adult dose for azithromycin (Z-Pak schedule specifics)."}
+{"qid":"Q15","query":"Dental prophylaxis for endocarditis — amoxicillin adult dose; alternatives for penicillin allergy."}
+{"qid":"Q16","query":"Migraine acute treatment — max daily dose and triptan contraindications in sumatriptan monograph."}
+{"qid":"Q17","query":"Bacterial vaginosis — standard regimen and alcohol warning relevance in metronidazole (oral vs gel)."}
+{"qid":"Q18","query":"Acute gout flare — dose and renal cautions for colchicine (loading/maintenance; avoid in strong CYP3A4/P-gp inhibitors)."}
+{"qid":"Q19","query":"Post-MI dual antiplatelet — maintenance dosing and duration in clopidogrel monograph; CYP2C19 issue."}
+{"qid":"Q20","query":"UTI in pregnancy — safety status and preferred use of nitrofurantoin by trimester."}
+{"qid":"Q21","query":"CAP inpatient severe penicillin allergy — dosing and monitoring for levofloxacin; QT cautions."}
+{"qid":"Q22","query":"Oral candidiasis — dosing and swish/swallow instructions for nystatin suspension."}
+{"qid":"Q23","query":"Seizure maintenance — therapeutic trough range and toxicity signs for valproic acid (monitoring labs)."}
+{"qid":"Q24","query":"Hypothyroidism — conversion and administration timing for levothyroxine; interactions with food/iron/calcium."}
+{"qid":"Q25","query":"GERD — standard dose and omeprazole interaction with clopidogrel (CYP2C19) relevance."}
+{"qid":"Q26","query":"Depression — time to effect, black box warnings, and dose range for sertraline; tapering guidance."}
+{"qid":"Q27","query":"Asthma rescue — dosing and spacer/technique notes for albuterol HFA; maximum puffs/day."}
+{"qid":"Q28","query":"Bacterial conjunctivitis — dosing and contact lens precautions for ofloxacin ophthalmic solution."}
+{"qid":"Q29","query":"Hyperkalemia risk — spironolactone in CKD stage 3: starting dose and potassium monitoring frequency."}
+{"qid":"Q30","query":"Osteoporosis — alendronate weekly dosing and administration (upright 30 min, empty stomach, water only)."}

@@ -153,10 +153,14 @@ class MonographSelection:
 
 
 DEFAULT_SELECTOR_PROMPT = (
-    "You are a Lexicomp librarian. Choose the single monograph that most likely contains the answer to the question. "
-    "Only select from the catalog and respond with compact JSON exactly like this: "
-    "{{\"doc_id\": \"<doc_id>\", \"confidence\": <0-1 float>, \"reason\": \"<10-30 words>\"}}. "
-    "Return the doc_id exactly as written.\n\n"
+    "You are an expert pharmacy monograph selector. Choose exactly one doc_id from the catalog that best answers the question. "
+    "Rules: (1) Match the exact drug entity/formulation implied; prefer single-drug monographs unless the question clearly requests a combo. "
+    "(2) Respect negations/exclusions (e.g., 'NOT amoxicillin-clavulanate' means never select that doc). "
+    "(3) Align with clinical context: patient age group, renal/hepatic status, route, indication, dosing intent. "
+    "(4) Normalize abbreviations and noisy spellings (AOM, NVAF, BBW, mg/kg/day, brand names). "
+    "(5) If multiple docs are related, pick the most specific one that directly answers the question. "
+    'Respond only with compact JSON: {{"doc_id":"<doc_id>","confidence":<0-1>,"reason":"<15-40 words>"}}. '
+    "Do not include any additional text.\n\n"
     "Question:\n{question}\n\n"
     "Monograph catalog:\n{catalog}\n"
 )

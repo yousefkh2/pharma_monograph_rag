@@ -1,0 +1,152 @@
+[
+  {"qid":"Q1","variants":[
+    {"type":"abbr+unitswap","query":"AOM in 5-yo, wt 18 kg — amox dose (mg/kg/day) + volume using 400 mg/5 mL suspension?"},
+    {"type":"noise+distractor-drug","query":"Ear pain dx AOM; kid 5y (18kg). Need **amoxicillin** dosing & mL with 400/5 syrup — NOT amox-clav."},
+    {"type":"spelling+unicode-confusable","query":"5yo (18 kg) akut otitis media — calc am0xicillin mg/kg/day & mL for 400 mg∕5 mL."}
+  ]},
+  {"qid":"Q2","variants":[
+    {"type":"abbr+unitswap","query":"12 kg child fever—acetaminophen (paracetamol) dose mg/kg per dose + mL for 160 mg/5 mL?"},
+    {"type":"noise+brand","query":"12-kg toddler febrile—what Tylenol dose (mg/kg) and how many mL with 160/5 liquid?"},
+    {"type":"spelling","query":"Child 12 kg, feaver — calc acetaminophen mg/kg and volume using 160 mg per 5 mL."}
+  ]},
+  {"qid":"Q3","variants":[
+    {"type":"abbr","query":"12 kg peds fever — ibuprofen dose (mg/kg) + mL with 100 mg/5 mL susp?"},
+    {"type":"distractor-conc","query":"12-kg child; use the 100/5 ibuprofen (not 200/5). What mg/kg and mL per dose?"},
+    {"type":"noise+brand","query":"Kid 12 kg febrile — Advil/Motrin pediatric: compute mg/kg and volume w/ 100 mg per 5 mL."}
+  ]},
+  {"qid":"Q4","variants":[
+    {"type":"abbr+criteria-cue","query":"NVAF: 82 y, 58 kg, SCr 1.6 mg/dL — apixaban dose? (consider dose-reduction rule)"},
+    {"type":"negation-trap","query":"Nonvalvular AF, 82y/58kg/SCr1.6 — choose apixaban dose; no dialysis, no CYP3A4 issues."},
+    {"type":"spelling","query":"NV-AF 82 yrs, wt 58 kg, Scr 1.6 — which apixiban dose applies?"}
+  ]},
+  {"qid":"Q5","variants":[
+    {"type":"abbr","query":"Acute DVT, normal renal — enoxaparin therapeutic regimen?"},
+    {"type":"noise","query":"New DVT (no PE mentioned), kidneys ok — what is the tx dosing schedule for enoxaparin?"},
+    {"type":"distractor-route","query":"Acute DVT; avoid prophylactic dose — give treatment enoxaparin regimen (normal renal)."}
+  ]},
+  {"qid":"Q6","variants":[
+    {"type":"abbr+threshold","query":"T2DM with eGFR 28 — metformin: contraindicated vs adjust? recommendation?"},
+    {"type":"negation-trap","query":"Type 2 DM, eGFR 28 mL/min — metformin use? (not on dialysis)."},
+    {"type":"spelling","query":"T2D, eGFR=28 — metformin okay or stop; what’s advised?"}
+  ]},
+  {"qid":"Q7","variants":[
+    {"type":"abbr+renal","query":"Uncomplicated cystitis; eGFR 25 — is nitrofurantoin appropriate?"},
+    {"type":"distractor-indication","query":"Simple UTI (not pyelo), eGFR 25 mL/min — use nitrofurantoin or avoid?"},
+    {"type":"noise","query":"UCystitis, renal fxn low (eGFR 25) — greenlight nitrofurantoin?"}
+  ]},
+  {"qid":"Q8","variants":[
+    {"type":"abbr+severity","query":"Warfarin + TMP-SMX — interaction severity & what action to take?"},
+    {"type":"brand+noise","query":"Warfarin with Bactrim — how serious is it and how to manage?"},
+    {"type":"spelling","query":"Warfain co-admin TMP/SMX — mgmt plan?"}
+  ]},
+  {"qid":"Q9","variants":[
+    {"type":"abbr+mechanism","query":"Atorvastatin + clarithromycin — risk (CYP3A4) and action: hold/switch/monitor?"},
+    {"type":"brand","query":"Lipitor + Biaxin co-rx — what’s the risk and what should we do?"},
+    {"type":"noise","query":"Patient on atorva now needs clarithro — proceed? adjust? monitor CK/LFTs?"}
+  ]},
+  {"qid":"Q10","variants":[
+    {"type":"abbr+MAOI-cue","query":"Linezolid with sertraline — safe? need washout or just monitor for serotonin tox?"},
+    {"type":"negation-trap","query":"Starting linezolid; pt on sertraline (no other serotonergics). Is combo acceptable; what monitoring?"},
+    {"type":"spelling","query":"Linezolid + sertralin — concomitant use ok?"}
+  ]},
+  {"qid":"Q11","variants":[
+    {"type":"abbr+mechanism","query":"Starting amiodarone in pt on digoxin — interaction mech & digoxin dose/monitor adj?"},
+    {"type":"noise","query":"Digoxin → add amio — what happens pharmacokinetically and how do we adjust?"},
+    {"type":"spelling","query":"Digox + amiodrone — dose change needed?"}
+  ]},
+  {"qid":"Q12","variants":[
+    {"type":"abbr+renal","query":"Influenza tx, eGFR 45 — oseltamivir dose (renal-adjusted)?"},
+    {"type":"brand","query":"Flu treatment; CrCl≈45 — Tamiflu dosing?"},
+    {"type":"noise","query":"Adult, eGFR ~45 mL/min — what oseltamivir regimen should we use?"}
+  ]},
+  {"qid":"Q13","variants":[
+    {"type":"abbr","query":"HTN adult — lisinopril start dose & max dose; any renal adjustments/CI?"},
+    {"type":"noise","query":"New HTN; considering lisinopril — initial and max dosing, renal cautions?"},
+    {"type":"spelling","query":"Lisinopril for hypertenion — starting vs ceiling dose; renal issues?"}
+  ]},
+  {"qid":"Q14","variants":[
+    {"type":"abbr+brand","query":"CAP outpatient adult — azithro standard ‘Z-Pak’ schedule specifics?"},
+    {"type":"noise","query":"Community pneumonia (outpt) — confirm azithromycin dosing (day-by-day Z-Pak)."},
+    {"type":"spelling","query":"CAP OP — what’s the azithromycine regimen?"}
+  ]},
+  {"qid":"Q15","variants":[
+    {"type":"abbr+allergy","query":"Dental endocarditis ppx — amoxicillin adult dose; alternatives if PCN allergy?"},
+    {"type":"noise","query":"Dental work IE prophylaxis — what’s the amox dose, and what if pen allergy?"},
+    {"type":"spelling","query":"Dent proph for endocarditis — amox dose & pen-allergy options."}
+  ]},
+  {"qid":"Q16","variants":[
+    {"type":"abbr+CI-cue","query":"Migraine acute — max daily dose & triptan contraindications (sumatriptan)."},
+    {"type":"noise","query":"For a migraine attack, what’s sumatriptan max/day and key CIs?"},
+    {"type":"spelling","query":"Migrane tx — sumatriptan daily max + contrainidcations."}
+  ]},
+  {"qid":"Q17","variants":[
+    {"type":"abbr+alcohol-cue","query":"Bacterial vaginosis — std regimen; metronidazole alcohol warning (oral vs gel)?"},
+    {"type":"noise","query":"BV therapy — dosing and is EtOH avoidance relevant for oral vs intravaginal metro?"},
+    {"type":"spelling","query":"Bact vaginosis — metro plan + alcohol issue?"}
+  ]},
+  {"qid":"Q18","variants":[
+    {"type":"abbr+DDI-cue","query":"Acute gout — colchicine loading/maintenance & renal cautions; avoid with strong CYP3A4/P-gp inhibitors."},
+    {"type":"noise","query":"Gout flare — how to dose colchicine (LD/MD), renal notes, and DDI red flags?"},
+    {"type":"spelling","query":"Colchicin dosing for acute gout; watch CYP3A4/Pgp."}
+  ]},
+  {"qid":"Q19","variants":[
+    {"type":"abbr+genotype-cue","query":"Post-MI DAPT — clopidogrel maintenance & duration; CYP2C19 poor metabolizer issue."},
+    {"type":"noise","query":"After MI on DAPT — what’s the standard clopidogrel dose/duration; any CYP2C19 concerns?"},
+    {"type":"spelling","query":"Post MI dual anti-platelet — clopidogrel maint + CYP2C19 note."}
+  ]},
+  {"qid":"Q20","variants":[
+    {"type":"abbr+trimester-cue","query":"UTI in pregnancy — nitrofurantoin safety by trimester; preferred use?"},
+    {"type":"negation-trap","query":"Pregnant UTI (no pyelo signs) — when is nitrofurantoin okay vs avoid (trimester-wise)?"},
+    {"type":"spelling","query":"UTI pregnacy — nitrofurantoin status per trimester."}
+  ]},
+  {"qid":"Q21","variants":[
+    {"type":"abbr+QT-cue","query":"CAP inpatient, severe PCN allergy — levofloxacin dosing/monitoring; QT cautions."},
+    {"type":"noise","query":"Hospital CAP with anaphylactic PCN history — how to dose levo and what to monitor (QT)?"},
+    {"type":"spelling","query":"Inpt CAP, PCN-allergic — levoflox regimen; QT watchouts."}
+  ]},
+  {"qid":"Q22","variants":[
+    {"type":"abbr+route-cue","query":"Oral candidiasis — nystatin suspension dosing + swish-and-swallow instructions."},
+    {"type":"noise","query":"Thrush — how to dose nystatin oral susp and exactly how to use it?"},
+    {"type":"spelling","query":"Oral candiasis — nystatin dose & admin steps."}
+  ]},
+  {"qid":"Q23","variants":[
+    {"type":"abbr+labs","query":"Seizure maintenance — valproic acid therapeutic trough range, toxicity signs, and monitoring labs."},
+    {"type":"noise","query":"Chronic seizures — what VPA level to aim for; what toxicity looks like; what labs track?"},
+    {"type":"spelling","query":"Valproate maint — target trough & tox sxs; which labs?"}
+  ]},
+  {"qid":"Q24","variants":[
+    {"type":"abbr+timing-cue","query":"Hypothyroidism — levothyroxine dose conversion & admin timing; interactions (food/iron/Ca)."},
+    {"type":"noise","query":"Primary hypoT — how to convert to levo, when to take it, and what to separate it from?"},
+    {"type":"spelling","query":"Levothyroxin — dosing conversion + timing; iron/calcium food issues."}
+  ]},
+  {"qid":"Q25","variants":[
+    {"type":"abbr+CYP2C19-cue","query":"GERD — standard omeprazole dose; interaction relevance with clopidogrel (CYP2C19)."},
+    {"type":"noise","query":"Reflux — typical omeprazole regimen and does it matter for patients on clopidogrel?"},
+    {"type":"spelling","query":"GORD/GERD — omep dose + clopidogrrel interaction?"}
+  ]},
+  {"qid":"Q26","variants":[
+    {"type":"abbr+BBW-cue","query":"Depression — sertraline time to effect, BBW, dose range; tapering guidance."},
+    {"type":"noise","query":"MDD — what to tell pt about when Zoloft starts working, black-box, dosing window, and taper?"},
+    {"type":"spelling","query":"Sertralin — onset, BB warning, dosing, and how to wean."}
+  ]},
+  {"qid":"Q27","variants":[
+    {"type":"abbr+device-cue","query":"Asthma rescue — albuterol HFA dosing, spacer/technique notes, and max puffs/day."},
+    {"type":"noise","query":"Acute wheeze plan — how to use albuterol inhaler, any spacer tips, daily puff limit?"},
+    {"type":"spelling","query":"Albeterol MDI — dosing + technique; maximum per day?"}
+  ]},
+  {"qid":"Q28","variants":[
+    {"type":"abbr+contact-lens-cue","query":"Bacterial conjunctivitis — ofloxacin ophthalmic dosing; contact lens precautions."},
+    {"type":"noise","query":"Pink eye (bacterial) — how to use ofloxacin drops and what if pt wears contacts?"},
+    {"type":"spelling","query":"Conjuctivitis — oflox eye drop regimen; lens advice."}
+  ]},
+  {"qid":"Q29","variants":[
+    {"type":"abbr+monitor-cue","query":"CKD stage 3 — spironolactone start dose and K+ monitoring frequency; hyperK risk."},
+    {"type":"noise","query":"Stage 3 CKD — initiating spironolactone: what dose and how often to check potassium?"},
+    {"type":"spelling","query":"Spironolacton in CKD3 — start dose + K monitoring."}
+  ]},
+  {"qid":"Q30","variants":[
+    {"type":"abbr+admin-cue","query":"Osteoporosis — alendronate weekly dose & admin (upright 30 min, empty stomach, water only)."},
+    {"type":"noise","query":"For weekly alendronate, what dose and exactly how to take it (position, timing, fluids)?"},
+    {"type":"spelling","query":"Alendronat weekly — dosing + admin rules."}
+  ]}
+]

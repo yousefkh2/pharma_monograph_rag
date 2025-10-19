@@ -48,7 +48,7 @@ class LLMConfig:
     api_key: Optional[str] = None
     temperature: float = 0.2
     top_p: float = 0.3
-    max_tokens: int = 256
+    max_tokens: int = 2048
     system_prompt: str = DEFAULT_SYSTEM_PROMPT
 
 
@@ -269,13 +269,54 @@ class LLMClient:
         response = await self._client.post(url, headers=self._headers, json=payload)
         response.raise_for_status()
         data = response.json()
+
+        if "error" in data:
+            raise RuntimeError(f"LLM error: {data['error']}")
+
         choices = data.get("choices") or []
         if not choices:
             raise RuntimeError("OpenAI response missing choices")
-        content = choices[0].get("message", {}).get("content")
-        if not content:
-            raise RuntimeError("OpenAI response missing message content")
-        return content.strip()
+
+        message = choices[0].get("message", {})
+        content = message.get("content")
+
+        def _coalesce_content(value):
+            if value is None:
+                return None
+            if isinstance(value, str):
+                return value.strip()
+            if isinstance(value, list):
+                parts = []
+                for item in value:
+                    if isinstance(item, dict):
+                        text = item.get("text") or item.get("content") or ""
+                        parts.append(str(text))
+                    else:
+                        parts.append(str(item))
+                combined = "".join(parts).strip()
+                return combined or None
+            return str(value).strip()
+
+        content_str = _coalesce_content(content)
+        if not content_str:
+            # fallback for providers that return top-level text
+            alt = choices[0].get("content") or choices[0].get("text")
+            content_str = _coalesce_content(alt)
+
+        # For reasoning models (o1, gpt-5-mini), check the reasoning field
+        if not content_str:
+            reasoning = message.get("reasoning")
+            content_str = _coalesce_content(reasoning)
+
+        if not content_str:
+            # Log the actual response for debugging
+            import json
+            print(f"DEBUG: OpenRouter response: {json.dumps(data, indent=2)}")
+            print(f"DEBUG: Message object: {message}")
+            print(f"DEBUG: Content value: {content}")
+            raise RuntimeError(f"OpenAI response missing message content. Response: {json.dumps(data)[:500]}")
+
+        return content_str
 
     def _build_prompt(
         self,
