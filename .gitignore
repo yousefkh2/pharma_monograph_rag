@@ -3,3 +3,5 @@ monographs_html/
 parsed_output/
 .env
 rag_storage/
+vector_store/
+indexes/
